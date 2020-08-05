@@ -1,1 +1,2 @@
-imagens
+imagens/*
+!imagens/.gitkeep
