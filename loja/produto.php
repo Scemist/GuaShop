@@ -1,0 +1,228 @@
+<?php
+
+	session_start();
+	include_once('conexao/conexao.php');
+
+	$id = $_GET['id'];
+
+?>
+
+<!DOCTYPE html>
+
+<html lang="pt-br">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> <!-- Tag de viewport -->
+
+		<link rel="icon" type="imagem/png" href="../favicon.ico"> <!-- Flavicon -->
+		<link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css"> <!-- CSS Bootstrap -->
+
+		<script>
+			function previewFile() {
+			 	var preview = document.querySelector('img');
+			  	var file    = document.querySelector('input[type=file]').files[0];
+			  	var reader  = new FileReader();
+
+			  	reader.onloadend = function () {
+			    	preview.src = reader.result;
+			  	}
+
+			  	if (file) {
+			    	reader.readAsDataURL(file);
+			  	}
+			  	else {
+			    	preview.src = "";
+			  	}
+			}
+		</script>
+
+		<title>Produto - GuaShop</title>
+	</head>
+
+	<body class="bg-light">
+		<?php
+			if (isset($_SESSION['msg'])) {
+      	echo $_SESSION ['msg'];
+        unset($_SESSION['msg']);
+      }
+
+			$res = "SELECT
+	  					*
+	  				FROM
+	  					produto p
+	  				WHERE
+						p.id_prod = '$id'";
+			$result = $conexao -> query($res);
+			$produto = $result -> fetch();
+
+			$res = "SELECT
+						*
+					FROM
+						imagem i
+					WHERE
+						i.tabela_imag = 'produto'
+						AND i.referencia_refe = $id";
+			$result = $conexao -> query($res);
+			$imagem = $result -> fetch();
+
+		?>
+		<main class="container">
+			<form action="externo/atualizar_produto.php" method="POST" enctype="multipart/form-data">
+				<div>
+					<div>
+						<input type="hidden" name="id"
+							value="<?php
+										if(isset($produto['id_prod'])){
+										echo $produto['id_prod'];
+									}
+								?>">
+					</div>
+
+					<div class="form-group">
+						<label class="col-form-label" for="nome">Nome do Produto:</label>
+						<input type="text" class="form-control" placeholder="insira o nome do produto" id="nome" name="nome" value="<?php if(isset($produto['nome_prod'])){
+									echo $produto['nome_prod'];
+								}
+							?>">
+					</div>
+
+					<div class="form-row">
+
+						<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-6 form-group">
+							<label class="col-form-label" for="descricao">Descrição:</label>
+							<textarea name="descricao" id="descricao" class="form-control" placeholder="Dê uma descrição para o produto" cols="20" rows="6"><?php
+									if(isset($produto['descricao_prod'])){
+										echo $produto['descricao_prod'];
+									}
+								?></textarea>
+						</div>
+
+						<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-6 form-group">
+							<h4>De	fina o setor(res)</h4>
+							<div class="row">
+
+								<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-4 form-group">
+									<div class="form-check">
+										<input class="form-check-input" type="checkbox" id="fastfood" value="fastfood" name="fastfood" <?php if(strpos((',' . $produto['id_seto']), '1')){	echo "checked"; } ?>>
+										<label class="form-check-label" for="fastfood">Fast-food</label>
+									</div>
+
+									<div class="form-check">
+										<input class="form-check-input" type="checkbox" id="alimentacao" value="alimentacao" name="alimentacao" <?php if(strpos((',' . $produto['id_seto']), '2')){	echo "checked"; } ?>>
+										<label class="form-check-label" for="alimentacao" >Alimentação</label>
+									</div>
+
+									<div class="form-check">
+										<input class="form-check-input" type="checkbox" id="farmacia" value="farmacia" name="farmacia" <?php if(strpos((',' . $produto['id_seto']), '3')){	echo "checked"; } ?>>
+										<label class="form-check-label" for="farmacia" >Farmácia</label>
+									</div>
+								</div>
+
+								<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-4 form-group">
+									<div class="form-check">
+									  <input class="form-check-input" type="checkbox" id="vestuario" value="vestuario" name="vestuario" <?php if(strpos((',' . $produto['id_seto']), '4')){	echo "checked"; } ?>>
+										<label class="form-check-label" for="vestuario" >Vestuário</label>
+									</div>
+
+									<div class="form-check">
+									  <input class="form-check-input" type="checkbox" id="perfumaria" value="perfumaria" name="perfumaria" <?php if(strpos((',' . $produto['id_seto']), '5')){	echo "checked"; } ?>>
+										<label class="form-check-label" for="perfumaria">Perfumes</label>
+									</div>
+
+									<div class="form-check">
+									  <input class="form-check-input" type="checkbox" id="petshop" value="petshop" name="petshop" <?php if(strpos((',' . $produto['id_seto']), '6')){	echo "checked"; } ?>>
+										<label class="form-check-label" for="petshop">Petshop</label>
+									</div>
+								</div>
+
+								<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-4 form-group">
+
+									<div class="form-check">
+										<input class="form-check-input" type="checkbox" id="moveis" value="moveis" name="moveis" <?php if(strpos((',' . $produto['id_seto']), '7')){	echo "checked"; } ?>>
+										<label class="form-check-label" for="moveis">Móveis</label>
+									</div>
+
+									<div class="form-check">
+									  <input class="form-check-input" type="checkbox" id="eletrodomesticos" value="eletrodomesticos" name="eletrodomesticos" <?php if(strpos((',' . $produto['id_seto']), '8')){	echo "checked"; } ?>>
+										<label class="form-check-label" for="eletrodomesticos">Eletrodoméstico</label>
+									</div>
+
+									<div class="form-check">
+									  <input class="form-check-input" type="checkbox" id="diversos" value="diversos" name="diversos" <?php if(strpos((',' . $produto['id_seto']), '9')){	echo "checked"; } ?>>
+										<label class="form-check-label" for="diversos">Outros</label>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+					<div class="form-row">
+						<div class="form-group col-md-4">
+							<label class="col-form-label" for="preco">Preço:</label>
+							<input type="number" class="form-control" id="preco" placeholder="Qual será o valor" name="preco" value="<?php
+										if(isset($produto['preco_prod'])){
+										echo $produto['preco_prod'];
+									}
+								?>">
+						</div>
+
+						<div class="form-group col-md-4">
+							<label class="col-form-label" for="promocao">Promoção:</label>
+							<input type="number" class="form-control" id="promocao" placeholder="Desconto. Opcional" name="promocao" value="<?php
+									if(isset($produto['promocao_prod'])){
+										echo $produto['promocao_prod'];
+									}
+								?>">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-form-label" for="caracteristicas">Características:</label>
+						<textarea name="caracteristicas" id="caracteristicas" class="form-control" placeholder="Quais são as características do produto" cols="20" rows="6"><?php
+									if(isset($produto['caracteristicas_prod'])){
+										echo $produto['caracteristicas_prod'];
+									}
+								?>
+						</textarea>
+					</div>
+
+					<div class="form-row">
+					<div class="form-group col-md-6">
+						<label class="col-form-label">Insira uma imagem:</label>
+						<input type="file" class="form-control-file" name="imagem" onchange="previewFile()">
+					</div>
+
+					<div class="form-group col-md-6">
+						<label class="col-form-label">Nome da imagem:</label>
+						<input type="text" placeholder="Nome da imagem" class="form-control" name="titulo" value="<?php
+								if(isset($produto['titulo_imag'])){
+									echo $produto['titulo_imag'];
+								}
+							?>">
+					</div>
+
+					<div class="form-row">
+						<div class="form-group col-md-6">
+							<img src="../imagens/<?php
+								if(isset($imagem['arquivo_imag'])){
+									echo $imagem['arquivo_imag'];
+								}
+							?>" style="width: 400px;" class="img-thumbnail img-fluid">
+						</div>
+
+						<div class="form-group col-md-6" style="margin-top: 5rem;">
+							<a href="index.php" class="btn btn-outline-primary btn-lg">Cancelar</a>
+							<input type="hidden" name="id" value="<?php echo $id ?>">
+							<input type="submit" name="SendCadEdit" class="btn btn-outline-primary btn-lg" value="Salvar">
+						</div>
+					</div>
+				</div>
+			</form>
+		</main>
+
+		<script src="../bootstrap/jquery/jquery-3.3.1.min.js"></script> <!-- jQuery -->
+		<script src="../bootstrap/popper/popper.min.js"></script> <!-- Popper.js -->
+		<script src="../bootstrap/js/bootstrap.min.js"></script> <!-- Bootstrap JS -->
+	</body>
+</html>
