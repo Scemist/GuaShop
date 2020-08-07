@@ -5,7 +5,6 @@ USE guashop;
 CREATE TABLE imagem (
 
 	id_imag INT PRIMARY KEY AUTO_INCREMENT,
-	titulo_imag VARCHAR(100) NOT NULL,
 	arquivo_imag VARCHAR(100) NOT NULL,
 	tabela_imag VARCHAR(100) NOT NULL,
 	referencia_refe VARCHAR(100) NOT NULL

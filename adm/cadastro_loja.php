@@ -21,18 +21,24 @@
 
 	<body class="bg-light">
 
-		<?php // require_once('externo/navbar.php') ?>
+		<nav class="container">
+			<div class="row">
+				<div class="col-12">
+					<h3 class="text-light bg-dark py-2 px-4 mt-3 font-weight-light rounded">Cadastro de loja</h3>
+				</div>
+
+				<div class="col-12">
+					<a href="index.php">
+						<button class="btn btn-info btn-sm mt-0">
+							Voltar ao início
+						</button>
+					</a>
+				</div>
+			</div>
+		</nav>
 
 		<main class="container">
-
 			<div class="row">
-				<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-6">
-          <a href="index.php">
-            <button class="btn btn-primary m-3">
-              Início
-            </button>
-          </a>
-				</div>
 				<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-6 pt-2">
 					<?php if (isset($_GET['msg'])): ?>
 					<div class="alert alert-danger alert-dismissible fade show my-0" role="alert">
@@ -95,27 +101,17 @@
 
               <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-2 form-group">
                 <label for="numero">Número</label>
-                <input class="form-control" id="numero" type="number" name="numero" placeholder="1523">
+                <input class="form-control" id="numer" type="number" name="numero" placeholder="1524">
               </div>
             </div>
 						<hr>
           </div>
 
           <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-6">
-            <div class="row">
-              <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-6 form-group">
-                <label for="titulo_imagem">Nome da imagem</label>
-                <input class="form-control" id="titulo_imagem" type="text" name="titulo" placeholder="Título ou Tag">
-              </div>
-
-              <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-6 form-group"></div>
-
-							<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-6 input-group mb-3">
-								<div class="custom-file">
-									<input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" name="imagem">
-									<label class="custom-file-label" for="inputGroupFile01">Clique para escolher</label>
-								</div>
-							</div>
+						<label for="titulo_imagem">Imagem ou logo para a loja</label>
+						<div class="custom-file">
+							<input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" name="imagem">
+							<label class="custom-file-label w-50" for="inputGroupFile01">Clique para escolher</label>
             </div>
           </div>
 

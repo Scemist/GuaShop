@@ -28,7 +28,7 @@
 
 	$tabela = 'loja';
 
-	$sql = $conexao -> prepare ('SELECT id_imag, titulo_imag, arquivo_imag FROM imagem WHERE referencia_refe = :id AND tabela_imag = :tabela');
+	$sql = $conexao -> prepare ('SELECT id_imag, arquivo_imag FROM imagem WHERE referencia_refe = :id AND tabela_imag = :tabela');
 	$sql -> bindParam(':id', $id);
 	$sql -> bindParam(':tabela', $tabela);
 	$sql -> execute();
@@ -130,7 +130,7 @@
 					</div>
 					<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-2 form-group">
 						<label for="numero">Número</label>
-						<input class="form-control" id="numero" type="number" name="numero" value="<?= $loja['numero_loja'] ?>">
+						<input class="form-control" id="numer" type="number" name="numero" value="<?= $loja['numero_loja'] ?>">
 					</div>
 				</div>
 

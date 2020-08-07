@@ -71,12 +71,11 @@
   if (is_uploaded_file($_FILES['imagem']['tmp_name'])) { // Se existir uma imagem
 
     // Salva na pasta imagens
-    $titulo = $_POST['titulo'];
     $tabela = 'loja';
 
     $pasta_upload = '../../imagens/';
     $extensao = substr($_FILES['imagem']['name'], -4);
-    $arquivo = $titulo . date('dmYhmis') . $extensao;
+    $arquivo = "loja_" . date('dmYhmis') . $extensao;
     $imagem_final = $pasta_upload . $arquivo;
 
     if (move_uploaded_file($_FILES['imagem']['tmp_name'], $imagem_final)) { // Se for salvo com sucesso
@@ -86,20 +85,17 @@
         ('INSERT INTO
           imagem
           (
-            titulo_imag,
             arquivo_imag,
             tabela_imag,
             referencia_refe
           )
           VALUES
           (
-            :titulo,
             :arquivo,
             :tabela,
             :referencia
           )
         ');
-      $sql -> bindParam(':titulo', $titulo);
       $sql -> bindParam(':arquivo', $arquivo);
       $sql -> bindParam(':tabela', $tabela);
       $sql -> bindParam(':referencia', $loja);
