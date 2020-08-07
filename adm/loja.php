@@ -17,11 +17,11 @@
 
 	if ($loja['ativo_loja'] == 0) {
 
-		$checkDesativado = "checked";
+		$checkDesativado = "selected";
 	}
 	else {
 
-		$checkAtivado = "checked";
+		$checkAtivado = "selected";
 	}
 
 	// Pega as informações da imagem
@@ -36,7 +36,7 @@
 
 	if (isset($imagem['id_imag'])) { // Tem imagem
 
-		$exibir = "<img src='../imagens/" . $imagem['arquivo_imag'] . " ' width='250px'><br>";
+		$exibir = "<img src='../imagens/" . $imagem['arquivo_imag'] . " ' width='250px' class='rounded'><br>";
 	}
 	else { // Se não tem imagem
 
@@ -60,19 +60,24 @@
 
 	<body class="bg-light">
 
-		<main class="container">
-
+		<nav class="container">
 			<div class="row">
-				<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-          <a href="index.php">
-            <button class="btn btn-primary m-3">
-              Início
-            </button>
-          </a>
-					<hr>
+				<div class="col-12">
+					<h2 class="text-light bg-dark py-2 px-5 mt-1 mb-0 text-right font-weight-light rounded"><spam class="h5 font-weight-light mr-4">Informações da loja </spam> <?= $loja['nome_loja'] ?></h2>
+				</div>
+
+				<div class="col-12">
+					<a href="index.php">
+						<button class="btn btn-info btn-sm mt-1 mb-0">
+							Voltar ao início
+						</button>
+					</a>
+					<hr class="mt-4 mb-0">
 				</div>
 			</div>
+		</nav>
 
+		<main class="container">
 			<form action="externo/atualizar_loja.php" method="POST" enctype="multipart/form-data">
 				<div class="form-row">
 
@@ -94,11 +99,11 @@
 
 					<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-6">
 						<div class="row">
-							<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 form-group">
+							<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-10 form-group">
 								<label for="nome">Nome</label>
 								<input class="form-control" id="nome" type="textarea" name="nome" placeholder="<?= $loja['nome_loja'] ?>" value="<?= $loja['nome_loja'] ?>">
 							</div>
-							<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 form-group">
+							<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-10 form-group">
 								<label for="sobre">Sobre</label>
 								<textarea class="form-control" id="nome" type="textarea" name="sobre" placeholder="<?= $loja['sobre_loja'] ?>"><?= $loja['sobre_loja'] ?></textarea>
 							</div>
@@ -153,7 +158,7 @@
 
 					<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-2">
 						<input type="hidden" name="id" value="<?= $id ?>">
-						<input class="btn btn-primary w-100 float-right m-3" type="submit" value="Atualizar">
+						<input class="btn btn-info w-100 float-right m-3" type="submit" value="Atualizar">
 					</div>
 				</div>
 

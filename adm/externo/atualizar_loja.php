@@ -8,7 +8,6 @@
 
 	$loja = $_POST['id'];
 
-
 	if ($_POST['ativo'] == 0) { // Se está ativo
 		$ativo = 0;
 	}
