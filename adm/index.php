@@ -1,7 +1,6 @@
 <?php
 
 	require_once('conexao/conexao.php'); // Conexão com banco de dados
-
 	require_once('externo/verificar.php'); // Confere a sessão
 
 	// Código PHP da página
@@ -9,68 +8,84 @@
 	$selectedTodos = $selectedAtivado = $selectedDesativado = "";
 	$placeholder = "placeholder='Palavra Chave'";
 
-	if (isset($_GET['get'])) { // Se existe o GET
+	if (isset($_GET['filtro'])) { // Se existe o GET (algum valor do filtro sempre é enviado)
 
-		if ($_GET['get'] == 'filtro') { // Se o GET é um filtro
+		$chave = $_GET['chave'];
+		$filtro = $_GET['filtro'];
 
-			if ($_GET['filtro'] != 'todos') { // Se o filtro é diferente de todos
-
-				$filtro = $_GET['filtro'];
-
-				if ($filtro == 'ativado') {
-					$valor = 1;
-					$selectedAtivado = 'selected';
-				}
-
-				else if ($filtro == 'desativado') {
-					$valor = 0;
-					$selectedDesativado = 'selected';
-				}
-
-				$sql = $conexao -> prepare ('SELECT * FROM loja WHERE ativo_loja = :valor');
-				$sql -> bindParam(':valor', $valor);
-				$sql -> execute();
-				$lojas = $sql -> fetchAll();
-			}
-			else { // O filtro é igual a todos
-
-				$selectedTodos = 'selected';
-
-				$sql = $conexao -> prepare ('SELECT * FROM loja');
-				$sql -> execute();
-				$lojas = $sql -> fetchAll();
-
-			}
-
+		if (!empty($chave)) {
+			$placeholder = "value='$chave' placeholder='$chave'";
 		}
-		else if ($_GET['get'] == 'pesquisa') { // Se o GET é uma pesquisa
 
-			$chave = $_GET['chave'];
-			$placeholder = "placeholder='$chave'";
+		function filtroRefinado ($valor, $chave) {
+			global $conexao;
 			$chave = '%' . $chave . '%';
 
-			$sql = $conexao -> prepare ('SELECT *
-				FROM loja
+			$sql = $conexao -> prepare ('
+				SELECT
+					*
+				FROM
+					loja
 				WHERE
-					nome_loja LIKE :chave
-					OR sobre_loja LIKE :chave
-					OR cidade_loja LIKE :chave
-					OR bairro_loja LIKE :chave
-					OR rua_loja LIKE :chave
-					OR numero_loja LIKE :chave
-				');
-
+					ativo_loja = :valor
+					AND nome_loja LIKE :chave
+			');
+			$sql -> bindParam(':valor', $valor);
 			$sql -> bindParam(':chave', $chave);
-			$sql -> execute();
-			$lojas = $sql -> fetchAll();
 
+			return $sql;
 		}
 
+		function filtroTodos ($chave) {
+			global $conexao;
+			$chave = '%' . $chave . '%';
+
+			$sql = $conexao -> prepare ('
+				SELECT
+					*
+				FROM
+					loja
+				WHERE
+					nome_loja LIKE :chave
+			');
+			$sql -> bindParam(':chave', $chave);
+			return $sql;
+		}
+
+		switch ($filtro) {
+			case 'todos':
+				$selectedTodos = 'selected';
+				$sql = filtroTodos($chave);
+				break;
+
+			case 'ativado':
+				$valor = 1;
+				echo "atiaood";
+				$selectedAtivado = 'selected';
+				$sql = filtroRefinado($valor, $chave);
+				break;
+
+			case 'desativado':
+				$valor = 0;
+				$selectedDesativado = 'selected';
+				$sql = filtroRefinado($valor, $chave);
+				break;
+			
+			default:
+				header ('index.php');
+				exit;
+				break;
+		}
+
+		if (isset($sql)) {
+			$sql -> execute();
+			$lojas = $sql -> fetchAll();
+		}
+	
 	}
 	else { // Se não tem GET
 
 		$selectedTodos = 'selected';
-
 		$sql = $conexao -> prepare ('SELECT * FROM loja');
 		$sql -> execute();
 		$lojas = $sql -> fetchAll();
@@ -118,34 +133,18 @@
 					<h2 class="text-muted mb-4 mt-4">Lista de lojas cadastradas</h2>
 				</div>
 
-				<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-3 mb-3 mt-5">
+				<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-6 mb-3 mt-5">
 					<form action="" method="GET">
 						<div class="form-row">
-							<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-								<label for="">Pesquisa</label>
-							</div>
 
-							<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-8">
+							<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-5">
+								<label for="">Pesquisa</label>
 								<input class="form-control form-control-sm" id="chave" type="text" name="chave" <?= $placeholder ?>>
 							</div>
 
-							<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-4">
-								<input class="btn btn-secondary btn-sm" type="submit" value="Pesquisar">
-							</div>
-
-							<input class="btn btn-secondary" type="hidden" name="get" value="pesquisa">
-						</div>
-					</form>
-				</div>
-
-				<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-3 mb-3 mt-5">
-					<form action="" method="GET">
-						<div class="form-row">
-							<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+						
+							<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-5">
 								<label for="exampleFormControlSelect1">Filtros</label>
-							</div>
-
-							<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-8">
 								<select class="form-control form-control-sm" id="exampleFormControlSelect1" name="filtro">
 									<option value="todos" <?= $selectedTodos ?>>Todas as lojas</option>
 									<option value="ativado" <?= $selectedAtivado ?>>Somente lojas ativas</option>
@@ -153,15 +152,13 @@
 								</select>
 							</div>
 
-							<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-4">
-								<input type="hidden" name="get" value="filtro">
-								<input class="btn btn-sm btn-secondary" type="submit" value="Atualizar">
+							<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-2 position-relative">
+								<input class="btn btn-sm btn-secondary position-absolute fixed-bottom" type="submit" value="Atualizar">
 							</div>
+
 						</div>
 					</form>
 				</div>
-
-				<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-1"></div>
 			</div>
 
 			<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 my-5"></div>

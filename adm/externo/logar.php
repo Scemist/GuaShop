@@ -18,14 +18,14 @@
 
     session_name('adm');
     session_start();
-    $_SESSION['logado'] = 1;
+    $_SESSION['logado'] = true;
     $_SESSION['usuario'] = $usuario;
 
     header('Location: ../index.php');
   }
   else { // Se não existir o administrador
 
-    header('Location: ../login.php');
+    header('Location: ../login.php?men=1');
   }
 
 
