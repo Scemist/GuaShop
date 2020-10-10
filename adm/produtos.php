@@ -99,23 +99,23 @@
 					<h2 class="text-muted mb-4 mt-4">Lista de produtos cadastradas</h2>
 				</div>
 
-				<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-4 mb-3 mt-5">
+				<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-5 mb-3 mt-5">
 					<form action="" method="GET">
 						<div class="form-row">
 							<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
 								<label for="">Pesquisa</label>
 							</div>
 
-							<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-8">
+							<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-6">
 								<input class="form-control form-control-sm" id="chave" type="text" name="chave" <?= $placeholder ?>>
 							</div>
 
-							<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-2">
-								<input class="btn btn-secondary btn-sm" type="submit" value="Pesquisar">
+							<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-3">
+								<input class="btn btn-secondary btn-sm w-100" type="submit" value="Pesquisar">
 							</div>
 
-							<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-2">
-								<a class="btn btn-warning btn-sm ml-4" href="produtos.php">Limpar</a>
+							<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-3">
+								<a class="btn btn-warning btn-sm w-100" href="produtos.php">Limpar</a>
 							</div>
 
 							<input class="btn btn-secondary" type="hidden" name="get" value="pesquisa">
@@ -124,7 +124,6 @@
 					</form>
 				</div>
 
-				<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-1"></div>
 			</div>
 
 			<section class="row">

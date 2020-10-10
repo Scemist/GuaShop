@@ -72,7 +72,6 @@
 
     // Salva na pasta imagens
     $tabela = 'loja';
-
     $pasta_upload = '../../imagens/';
     $extensao = substr($_FILES['imagem']['name'], -4);
     $arquivo = "loja_" . date('dmYhmis') . $extensao;

@@ -1,12 +1,12 @@
 <?php
 
-	// Conexão com o banco de dados
+// Conexão com o banco de dados
 
-	require_once('../conexao/conexao.php');
+require_once('../conexao/conexao.php');
 
-	// Código PHP da página
+// Código PHP da página
 
-	$loja = $_POST['id'];
+$loja = $_POST['id'];
 
 	if ($_POST['ativo'] == 0) { // Se está ativo
 		$ativo = 0;
@@ -49,38 +49,49 @@
 
     // Salva na pasta imagens
 
-    $titulo = $_POST['titulo'];
     $tabela = 'loja';
-
     $pasta_upload = '../../imagens/';
     $extensao = substr($_FILES['imagem']['name'], -4);
-    $arquivo = $titulo . date('dmYhmis') . $extensao;
-    $imagem_final = $pasta_upload . $arquivo;
+    $arquivo = "loja_" . date('Y_m_H_i_s') . $extensao;
+	$imagem_final = $pasta_upload . $arquivo;
+	
 
-    if (move_uploaded_file($_FILES['imagem']['tmp_name'], $imagem_final)) { // Se for salvo com sucesso
+	if (move_uploaded_file($_FILES['imagem']['tmp_name'], $imagem_final)) { // Se for salvo com sucesso
 
       // Salva o nome no banco de dados
 
-      $sql = $conexao -> prepare
-        ('INSERT INTO
-            imagem
-            (
-              arquivo_imag,
-              tabela_imag,
-              referencia_refe
-            )
-          VALUES
-          (
-            :arquivo,
-            :tabela,
-            :referencia
-          )');
+		$sql = $conexao -> prepare
+			('INSERT INTO
+				imagem
+				(
+				arquivo_imag,
+				tabela_imag,
+				referencia_refe
+				)
+			VALUES
+			(
+				:arquivo,
+				:tabela,
+				:referencia
+			)');
 
-      $sql -> bindParam(':arquivo', $arquivo);
-      $sql -> bindParam(':tabela', $tabela);
-      $sql -> bindParam(':referencia', $loja);
+		$sql -> bindParam(':arquivo', $arquivo);
+		$sql -> bindParam(':tabela', $tabela);
+		$sql -> bindParam(':referencia', $loja);
 
-      $sql -> execute();
+		$sql -> execute();
+		
+		// Apaga a imagem antiga
+
+		$arquivoImagem = $_POST['arquivoImagem'];
+
+		if ($_POST['avisoSemImagem'] == 1) {
+			unlink("../../imagens/$arquivoImagem");
+		}
+
+		$sql = $conexao -> prepare('DELETE FROM	imagem	WHERE arquivo_imag = :arquivo');
+		$sql -> bindParam(':arquivo', $arquivoImagem);
+		$sql -> execute();
 
     }
   }

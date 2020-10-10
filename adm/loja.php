@@ -36,11 +36,15 @@
 
 	if (isset($imagem['id_imag'])) { // Tem imagem
 
+		echo $imagem['arquivo_imag'];
 		$exibir = "<img src='../imagens/" . $imagem['arquivo_imag'] . " ' width='250px' class='rounded'><br>";
+		$arquivoImagem = $imagem['arquivo_imag'];
+		$avisoSemImagem = 1;
 	}
 	else { // Se não tem imagem
 
 		$exibir = "<p>Sem imagem</p>";
+		$avisoSemImagem = 0;
 	}
 
 ?>
@@ -54,7 +58,7 @@
 
 		<link rel="icon" type="imagem/png" href="../favicon.ico"> <!-- Flavicon -->
 		<link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css"> <!-- CSS Bootstrap -->
-
+	
 		<title>GuaShop ADM - Loja</title>
 	</head>
 
@@ -92,6 +96,8 @@
 								<div class="custom-file">
 									<input type="file" class="custom-file-input" id="titulo_imagem" aria-describedby="inputGroupFileAddon01" name="imagem">
 									<label class="custom-file-label" for="inputGroupFile01">Alterar ou adicionar logo ou imagem para a loja</label>
+									<input type="hidden" name="arquivoImagem" value="<?= $arquivoImagem ?>">
+									<input type="hidden" name="avisoSemImagem" value="<?= $avisoSemImagem ?>">
 								</div>
 							</div>
 						</div>
