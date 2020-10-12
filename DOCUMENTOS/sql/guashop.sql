@@ -39,7 +39,7 @@ CREATE TABLE cartao (
 	vencimento_cart DATE NOT NULL,
 	nascimento_cart DATE NOT NULL,
 	id_usua INT NOT NULL,
-	CONSTRAINT fk_CarUsu FOREIGN KEY (id_usua) REFERENCES usuario (id_usua)
+	CONSTRAINT fk_CarUsu FOREIGN KEY (id_usua) REFERENCES usuario (id_usua) ON DELETE CASCADE
 
 ) ENGINE=InnoDB;
 
@@ -69,7 +69,7 @@ CREATE TABLE produto (
 	promocao_prod DECIMAL(10,2) NULL,
 	id_seto VARCHAR(200) NOT NULL,
 	id_loja INT NOT NULL,
-	CONSTRAINT fk_ProLo FOREIGN KEY (id_loja) REFERENCES loja (id_loja)
+	CONSTRAINT fk_ProLo FOREIGN KEY (id_loja) REFERENCES loja (id_loja) ON DELETE CASCADE
 
 ) ENGINE=InnoDB;
 
@@ -101,8 +101,8 @@ CREATE TABLE pedido (
 	estado_pedi VARCHAR(100),
 	id_cart INT NULL,
 	id_usua INT NOT NULL,
-	CONSTRAINT fk_PeUsu FOREIGN KEY (id_usua) REFERENCES usuario (id_usua),
-	CONSTRAINT fk_PeCAr FOREIGN KEY (id_cart) REFERENCES cartao (id_cart)
+	CONSTRAINT fk_PeUsu FOREIGN KEY (id_usua) REFERENCES usuario (id_usua) ON DELETE CASCADE,
+	CONSTRAINT fk_PeCAr FOREIGN KEY (id_cart) REFERENCES cartao (id_cart) ON DELETE CASCADE
 
 ) ENGINE=InnoDB;
 
@@ -116,8 +116,8 @@ CREATE TABLE item_pedido (
 	valorfinal_item DECIMAL(10,2) NOT NULL,
 	id_prod INT NOT NULL,
 	id_pedi INT NOT NULL,
-	CONSTRAINT fk_ItePro FOREIGN KEY (id_prod) REFERENCES produto (id_prod),
-	CONSTRAINT fk_ItePe FOREIGN KEY (id_pedi) REFERENCES pedido (id_pedi)
+	CONSTRAINT fk_ItePro FOREIGN KEY (id_prod) REFERENCES produto (id_prod) ON DELETE CASCADE,
+	CONSTRAINT fk_ItePe FOREIGN KEY (id_pedi) REFERENCES pedido (id_pedi) ON DELETE CASCADE
 
 ) ENGINE=InnoDB;
 
@@ -128,8 +128,8 @@ CREATE TABLE salvo_produto (
 	quantidade_salv INT NOT NULL,
 	id_usua INT NOT NULL,
 	id_prod INT NOT NULL,
-	CONSTRAINT fk_SaUsu FOREIGN KEY (id_usua) REFERENCES usuario (id_usua),
-	CONSTRAINT fk_SaPro FOREIGN KEY (id_prod) REFERENCES produto (id_prod)
+	CONSTRAINT fk_SaUsu FOREIGN KEY (id_usua) REFERENCES usuario (id_usua) ON DELETE CASCADE,
+	CONSTRAINT fk_SaPro FOREIGN KEY (id_prod) REFERENCES produto (id_prod) ON DELETE CASCADE
 
 ) ENGINE=InnoDB;
 
