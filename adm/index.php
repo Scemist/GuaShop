@@ -28,7 +28,9 @@
 					loja
 				WHERE
 					ativo_loja = :valor
-					AND nome_loja LIKE :chave
+					AND (nome_loja LIKE :chave
+					OR sobre_loja LIKE :chave
+					OR cidade_loja LIKE :chave)
 			');
 			$sql -> bindParam(':valor', $valor);
 			$sql -> bindParam(':chave', $chave);
@@ -47,6 +49,8 @@
 					loja
 				WHERE
 					nome_loja LIKE :chave
+					OR sobre_loja LIKE :chave
+					OR cidade_loja LIKE :chave
 			');
 			$sql -> bindParam(':chave', $chave);
 			return $sql;
@@ -60,7 +64,6 @@
 
 			case 'ativado':
 				$valor = 1;
-				echo "atiaood";
 				$selectedAtivado = 'selected';
 				$sql = filtroRefinado($valor, $chave);
 				break;
@@ -215,10 +218,20 @@
 
 						<?php
 							}
+							
 						?>
 
 					</tbody>
 				</table>
+
+				<?php
+					if (empty($lojas)) {
+						echo
+							'<div class="alert alert-secondary mx-auto" role="alert">
+								Não há resultados para essa busca com ess filtro. o.O
+					  		</div>';
+					}
+				?>
 			</section>
 
 		</main>
