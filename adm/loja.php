@@ -13,6 +13,11 @@
 	$sql -> execute();
 	$loja = $sql -> fetch();
 
+	if (!isset($loja['id_loja'])) {
+		header('Location: index.php?men=1');
+		exit;
+	}
+
 	$checkDesativado = $checkAtivado = "";
 
 	if ($loja['ativo_loja'] == 0) {
@@ -36,7 +41,6 @@
 
 	if (isset($imagem['id_imag'])) { // Tem imagem
 
-		echo $imagem['arquivo_imag'];
 		$exibir = "<img src='../imagens/" . $imagem['arquivo_imag'] . " ' width='250px' class='rounded'><br>";
 		$arquivoImagem = $imagem['arquivo_imag'];
 		$avisoSemImagem = 1;
@@ -169,8 +173,6 @@
 				</div>
 
 			</form>
-
-
 
 		</main>
 
