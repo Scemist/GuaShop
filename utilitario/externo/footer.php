@@ -22,8 +22,10 @@
 
   <div class="row">
     <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 p-0 m-0">
-      <div class="text-muted text-center py-3">© 2020 Copyright:
-        <a class="text-light" href="index.php">guashop.com.br</a>
+      <div class="text-muted text-center py-3">
+        É um sistema conceitual sem implantação, mas continua sendo desenvolvido com outros fins. <br>
+				© 2020 Copyright: Lucas Gonçalves S. -
+        <a class="text-light" href="https://github.com/Scemist">github.com/Scemist</a>
       </div>
     </div>
   </div>
