@@ -24,7 +24,41 @@
 	$sql = $conexao -> prepare('SELECT * FROM loja WHERE id_loja = :loja');
 	$sql -> bindParam(':loja', $_SESSION['id']);
 	$sql -> execute();
-	$loja = $sql -> fetch();
+    $loja = $sql -> fetch();
+    
+    function parteUm() {
+
+        global $conexao;
+        global $pedidos;
+        global $pedidos_id;
+
+        $sql = $conexao -> prepare('SELECT DISTINCT p.id_pedi, p.id_usua, p.horario_pedi, p.data_pedi
+            FROM
+            pedido p
+            JOIN item_pedido i ON (p.id_pedi = i.id_pedi)
+            JOIN produto u ON (u.id_prod = i.id_prod) WHERE i.estado_item = "processando" AND u.id_loja = :loja ORDER BY p.data_pedi ASC, p.horario_pedi ASC');
+            
+            $sql -> bindParam(':loja', $_SESSION['id']);
+            $sql -> execute();
+            $pedidos = $sql -> fetchAll(PDO::FETCH_ASSOC);
+            $total = $sql -> rowCount();
+            $pedidos_id = array();
+            
+        foreach ($pedidos as $controle => $pedido){
+
+            $um = $pedido['id_pedi'];
+            $dois = $pedido['id_pedi'];
+            $tres = substr($pedido['horario_pedi'], 0, 5);
+            $quatro = date('d.m.y', (strtotime($pedido['data_pedi'])));
+
+            echo "
+                <a class='list-group-item list-group-item-warning list-group-item-action' data-toggle='list' href='#list-$um' role='tab' aria-controls=''>
+                    Cód: $dois <small class='float-right'>$tres | $quatro</small>
+                </a>";
+
+            $pedidos_id[$controle] = $pedido['id_pedi'];
+        }
+    }
 
 ?>
 
@@ -148,31 +182,12 @@
             <div class="row">
                 <div class="col-4">
                     <div class="list-group" id="list-tab" role="tablist">
-                        <a class="list-group-item list-group-item-warning list-group-item-action active text-center"
-                            id="list-home-list" data-toggle="list" href="#list-clean2" role="tab" aria-controls="home">.
-                            . .</a>
+                        <a class="list-group-item list-group-item-warning list-group-item-action active text-center" id="list-home-list" data-toggle="list" href="#list-clean2" role="tab" aria-controls="home">. . .</a>
                         <?php
-								$sql = $conexao -> prepare('SELECT DISTINCT p.id_pedi, p.id_usua, p.horario_pedi, p.data_pedi
-								FROM
-								pedido p
-								JOIN item_pedido i ON (p.id_pedi = i.id_pedi)
-								JOIN produto u ON (u.id_prod = i.id_prod) WHERE i.estado_item = "processando" AND u.id_loja = :loja ORDER BY p.data_pedi ASC, p.horario_pedi ASC');
-								$sql -> bindParam(':loja', $_SESSION['id']);
-								$sql -> execute();
-								$pedidos = $sql -> fetchAll(PDO::FETCH_ASSOC);
-								$total = $sql -> rowCount();
-								$pedidos_id = array();
-								foreach ($pedidos as $controle => $pedido):
-							?>
-                        <a class="list-group-item list-group-item-warning list-group-item-action" data-toggle="list"
-                            href="#list-<?= $pedido['id_pedi'] ?>" role="tab" aria-controls="">Cód:
-                            <?= $pedido['id_pedi'] ?> <small
-                                class="float-right"><?php echo substr($pedido['horario_pedi'], 0, 5) ?> |
-                                <?php echo date('d.m.y', (strtotime($pedido['data_pedi']))); ?></small></a>
-
-                        <?php $pedidos_id[$controle] = $pedido['id_pedi'];
-								endforeach;
-							?>
+                                $pedidos;
+                                $pedidos_id;
+                                parteUm();
+						?>
                     </div>
                 </div>
                 <div class="col-8">
@@ -195,9 +210,11 @@
 								?>
                         <div class="tab-pane fade" id="list-<?= $control ?>" role="tabpanel"
                             aria-labelledby="list-profile-list">
-                            <p class="lead"><?= $usuario['estado_usua'] ?>, <?= $usuario['cidade_usua'] ?>,
+                            <p class="lead">
+                                <?= $usuario['estado_usua'] ?>, <?= $usuario['cidade_usua'] ?>,
                                 <?= $usuario['bairro_usua'] ?>, <?= $usuario['rua_usua'] ?>,
-                                <?= $usuario['numero_usua'] ?></p>
+                                <?= $usuario['numero_usua'] ?>
+                            </p>
                             <?php foreach ($produtos as $controle => $produto) { ?>
                             <div class="list-group">
                                 <button type="button" class="list-group-item list-group-item-action">
