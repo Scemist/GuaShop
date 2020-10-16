@@ -25,25 +25,60 @@
 	$sql -> bindParam(':loja', $_SESSION['id']);
 	$sql -> execute();
     $loja = $sql -> fetch();
-    
-    function parteUm() {
+
+    function buscarPedidos($estado) {
 
         global $conexao;
         global $pedidos;
+        global $total;
+        global $pedidos_id;
+        
+        $sql = $conexao -> prepare(
+            'SELECT DISTINCT
+                p.id_pedi, p.id_usua, p.horario_pedi, p.data_pedi
+            FROM
+                pedido p
+                JOIN item_pedido i ON (p.id_pedi = i.id_pedi)
+                JOIN produto u ON (u.id_prod = i.id_prod)
+            WHERE
+                i.estado_item = :estado
+                AND u.id_loja = :loja
+            ORDER BY
+                p.data_pedi ASC, p.horario_pedi ASC');
+            
+        $sql -> bindParam(':loja', $_SESSION['id']);
+        $sql -> bindParam(':estado', $estado);
+        $sql -> execute();
+
+        $pedidos = $sql -> fetchAll(PDO::FETCH_ASSOC);
+        $total = $sql -> rowCount();
+        $pedidos_id = array();
+    }
+    
+    function montarPedidos($estado) {
+
+        global $conexao;
+        global $pedidos;
+        global $total;
         global $pedidos_id;
 
-        $sql = $conexao -> prepare('SELECT DISTINCT p.id_pedi, p.id_usua, p.horario_pedi, p.data_pedi
-            FROM
-            pedido p
-            JOIN item_pedido i ON (p.id_pedi = i.id_pedi)
-            JOIN produto u ON (u.id_prod = i.id_prod) WHERE i.estado_item = "processando" AND u.id_loja = :loja ORDER BY p.data_pedi ASC, p.horario_pedi ASC');
+        buscarPedidos($estado);
+
+        switch ($estado) {
+
+            case 'pendente':
+                $cor = 'success';
+                break;
             
-            $sql -> bindParam(':loja', $_SESSION['id']);
-            $sql -> execute();
-            $pedidos = $sql -> fetchAll(PDO::FETCH_ASSOC);
-            $total = $sql -> rowCount();
-            $pedidos_id = array();
-            
+            case 'processando':
+                $cor = 'warning';
+				break;
+				
+			case 'entrega';
+				$cor = 'primary';
+				break;
+        }
+
         foreach ($pedidos as $controle => $pedido){
 
             $um = $pedido['id_pedi'];
@@ -52,7 +87,7 @@
             $quatro = date('d.m.y', (strtotime($pedido['data_pedi'])));
 
             echo "
-                <a class='list-group-item list-group-item-warning list-group-item-action' data-toggle='list' href='#list-$um' role='tab' aria-controls=''>
+                <a class='list-group-item list-group-item-$cor list-group-item-action' data-toggle='list' href='#list-$um' role='tab' aria-controls=''>
                     Cód: $dois <small class='float-right'>$tres | $quatro</small>
                 </a>";
 
@@ -110,22 +145,11 @@
                 <div class="col-4">
                     <div class="list-group" id="list-tab" role="tablist">
                         <a class="list-group-item list-group-item-success list-group-item-action active text-center" id="list-home-list" data-toggle="list" href="#list-clean" role="tab" aria-controls="home">. . .</a>
-                        	<?php
-								$sql = $conexao -> prepare('SELECT DISTINCT p.id_pedi, p.id_usua, p.horario_pedi, p.data_pedi
-								FROM
-								pedido p
-								JOIN item_pedido i ON (p.id_pedi = i.id_pedi)
-								JOIN produto u ON (u.id_prod = i.id_prod) WHERE i.estado_item = "pendente" AND u.id_loja = :loja ORDER BY p.data_pedi ASC, p.horario_pedi ASC');
-								$sql -> bindParam(':loja', $_SESSION['id']);
-								$sql -> execute();
-								$pedidos = $sql -> fetchAll(PDO::FETCH_ASSOC);
-								$total = $sql -> rowCount();
-								$pedidos_id = array();
-								foreach ($pedidos as $controle => $pedido):
-							?>
-                        <a class="list-group-item list-group-item-success list-group-item-action" data-toggle="list" href="#list-<?= $pedido['id_pedi'] ?>" role="tab" aria-controls="">Cód: <?= $pedido['id_pedi'] ?> <small class="float-right"><?php echo substr($pedido['horario_pedi'], 0, 5) ?> | <?php echo date('d.m.y', (strtotime($pedido['data_pedi']))); ?></small></a>
-                        <?php $pedidos_id[$controle] = $pedido['id_pedi'];
-							endforeach;
+						<?php
+							$pedidos;
+							$total;
+							$pedidos_id;
+							montarPedidos('pendente');
 						?>
                     </div>
                 </div>
@@ -184,9 +208,10 @@
                     <div class="list-group" id="list-tab" role="tablist">
                         <a class="list-group-item list-group-item-warning list-group-item-action active text-center" id="list-home-list" data-toggle="list" href="#list-clean2" role="tab" aria-controls="home">. . .</a>
                         <?php
-                                $pedidos;
-                                $pedidos_id;
-                                parteUm();
+                            $pedidos;
+                            $total;
+                            $pedidos_id;
+                            montarPedidos('processando');
 						?>
                     </div>
                 </div>
@@ -248,31 +273,13 @@
             <div class="row">
                 <div class="col-4">
                     <div class="list-group" id="list-tab" role="tablist">
-                        <a class="list-group-item list-group-item-primary list-group-item-action active text-center"
-                            id="list-home-list" data-toggle="list" href="#list-clean3" role="tab" aria-controls="home">.
-                            . .</a>
-                        <?php
-			$sql = $conexao -> prepare('SELECT DISTINCT p.id_pedi, p.id_usua, p.horario_pedi, p.data_pedi
-			FROM
-			pedido p
-			JOIN item_pedido i ON (p.id_pedi = i.id_pedi)
-			JOIN produto u ON (u.id_prod = i.id_prod) WHERE i.estado_item = "entrega" AND u.id_loja = :loja ORDER BY p.data_pedi ASC, p.horario_pedi ASC');
-			$sql -> bindParam(':loja', $_SESSION['id']);
-			$sql -> execute();
-			$pedidos = $sql -> fetchAll(PDO::FETCH_ASSOC);
-			$total = $sql -> rowCount();
-			$pedidos_id = array();
-			foreach ($pedidos as $controle => $pedido):
-			?>
-                        <a class="list-group-item list-group-item-primary list-group-item-action" data-toggle="list"
-                            href="#list-<?= $pedido['id_pedi'] ?>" role="tab" aria-controls="">Cód:
-                            <?= $pedido['id_pedi'] ?> <small
-                                class="float-right"><?php echo substr($pedido['horario_pedi'], 0, 5) ?> |
-                                <?php echo date('d.m.y', (strtotime($pedido['data_pedi']))); ?></small></a>
-
-                        <?php $pedidos_id[$controle] = $pedido['id_pedi'];
-			endforeach;
-			?>
+                        <a class="list-group-item list-group-item-primary list-group-item-action active text-center" id="list-home-list" data-toggle="list" href="#list-clean3" role="tab" aria-controls="home">. . .</a>
+						<?php
+							$pedidos;
+							$total;
+							$pedidos_id;
+							montarPedidos('entrega');
+						?>
                     </div>
                 </div>
                 <div class="col-8">
