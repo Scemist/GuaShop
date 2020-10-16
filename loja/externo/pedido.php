@@ -51,6 +51,7 @@
     private $loja;
 
     function __construct($pedido) {
+      session_name('loja');
       session_start();
       $this -> conexao = new PDO('mysql:host=localhost;dbname=guashop;charset=utf8', 'root', '');
       $this -> conexao -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

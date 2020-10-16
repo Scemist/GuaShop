@@ -26,6 +26,7 @@
 	// pega o primeiro usuário
 	$loja = $users[0];
 
+	session_name('loja');
 	session_start();
 	$_SESSION['logged_in'] = true;
 	$_SESSION['id'] = $loja['id_loja'];

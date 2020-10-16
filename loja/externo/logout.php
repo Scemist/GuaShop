@@ -1,5 +1,7 @@
 <?php
+
 	// inicia a sessão
+	session_name('loja');
 	session_start();
 	 
 	// muda o valor de logged_in para false

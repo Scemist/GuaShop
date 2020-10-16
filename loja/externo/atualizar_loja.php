@@ -1,5 +1,6 @@
 <?php
 
+	session_name('loja');
 	session_start();
 	include_once('../conexao/conexao.php');
 

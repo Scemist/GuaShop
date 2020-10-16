@@ -1,5 +1,6 @@
 <?php
 
+	session_name('loja');
 	session_start();
 	require('externo/checar.php');
 
