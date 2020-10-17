@@ -25,5 +25,5 @@ Onde as pessoas comuns, podem se tornar clientes cadastrando no site de vendas, 
 
 ### Para clonar o repositório
 
-Na pasta __raiz > documento > sql > Banco com dados como exemplo__ há tudo o que você precisa se quiser um banco de dados já preenchido para usar como exemplo e ver o site preenchido.
+Na pasta raiz __> DOCUMENTOS > sql > Banco com dados como exemplo__ há tudo o que você precisa se quiser um banco de dados já preenchido para usar como exemplo e ver o site preenchido.
 Basta executar o documento guashop.sql do local, e mover as imagens do local para a pasta __imagens__ vazia na pasta raiz do projeto.
