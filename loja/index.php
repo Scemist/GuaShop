@@ -7,7 +7,9 @@
 	$sql = $conexao -> prepare('SELECT * FROM loja WHERE id_loja = :loja');
 	$sql -> bindParam(':loja', $_SESSION['id']);
 	$sql -> execute();
-    $loja = $sql -> fetch();
+	$loja = $sql -> fetch();
+	
+	$_SESSION['loja'] = $loja['nome_loja'];
 
     function buscarPedidos($estado) {
 

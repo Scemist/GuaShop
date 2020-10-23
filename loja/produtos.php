@@ -40,6 +40,17 @@
 	<body class="bg-light">
 		<main class="container">
 
+			<div class="row">
+				<div class="col-10">
+					<h1 class="mt-4 display-4"><?= $_SESSION['loja'] ?></h1>
+				</div>
+				<div class="col-2 form-group mt-5">
+					<a role="button" class="btn btn-primary w-100 mx-2" href="index.php">Início</a>
+				</div>
+			</div>
+
+			<hr>
+
 			<div class="row mb-4">
 				<div class="col-10">
 					<h2 class="text-muted mt-4">Produtos cadastrados</h2>
@@ -47,7 +58,7 @@
 				</div>
 
 				<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-2 form-group mt-5">
-					<a role="button" class="mx-2 btn btn-primary w-100" href="cadastro_produtos.php">Adicionar Produto</a>
+					<a role="button" class="mx-2 btn btn-success w-100" href="cadastro_produtos.php">+ Novo Produto</a>
 				</div>
 			</div>
 
