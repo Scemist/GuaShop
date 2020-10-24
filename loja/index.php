@@ -299,6 +299,12 @@
 				</div>
 			</section>
 
+			<div class="row">
+				<div class="col-12">
+					<a href="pedidos.php" class="float-right w-25 btn btn-outline-info mb-4">Pedidos finalizados</a>
+				</div>
+			</div>
+
 			<!----------------------------------------------------------------------------------------------------------------------------------------------->
 
 		</main>
