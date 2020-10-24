@@ -45,7 +45,7 @@
 					<h1 class="mt-4 display-4"><?= $_SESSION['loja'] ?></h1>
 				</div>
 				<div class="col-2 form-group mt-5">
-					<a role="button" class="btn btn-primary w-100 mx-2" href="index.php">Início</a>
+					<a role="button" class="btn btn-info w-100 mx-2" href="index.php">Início</a>
 				</div>
 			</div>
 
@@ -77,7 +77,6 @@
 							<h5 class="text-muted px-2 py-2"><?= $coluna_id['nome_prod']?></h5>
 						</div>
 
-
 						<ul class="list-group lista w-100">
 							<li class="list-group-item py-2 d-inline-block text-truncate">
 								Preço: <?=$coluna_id['preco_prod']?>"
@@ -87,7 +86,7 @@
 								Promoção: <?= $coluna_id['promocao_prod']?>
 							</li>
 
-							<a class="list-group-item py-2 list-group-item-action active" href="produto.php?id=<?=$coluna_id['id_prod']?>">Editar</a>
+							<a class="list-group-item list-group-item-info py-2 list-group-item-action active" href="produto.php?id=<?=$coluna_id['id_prod']?>">Editar</a>
 						</ul>
 					</div>
 				</div>

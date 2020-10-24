@@ -158,11 +158,17 @@
 						</div>
 
 						<div class="form-group col-md-6" style="margin-top: 5rem;">
-							<input type="submit" name="Send" class="btn btn-outline-primary btn-lg" value="Salvar">
+								<div class="row">
+									<div class="col-6">
+										<a href="menu_de_conta.php" class="btn btn-outline-warning btn-lg w-100">Cancelar</a>
+									</div>
 
-							<a href="menu_de_conta.php" class="btn btn-outline-primary btn-lg" style="margin-left: 50px; ">Cancelar</a>
-
-							<input type="hidden" name="id" value="<?= $id ?>">
+									<div class="col-6">
+										<input type="submit" name="Send" class="btn btn-info btn-lg w-100" value="Salvar">
+										<input type="hidden" name="id" value="<?= $id ?>">
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>

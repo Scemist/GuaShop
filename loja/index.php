@@ -20,7 +20,7 @@
         
         $sql = $conexao -> prepare(
             'SELECT DISTINCT
-                p.id_pedi, p.id_usua, p.horario_pedi, p.data_pedi
+                p.id_pedi, p.endereco_pedi, p.id_usua, p.horario_pedi, p.data_pedi
             FROM
                 pedido p
                 JOIN item_pedido i ON (p.id_pedi = i.id_pedi)
@@ -106,7 +106,7 @@
 					<h1 class="mt-4 display-4"><?= $loja['nome_loja'] ?></h1>
 				</div>
 				<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-2 form-group mt-5">
-					<a role="button" class="mx-2 btn btn-primary w-100" href="produtos.php">Produtos</a>
+					<a role="button" class="mx-2 btn btn-info w-100" href="produtos.php">Produtos</a>
 				</div>
 				<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-2 form-group mt-5">
 					<a role="button" class="mx-2 btn btn-secondary w-100" href="menu_de_conta.php">Gerenciar Conta</a>
@@ -160,7 +160,7 @@
 									$usuario = $sql -> fetch();
 							?>
 							<div class="tab-pane fade" id="list-<?= $control ?>" role="tabpanel" aria-labelledby="list-profile-list">
-								<p class="lead"><?= $usuario['estado_usua'] ?>, <?= $usuario['cidade_usua'] ?>, <?= $usuario['bairro_usua'] ?>, <?= $usuario['rua_usua'] ?>, <?= $usuario['numero_usua'] ?></p>
+								<p class="lead"><?= $pedido['endereco_pedi'] ?></p>
 								<?php foreach ($produtos as $controle => $produto): ?>
 								<div class="list-group">
 									<button type="button" class="list-group-item list-group-item-action">
@@ -218,7 +218,7 @@
 									$usuario = $sql -> fetch();
 								?>
 							<div class="tab-pane fade" id="list-<?= $control ?>" role="tabpanel" aria-labelledby="list-profile-list">
-								<p class="lead"> <?= $usuario['estado_usua'] ?>, <?= $usuario['cidade_usua'] ?>, <?= $usuario['bairro_usua'] ?>, <?= $usuario['rua_usua'] ?>, <?= $usuario['numero_usua'] ?></p>
+								<p class="lead"><?= $pedido['endereco_pedi'] ?></p>
 								<?php foreach ($produtos as $controle => $produto): ?>
 								<div class="list-group">
 									<button type="button" class="list-group-item list-group-item-action">
@@ -277,7 +277,7 @@
 									$usuario = $sql -> fetch();
 							?>
 							<div class="tab-pane fade" id="list-<?= $control ?>" role="tabpanel" aria-labelledby="list-profile-list">
-								<p class="lead"><?= $usuario['estado_usua'] ?>, <?= $usuario['cidade_usua'] ?>, <?= $usuario['bairro_usua'] ?>, <?= $usuario['rua_usua'] ?>, <?= $usuario['numero_usua'] ?></p>
+								<p class="lead"><?= $pedido['endereco_pedi'] ?></p>
 								<?php foreach ($produtos as $controle => $produto): ?>
 								<div class="list-group">
 									<button type="button" class="list-group-item list-group-item-action">
