@@ -40,24 +40,27 @@
 	<body class="bg-light">
 		<main class="container">
 
-			<div class="row">
+			<header class="row">
 				<div class="col-10">
-					<h1 class="mt-4 display-4"><?= $_SESSION['loja'] ?></h1>
+					<h1 class="mt-4 display-4 d-inline-block"><?= $_SESSION['loja'] ?></h1>
+					<h4 class="ml-4 text-muted d-inline-block mt-4">Produtos da loja</h4>
 				</div>
-				<div class="col-2 form-group mt-5">
-					<a role="button" class="btn btn-info w-100 mx-2" href="index.php">Início</a>
+
+				<div class="col-2 mt-5">
+					<a class="btn btn-info w-100" href="index.php">Início</a>
 				</div>
-			</div>
+				
+				<div class="col-12">
+					<hr>
+				</div>
+			</header>
 
-			<hr>
-
-			<div class="row mb-4">
+			<div class="row mb-0">
 				<div class="col-10">
-					<h2 class="text-muted mt-4">Produtos cadastrados</h2>
-					<h5 class="">Aqui estão os produtos cadastrados em sua loja</h5>
+					<h5 class="lead">Aqui estão os produtos cadastrados em sua loja</h5>
 				</div>
 
-				<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-2 form-group mt-5">
+				<div class="col-2 form-group">
 					<a role="button" class="mx-2 btn btn-success w-100" href="cadastro_produtos.php">+ Novo Produto</a>
 				</div>
 			</div>

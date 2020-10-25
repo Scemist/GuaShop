@@ -37,19 +37,20 @@
 	<body class="bg-light">
 		<main class="container">
 
-			<div class="row">
+			<header class="row">
 				<div class="col-10">
-					<h1 class="mt-4 display-4"><?= $_SESSION['loja'] ?></h1>
+					<h1 class="mt-4 display-4 d-inline-block"><?= $_SESSION['loja'] ?></h1>
+					<h4 class="ml-4 text-muted d-inline-block mt-4">Informaçoes da loja</h4>
 				</div>
 
-				<div class="col-2 form-group mt-5">
-					<a role="button" class="btn btn-info w-100 mx-2" href="index.php">Início</a>
+				<div class="col-2 mt-5">
+					<a class="btn btn-info w-100" href="index.php">Início</a>
 				</div>
-			</div>
-
-			<hr>
-			
-			<h2 class="text-muted mt-4">Editar conta</h2>
+				
+				<div class="col-12">
+					<hr>
+				</div>
+			</header>
 
 			<form action="externo/atualizar_loja.php" method="POST" enctype="multipart/form-data">
 

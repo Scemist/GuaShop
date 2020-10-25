@@ -6,6 +6,26 @@
 
 	$id = $_GET['id'];
 
+	$res = "SELECT
+				*
+			FROM
+				produto p
+			WHERE
+				p.id_prod = '$id'";
+	$result = $conexao -> query($res);
+	$produto = $result -> fetch();
+
+	$res = "SELECT
+			*
+		FROM
+			imagem i
+		WHERE
+			i.tabela_imag = 'produto'
+			AND i.referencia_refe = $id";
+
+	$result = $conexao -> query($res);
+	$imagem = $result -> fetch();
+
 ?>
 
 <!DOCTYPE html>
@@ -18,88 +38,48 @@
 		<link rel="icon" type="imagem/png" href="../favicon.ico"> <!-- Flavicon -->
 		<link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css"> <!-- CSS Bootstrap -->
 
-		<script>
-			function previewFile() {
-			 	var preview = document.querySelector('img');
-			  	var file    = document.querySelector('input[type=file]').files[0];
-			  	var reader  = new FileReader();
-
-			  	reader.onloadend = function () {
-			    	preview.src = reader.result;
-			  	}
-
-			  	if (file) {
-			    	reader.readAsDataURL(file);
-			  	}
-			  	else {
-			    	preview.src = "";
-			  	}
-			}
-		</script>
-
 		<title>Produto - GuaShop</title>
 	</head>
 
 	<body class="bg-light">
-		<?php
-			if (isset($_SESSION['msg'])) {
-      	echo $_SESSION ['msg'];
-        unset($_SESSION['msg']);
-      }
-
-			$res = "SELECT
-	  					*
-	  				FROM
-	  					produto p
-	  				WHERE
-						p.id_prod = '$id'";
-			$result = $conexao -> query($res);
-			$produto = $result -> fetch();
-
-			$res = "SELECT
-						*
-					FROM
-						imagem i
-					WHERE
-						i.tabela_imag = 'produto'
-						AND i.referencia_refe = $id";
-			$result = $conexao -> query($res);
-			$imagem = $result -> fetch();
-
-		?>
 		<main class="container">
+			  
+			<header class="row">
+				<div class="col-10">
+					<h1 class="mt-4 display-4 d-inline-block"><?= $_SESSION['loja'] ?></h1>
+					<h4 class="ml-4 text-muted d-inline-block mt-4">Informaçoes do produto</h4>
+				</div>
+
+				<div class="col-2 mt-5">
+					<a class="btn btn-info w-100" href="index.php">Início</a>
+				</div>
+				
+				<div class="col-12">
+					<hr>
+				</div>
+			</header>
+
 			<form action="externo/atualizar_produto.php" method="POST" enctype="multipart/form-data">
 				<div>
 					<div>
 						<input type="hidden" name="id"
-							value="<?php
-										if(isset($produto['id_prod'])){
-										echo $produto['id_prod'];
-									}
-								?>">
+							value="<?php if(isset($produto['id_prod'])) echo $produto['id_prod']; ?>">
 					</div>
 
 					<div class="form-group">
 						<label class="col-form-label" for="nome">Nome do Produto:</label>
-						<input type="text" class="form-control" placeholder="insira o nome do produto" id="nome" name="nome" value="<?php if(isset($produto['nome_prod'])){
-									echo $produto['nome_prod'];
-								}
-							?>">
+						<input type="text" class="form-control" placeholder="insira o nome do produto" id="nome" name="nome" value="<?php if(isset($produto['nome_prod'])) echo $produto['nome_prod']; ?>">
 					</div>
 
 					<div class="form-row">
 
 						<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-6 form-group">
 							<label class="col-form-label" for="descricao">Descrição:</label>
-							<textarea name="descricao" id="descricao" class="form-control" placeholder="Dê uma descrição para o produto" cols="20" rows="6"><?php
-									if(isset($produto['descricao_prod'])){
-										echo $produto['descricao_prod'];
-									}
-								?></textarea>
+							<textarea name="descricao" id="descricao" class="form-control" placeholder="Dê uma descrição para o produto" cols="20" rows="6"><?php if(isset($produto['descricao_prod'])) echo $produto['descricao_prod']; ?></textarea>
 						</div>
 
 						<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-6 form-group">
-							<h4>De	fina o setor(res)</h4>
+							<h4>Defina os setores</h4>
 							<div class="row">
 
 								<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-4 form-group">
@@ -161,30 +141,18 @@
 					<div class="form-row">
 						<div class="form-group col-md-4">
 							<label class="col-form-label" for="preco">Preço:</label>
-							<input type="number" class="form-control" id="preco" placeholder="Qual será o valor" name="preco" value="<?php
-										if(isset($produto['preco_prod'])){
-										echo $produto['preco_prod'];
-									}
-								?>">
+							<input type="number" class="form-control" id="preco" placeholder="Qual será o valor" name="preco" value="<?php if(isset($produto['preco_prod'])) echo $produto['preco_prod']; ?>">
 						</div>
 
 						<div class="form-group col-md-4">
 							<label class="col-form-label" for="promocao">Promoção:</label>
-							<input type="number" class="form-control" id="promocao" placeholder="Desconto. Opcional" name="promocao" value="<?php
-									if(isset($produto['promocao_prod'])){
-										echo $produto['promocao_prod'];
-									}
-								?>">
+							<input type="number" class="form-control" id="promocao" placeholder="Desconto. Opcional" name="promocao" value="<?php if(isset($produto['promocao_prod'])) echo $produto['promocao_prod']; ?>">
 						</div>
 					</div>
 
 					<div class="form-group">
 						<label class="col-form-label" for="caracteristicas">Características:</label>
-						<textarea name="caracteristicas" id="caracteristicas" class="form-control" placeholder="Quais são as características do produto" cols="20" rows="6"><?php
-									if(isset($produto['caracteristicas_prod'])){
-										echo $produto['caracteristicas_prod'];
-									}
-								?>
+						<textarea name="caracteristicas" id="caracteristicas" class="form-control" placeholder="Quais são as características do produto" cols="20" rows="6"><?php if(isset($produto['caracteristicas_prod'])) echo $produto['caracteristicas_prod']; ?>
 						</textarea>
 					</div>
 
@@ -196,20 +164,12 @@
 
 					<div class="form-group col-md-6">
 						<label class="col-form-label">Nome da imagem:</label>
-						<input type="text" placeholder="Nome da imagem" class="form-control" name="titulo" value="<?php
-								if(isset($produto['titulo_imag'])){
-									echo $produto['titulo_imag'];
-								}
-							?>">
+						<input type="text" placeholder="Nome da imagem" class="form-control" name="titulo" value="<?php if(isset($produto['titulo_imag'])) echo $produto['titulo_imag']; ?>">
 					</div>
 
 					<div class="form-row">
 						<div class="form-group col-md-6">
-							<img src="../imagens/<?php
-								if(isset($imagem['arquivo_imag'])){
-									echo $imagem['arquivo_imag'];
-								}
-							?>" style="width: 400px;" class="img-thumbnail img-fluid">
+							<img src="../imagens/<?php if(isset($imagem['arquivo_imag'])) echo $imagem['arquivo_imag']; ?>" style="width: 400px;" class="img-thumbnail img-fluid">
 						</div>
 
 						<div class="form-group col-md-6" style="margin-top: 5rem;">
@@ -225,5 +185,23 @@
 		<script src="../bootstrap/jquery/jquery-3.3.1.min.js"></script> <!-- jQuery -->
 		<script src="../bootstrap/popper/popper.min.js"></script> <!-- Popper.js -->
 		<script src="../bootstrap/js/bootstrap.min.js"></script> <!-- Bootstrap JS -->
+		<script>
+			function previewFile() {
+			 	var preview = document.querySelector('img');
+			  	var file    = document.querySelector('input[type=file]').files[0];
+			  	var reader  = new FileReader();
+
+			  	reader.onloadend = function () {
+			    	preview.src = reader.result;
+			  	}
+
+			  	if (file) {
+			    	reader.readAsDataURL(file);
+			  	}
+			  	else {
+			    	preview.src = "";
+			  	}
+			}
+		</script>
 	</body>
 </html>

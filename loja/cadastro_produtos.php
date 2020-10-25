@@ -40,14 +40,23 @@
 	</head>
 	<body class="bg-light">
 		<main class="container">
-			<?php
-				if (isset($_SESSION['msg'])) {
-					echo $_SESSION ['msg'];
-					unset($_SESSION['msg']);
-				}
-			?>
+
+			<header class="row">
+				<div class="col-10">
+					<h1 class="mt-4 display-4 d-inline-block"><?= $_SESSION['loja'] ?></h1>
+					<h4 class="ml-4 text-muted d-inline-block mt-4">Cadastro de produto</h4>
+				</div>
+
+				<div class="col-2 mt-5">
+					<a class="btn btn-info w-100" href="index.php">Início</a>
+				</div>
+				
+				<div class="col-12">
+					<hr>
+				</div>
+			</header>
+
 			<form action="externo/salvar_produto.php" method="POST" enctype="multipart/form-data">
-				<h1 class="text-muted my-4">Cadastro de Produtos</h1>
 
 				<div class="form-row">
 					<div class="form-group col-12">
