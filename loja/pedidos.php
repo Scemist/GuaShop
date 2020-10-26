@@ -59,7 +59,7 @@
 							<?php foreach ($pedidos as $controle => $pedido): ?>
 							<tr class="<?php if($controle == 0) echo 'table-info' ?>">
 								<td><?= $pedido['id_pedi'] ?></td>
-								<td><a href="" class="btn btn-info">Voltar aos pedidos</a></td>
+								<td><a href="externo/pedido.php?func=desfinalizar&id=<?= $pedido['id_pedi'] ?>" class="btn btn-info">Voltar aos pedidos</a></td>
 								<td><?= $pedido['data_pedi'] ?> <br> <?= $pedido['horario_pedi'] ?></td>
 								<td><?= $pedido['endereco_pedi'] ?></td>
 								<td><?= $pedido['valor_pedi'] ?></td>

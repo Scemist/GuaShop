@@ -6,35 +6,42 @@
 
 		case 'novo':
 			$instancia = new pedido($_GET['id']);
-			echo $instancia -> adicionarNovo();
+			$instancia -> adicionarNovo();
 			header('Location: ../index.php');
 			exit;
-			break;
+		break;
 
 		case 'processo':
 			$instancia = new pedido($_GET['id']);
-			echo $instancia -> adicionarProcesso();
+			$instancia -> adicionarProcesso();
 			header('Location: ../index.php');
 			exit;
-			break;
+		break;
 
 		case 'entrega':
 			$instancia = new pedido($_GET['id']);
-			echo $instancia -> adicionarEntrega();
+			$instancia -> adicionarEntrega();
 			header('Location: ../index.php');
 			exit;
-			break;
+		break;
 
 		case 'finalizar':
 			$instancia = new pedido($_GET['id']);
-			echo $instancia -> adicionarFinalizado();
+			$instancia -> adicionarFinalizado();
 			header('Location: ../index.php');
 			exit;
-			break;
+		break;
+
+		case 'desfinalizar':
+			$instancia = new pedido($_GET['id']);
+			$instancia -> removerFinalizado();
+			// header('Location: ../index.php');
+			exit;
+		break;
 
 		default:
 			header('Location: ../index.php');
-			exit;
+		exit;
 		}
 	}
 	else {
@@ -64,7 +71,6 @@
 			$sql -> bindParam(':pedido', $this -> pedido);
 			$sql -> bindParam(':loja', $_SESSION['id']);
 			$sql -> execute();
-			return "Olá";
 		}
 
 		function adicionarProcesso() {
@@ -72,7 +78,6 @@
 			$sql -> bindParam(':pedido', $this -> pedido);
 			$sql -> bindParam(':loja', $_SESSION['id']);
 			$sql -> execute();
-			return "Olá";
 		}
 
 		function adicionarEntrega() {
@@ -80,11 +85,12 @@
 			$sql -> bindParam(':pedido', $this -> pedido);
 			$sql -> bindParam(':loja', $_SESSION['id']);
 			$sql -> execute();
-			return "Olá";
 		}
 
 		function adicionarFinalizado() {
-			$sql = $this -> conexao -> prepare("UPDATE item_pedido i, produto p, pedido d
+			$sql = $this -> conexao -> prepare(
+				"UPDATE
+					item_pedido i, produto p, pedido d
 				SET
 					i.estado_item = 'finalizado', d.estado_pedi = 'finalizado'
 				WHERE
@@ -96,7 +102,12 @@
 			$sql -> bindParam(':pedido', $this -> pedido);
 			$sql -> bindParam(':loja', $_SESSION['id']);
 			$sql -> execute();
-			return "Olá";
+		}
+
+		function removerFinalizado() {
+			$sql = $this -> conexao -> prepare("UPDATE pedido p, item_pedido i SET p.estado_pedi = 'pendente', i.estado_item = 'entrega' WHERE p.id_pedi = :pedido AND i.id_pedi = p.id_pedi");
+			$sql -> bindParam(':pedido', $this -> pedido);
+			$sql -> execute();
 		}
 	}
 
