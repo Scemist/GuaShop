@@ -50,7 +50,7 @@
 				</div>
 			</header>
 
-			<form action="externo/atualizar_login.php" method="POST" enctype="multipart/form-data">
+			<form action="externo/atualizar_login.php" method="POST">
 				<div class="form-row bg-white rounded shadow-lg py-5 mt-5">
 					<div class="col-1"></div>
 					<div class="form-group col-5">
@@ -70,10 +70,10 @@
 						<div class="row">
 							<div class="col-1 mt-4"></div>
 							<div class="col-5">
-								<a role="button" class="btn btn-primary w-100" href="menu_de_conta.php">Cancelar</a>
+								<a role="button" class="btn btn-outline-warning w-100" href="menu_de_conta.php">Cancelar</a>
 							</div>
 							<div class="col-5">
-								<input type="submit" role="button" class="btn btn-outline-primary w-100" name="enviar" value="Mudar">
+								<input type="submit" role="button" class="btn btn-info w-100" name="enviar" value="Mudar">
 							</div>
 						</div>
 

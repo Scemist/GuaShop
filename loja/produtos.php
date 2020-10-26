@@ -61,7 +61,7 @@
 				</div>
 
 				<div class="col-2 form-group">
-					<a role="button" class="mx-2 btn btn-success w-100" href="cadastro_produtos.php">+ Novo Produto</a>
+					<a role="button" class="btn btn-success w-100" href="cadastro_produtos.php">+ Novo Produto</a>
 				</div>
 			</div>
 

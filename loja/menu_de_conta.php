@@ -52,7 +52,7 @@
 				</div>
 			</header>
 
-			<div class="row mx-auto" style="width: 90%;">
+			<div class="row">
 				<div class="col-md-12 col-lg-12 col-xl-12 mt-3">
 					<div class="text-center">
 						<p class="lead mb-4 text-truncate text-muted">
@@ -62,7 +62,7 @@
 				</div>
 
 				<div class="col-5 text-center">
-					<img src="../imagens/<?php if(isset($inf['arquivo_imag'])) echo $inf['arquivo_imag']; ?>" class="img-fluid rounded my-2 w-100">
+					<img src="../imagens/<?php if(isset($inf['arquivo_imag'])) echo $inf['arquivo_imag']; ?>" class="img-thumbnail rounded my-2 w-75">
 				</div>
 
 				<div class="col-7 mx-auto my-2 px-5">
