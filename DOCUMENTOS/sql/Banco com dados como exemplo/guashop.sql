@@ -98,6 +98,7 @@ CREATE TABLE pedido (
 	data_pedi DATE NOT NULL,
 	endereco_pedi VARCHAR(255) NULL,
 	formapagamento_pedi VARCHAR(255),
+	destinatario_pedi VARCHAR (100),
 	estado_pedi VARCHAR(100),
 	id_cart INT NULL,
 	id_usua INT NOT NULL,
