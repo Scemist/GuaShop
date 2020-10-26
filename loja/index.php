@@ -20,7 +20,7 @@
         
         $sql = $conexao -> prepare(
             'SELECT DISTINCT
-                p.id_pedi, p.endereco_pedi, p.id_usua, p.horario_pedi, p.data_pedi
+                p.id_pedi, p.endereco_pedi, p.id_usua, p.horario_pedi, p.data_pedi, p.destinatario_pedi
             FROM
                 pedido p
                 JOIN item_pedido i ON (p.id_pedi = i.id_pedi)
@@ -279,6 +279,7 @@
 							?>
 							<div class="tab-pane fade" id="list-<?= $control ?>" role="tabpanel" aria-labelledby="list-profile-list">
 								<p class="lead"><?= $pedido['endereco_pedi'] ?></p>
+								<p>Destinatário: <strong class="lead"><?= $pedido['destinatario_pedi'] ?></strong></p>
 								<?php foreach ($produtos as $controle => $produto): ?>
 								<div class="list-group">
 									<button type="button" class="list-group-item list-group-item-action">

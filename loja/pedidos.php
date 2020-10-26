@@ -35,10 +35,6 @@
 				<div class="col-2 mt-5">
 					<a class="btn btn-info w-100" href="index.php">Início</a>
 				</div>
-				
-				<div class="col-12">
-					<hr>
-				</div>
 			</header>
 
 			<div class="row">
@@ -52,6 +48,7 @@
 								<th>Endereço</th>
 								<th>Valor</th>
 								<th>Forma de pagamento</th>
+								<th>Destinatário</th>
 							</tr>
 						</thead>
 						
@@ -64,6 +61,7 @@
 								<td><?= $pedido['endereco_pedi'] ?></td>
 								<td><?= $pedido['valor_pedi'] ?></td>
 								<td><?= $pedido['formapagamento_pedi'] ?></td>
+								<td><?= $pedido['destinatario_pedi'] ?></td>
 							</tr>
 							<?php endforeach; ?>
 						</tbody>

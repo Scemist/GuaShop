@@ -35,7 +35,7 @@
 		case 'desfinalizar':
 			$instancia = new pedido($_GET['id']);
 			$instancia -> removerFinalizado();
-			// header('Location: ../index.php');
+			header('Location: ../index.php');
 			exit;
 		break;
 
