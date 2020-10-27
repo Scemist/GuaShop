@@ -22,13 +22,11 @@ CREATE TABLE usuario (
 	cpf_usua INT NOT NULL,
 	rg_usua VARCHAR(11) NOT NULL,
 	nascimento_usua DATE NOT NULL,
-
 	estado_usua VARCHAR(50) NOT NULL,
 	cidade_usua VARCHAR(50) NOT NULL,
-	cep_usua INT(8) NOT NULL,
+	bairro_usua VARCHAR(50) NOT NULL,
 	rua_usua VARCHAR(100) NOT NULL,
-	numero_usua VARCHAR(20) NOT NULL,
-	complemento_usua VARCHAR(100) NOT NULL
+	numero_usua VARCHAR(20) NOT NULL
 
 ) ENGINE=InnoDB;
 
@@ -52,14 +50,11 @@ CREATE TABLE loja (
 	senha_loja VARCHAR(200) NOT NULL,
 	nome_loja VARCHAR(100) NOT NULL,
 	sobre_loja VARCHAR(5000) NOT NULL,
-
 	estado_loja VARCHAR(50) NOT NULL,
 	cidade_loja VARCHAR(50) NOT NULL,
-	cep_loja INT(8) NOT NULL,
+	bairro_loja VARCHAR(50) NOT NULL,
 	rua_loja VARCHAR(100) NOT NULL,
 	numero_loja VARCHAR(20) NOT NULL,
-	complemento_loja VARCHAR(100) NOT NULL,
-
 	ativo_loja INT(1) NOT NULL
 
 ) ENGINE=InnoDB;
@@ -187,7 +182,7 @@ INSERT INTO `imagem` (`arquivo_imag`, `tabela_imag`, `referencia_refe`) VALUES
 ('Camisa Jeans1507202009074134.jpg', 'produto', '21'),
 ('Jaqueta Nike1507202009074220.jpg', 'produto', '22'),
 ('Buffet Classic1507202009074401.jpg', 'produto', '25'),
-('Conjunto Sala de Jantar1507202009074450.jpg', 'produto', '26'),
+(' Conjunto Sala de Jantar1507202009074450.jpg', 'produto', '26'),
 ('Rack para TV1507202009074517.jpg', 'produto', '27'),
 ('Cama casal1507202009074536.jpg', 'produto', '28'),
 ('Cafeteira 1507202009075102.jpg', 'produto', '29'),
@@ -197,16 +192,16 @@ INSERT INTO `imagem` (`arquivo_imag`, `tabela_imag`, `referencia_refe`) VALUES
 ('Picolé1507202009075718.jpg', 'produto', '14'),
 ('Ovomaltine1507202009075849.jpg', 'produto', '15');
 
-INSERT INTO `loja` (`id_loja`, `usuario_loja`, `senha_loja`, `nome_loja`, `sobre_loja`, `estado_loja`, `cidade_loja`, `cep_loja`, `rua_loja`, `numero_loja`, `ativo_loja`) VALUES
-(1, 'alucard', '1234', 'Alucard', 'Uma loja de roupas para zumbis do bem.', 'Minas Gerais', 'Prata', '16700000', 'Av. Brasil', '1836', 1),
-(2, 'bruna', 'oliveramora', 'Gatteria', 'Gatinho feliz, gatinho dorminhoco. Móveis, brinquedos e alimentação.', 'São Paulo', 'São José do Rio Preto', '16700000', 'Av. Badi Ba City', '365', 1),
-(3, 'clavede', 'sol', 'Clave de Sol', 'Clave de Sol é uma loja de música, uma das mais antigas da cidade, agora, vendendo também online. Desde instrumentos, partituras e palhetas a acessórios básicos e avançados.', 'São Paulo', 'Guararapes', '16700000', 'Padre Vadir Oitu', '124', 1),
-(4, 'good food', 'comida boa', 'Good Food', 'O melhor cardápio da cidade', 'São Paulo', 'São Paulo', '16700000', 'José Augusto', '122', 1),
-(5, 'luanda', '12345', 'Manipura', 'Os melhores Remédios você encontra aqui', 'Amazonas', 'Manaus', '16700000', 'Dom Pão I', '722', 1),
-(6, 'alicia', 'santosalmeida', 'Yourbrand', 'Onde você se encontra ', 'São Paulo', 'Birigui', '16700000', 'Escapena', '347', 1),
-(7, 'detalhe', 'moveis1906', 'Detalhe', 'Detalhe móveis, seu móvel melhor que nunca', 'Paraíba', 'Campina Grande', '16700000', 'Sumida', '15', 1),
-(8, 'shopclub12', 'carlosalmeida', 'Shopclub', 'Eletrodomésticos: geladeira, fogão, freezer e mais ofertas ShopClub', 'São Paulo', 'Araçatuba', '16700000', 'Dom Pão I', '45', 1),
-(9, 'klaus', 'melhor123', 'Sorveteria Klaus', 'Uma sorveteria que pensa em você', 'Rio de janeiro', 'Niterói', '16700000', 'Dom Pão I', '2424', 1);
+INSERT INTO `loja` (`id_loja`, `usuario_loja`, `senha_loja`, `nome_loja`, `sobre_loja`, `estado_loja`, `cidade_loja`, `bairro_loja`, `rua_loja`, `numero_loja`, `ativo_loja`) VALUES
+(1, 'alucard', '1234', 'Alucard', 'Uma loja de roupas para zumbis do bem.', 'Minas Gerais', 'Prata', 'Triangular', 'Av. Brasil', '1836', 1),
+(2, 'bruna', 'oliveramora', 'Gatteria', 'Gatinho feliz, gatinho dorminhoco. Móveis, brinquedos e alimentação.', 'São Paulo', 'São José do Rio Preto', 'Centro', 'Av. Badi Ba City', '365', 1),
+(3, 'clavede', 'sol', 'Clave de Sol', 'Clave de Sol é uma loja de música, uma das mais antigas da cidade, agora, vendendo também online. Desde instrumentos, partituras e palhetas a acessórios básicos e avançados.', 'São Paulo', 'Guararapes', 'Centro', 'Padre Vadir Oitu', '124', 1),
+(4, 'good food', 'comida boa', 'Good Food', 'O melhor cardápio da cidade', 'São Paulo', 'São Paulo', 'Vila Boa', 'José Augusto', '122', 1),
+(5, 'luanda', '12345', 'Manipura', 'Os melhores Remédios você encontra aqui', 'Amazonas', 'Manaus', 'Jardim Industrial', 'Dom Pão I', '722', 1),
+(6, 'alicia', 'santosalmeida', 'Yourbrand', 'Onde você se encontra ', 'São Paulo', 'Birigui', 'Alagante', 'Escapena', '347', 1),
+(7, 'detalhe', 'moveis1906', 'Detalhe', 'Detalhe móveis, seu móvel melhor que nunca', 'Paraíba', 'Campina Grande', 'Aparecida', 'Sumida', '15', 1),
+(8, 'shopclub12', 'carlosalmeida', 'Shopclub', 'Eletrodomésticos: geladeira, fogão, freezer e mais ofertas | ShopClub', 'São Paulo', 'Araçatuba', 'Jardim Industrial', 'Dom Pão I', '45', 1),
+(9, 'klaus', 'melhor123', 'Sorveteria Klaus', 'Uma sorveteria que pensa em você', 'Rio de janeiro', 'Niterói', 'Medeiros', 'Dom Pão I', '2424', 1);
 
 INSERT INTO `produto` (`id_prod`, `nome_prod`, `descricao_prod`, `preco_prod`, `caracteristicas_prod`, `promocao_prod`, `id_seto`, `id_loja`) VALUES
 (1, 'Calça Jeans Skinny com Laicra', 'Uma calça jeans para vestir. É grande e também curta. Mas as vezes da trabalho. Uma calça jeans para', '899.00', 'Azul PP																														', '0.00', '4,', 1),
