@@ -105,7 +105,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 		<link rel="icon" type="imagem/png" href="../favicon.ico"> <!-- Flavicon -->
-		<link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css"> <!-- CSS Bootstrap -->
+		<link rel="stylesheet" href="../bootstrap/bootstrap-4.5.3.min.css"> <!-- CSS Bootstrap -->
 
 		<title>GuaShop Administração</title>
 	</head>
@@ -199,9 +199,10 @@
 									<td>
 										<?= $loja['estado_loja'] . ','?>
 										<?= $loja['cidade_loja'] . ','?>
-										<?= $loja['bairro_loja'] . ','?>
+										<?= $loja['cep_loja'] . ','?>
 										<?= $loja['rua_loja'] . ','?>
 										<?= $loja['numero_loja'] ?>
+										<?= $loja['complemento_loja'] ?>
 									</td>
 
 									<td>
@@ -236,8 +237,7 @@
 
 		</main>
 
-		<script src="../bootstrap/jquery/jquery-3.3.1.min.js"></script> <!-- jQuery -->
-		<script src="../bootstrap/popper/popper.min.js"></script> <!-- Popper.js -->
-		<script src="../bootstrap/js/bootstrap.min.js"></script> <!-- Bootstrap JS -->
+		<script src="../bootstrap/jquery-3.5.1.slim.min.js"></script> <!-- jQuery -->
+		<script src="../bootstrap/bootstrap.bundle-4.5.3.min.js"></script> <!-- Bundle -->
 	</body>
 </html>
