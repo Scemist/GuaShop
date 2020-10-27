@@ -81,7 +81,7 @@
 					<div class="col-4">
 						<label for="estado">CEP</label>
 						<div class="input-group mb-3">
-							<input id="cep" type="input" class="form-control" name="cep" placeholder="00000 000" aria-label="Recipient's username" aria-describedby="basic-addon2">
+							<input id="cep" type="input" class="form-control" placeholder="00000 000" aria-label="Recipient's username" aria-describedby="basic-addon2">
 							<div class="input-group-append">
 								<button id="adicionar" class="btn btn-outline-info" type="button">Adicionar</button>
 							</div>
@@ -89,8 +89,8 @@
 
 						<label for="estado">Cidade e UF</label>	
 						<div class="input-group mb-3">
-							<input type="text" class="form-control w-75" id="localidade" type="text" name="cidade" placeholder="Preenchido com o CEP" readonly="readonly">
-							<input type="text" class="form-control w-25" id="uf" type="text" name="uf" readonly="readonly">
+							<input type="text" class="form-control w-75" id="localidade" type="text" name="cidade" placeholder="Preenchido com o CEP" disabled>
+							<input type="text" class="form-control w-25" id="uf" type="text" name="estado" placeholder="" disabled>
 						</div>
 					</div>
 
@@ -108,7 +108,7 @@
 				
 							<div class="col-6 form-group">
 								<label for="numero">Complemento</label>
-								<input class="form-control" id="complemento" type="text" name="complemento" placeholder="67 ab">
+								<input class="form-control" id="complemento" type="text" name="numero" placeholder="67 ab">
 							</div>
 						</div>
 					</div>

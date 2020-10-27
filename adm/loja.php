@@ -8,7 +8,7 @@
 
 	// Pega as informações da loja
 
-	$sql = $conexao -> prepare ('SELECT * FROM loja WHERE id_loja = :id');
+	$sql = $conexao -> prepare ('SELECT id_loja, nome_loja, sobre_loja, estado_loja, cidade_loja, bairro_loja, rua_loja, numero_loja, ativo_loja FROM loja WHERE id_loja = :id');
 	$sql -> bindParam(':id', $id);
 	$sql -> execute();
 	$loja = $sql -> fetch();
