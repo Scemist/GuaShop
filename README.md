@@ -12,7 +12,7 @@ Com o front-end em Boostrap (explica a contagem errada do GitHub, pelo jQuery e 
 
 ### O sistema é dividido em três sites
 
-Na pasta raiz, pode-se ver como não há __index.php__, pois o sistema é dividido em 3 sites:
+Na pasta raiz, pode-se ver como a página __index.php__ apenas redireciona para a pasta __utilitario__, isso acontece pois o sistema é dividido em 3 sites diferentes para o mesmo sistema:
 
 * adm
 * loja
