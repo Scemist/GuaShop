@@ -1,10 +1,7 @@
-@font-face {
-  font-family: GuaShop;
-  src: url('../../bootstrap/fonte/BerkshireSwash-Regular.ttf');
-}
+@import url('https://fonts.googleapis.com/css2?family=Berkshire+Swash&display=swap');
 
 .logo_mobile {
-  font-family: GuaShop;
+  font-family: 'Berkshire Swash', cursive;
 }
 
 .smart-scroll{

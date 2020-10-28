@@ -17,7 +17,6 @@
 		<link rel="icon" type="imagem/png" href="../favicon.ico"> <!-- Flavicon -->
 		<link rel="stylesheet" href="../bootstrap/bootstrap-4.5.3.min.css"> <!-- CSS Bootstrap -->
 		<link rel="stylesheet" type="text/css" href="css/navbar.css"> <!-- CSS NavBar -->
-		<link rel="stylesheet" type="text/css" href="css/fa/css/all.css"> <!-- CSS Ícones -->
 		<link rel="stylesheet" type="text/css" href="css/geral.css"> <!-- CSS Personalizado -->
 
 		<title>Cadastro - GuaShop</title>
