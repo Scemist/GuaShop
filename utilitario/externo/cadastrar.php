@@ -12,11 +12,12 @@
   $telefone = $_POST['telefone'];
   $nascimento = $_POST['nascimento'];
 
-  $estado = $_POST['estado'];
+  $estado = $_POST['uf'];
   $cidade = $_POST['cidade'];
-  $bairro = $_POST['bairro'];
+  $cep = $_POST['cep'];
   $rua = $_POST['rua'];
   $numero = $_POST['numero'];
+  $complemento = $_POST['complemento'];
 
   include_once('../conexao/conexao.php');
 
@@ -32,9 +33,10 @@
       nascimento_usua,
       estado_usua,
       cidade_usua,
-      bairro_usua,
+      cep_usua,
       rua_usua,
-      numero_usua
+      numero_usua,
+      complemento_usua
     )
     VALUES (
       :nome,
@@ -47,9 +49,10 @@
       :nascimento,
       :estado,
       :cidade,
-      :bairro,
+      :cep,
       :rua,
-      :numero
+      :numero,
+      :complemento
     )
   ');
 
@@ -63,9 +66,10 @@
   $sql -> bindParam(':nascimento', $nascimento);
   $sql -> bindParam(':estado', $estado);
   $sql -> bindParam(':cidade', $cidade);
-  $sql -> bindParam(':bairro', $bairro);
+  $sql -> bindParam(':cep', $cep);
   $sql -> bindParam(':rua', $rua);
   $sql -> bindParam(':numero', $numero);
+  $sql -> bindParam(':complemento', $complemento);
 
   $sql -> execute();
   $id = $conexao -> lastInsertId();

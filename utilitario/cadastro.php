@@ -120,29 +120,43 @@
 
 					<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-1"></div>
 
-					<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-2 form-group">
-						<label class="text-muted mt-3" for="">Estado</label>
-						<input type="text" class="form-control" id="" placeholder="Acre" name="estado">
+					<div class="form-row">
+					
+					<div class="col-1"></div>
+
+					<div class="col-4">
+						<label for="estado">CEP</label>
+						<div class="input-group mb-3">
+							<input id="cep" type="input" class="form-control" name="cep" placeholder="00000 000" aria-label="Recipient's username" aria-describedby="basic-addon2">
+							<div class="input-group-append">
+								<button id="adicionar" class="btn btn-outline-info" type="button">Adicionar</button>
+							</div>
+						</div>
+
+						<label for="estado">Cidade e UF</label>	
+						<div class="input-group mb-3">
+							<input type="text" class="form-control w-75" id="localidade" type="text" name="cidade" placeholder="Preenchido com o CEP" readonly="readonly">
+							<input type="text" class="form-control w-25" id="uf" type="text" name="uf" readonly="readonly">
+						</div>
 					</div>
 
-					<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-2 form-group">
-						<label class="text-muted mt-3" for="">Cidade</label>
-						<input type="text" class="form-control" id="" placeholder="Valíria" name="cidade">
-					</div>
+					<div class="col-6">
+						<div class="form-row">
+							<div class="col-12 form-group">
+								<label for="rua">Rua</label>
+								<input class="form-control" id="rua" type="text" name="rua" placeholder="Av. Badi Bacity">
+							</div>
 
-					<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-2 form-group">
-						<label class="text-muted mt-3" for="">Bairro</label>
-						<input type="text" class="form-control" id="" placeholder="Maria Brava" name="bairro">
-					</div>
-
-					<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-2 form-group">
-						<label class="text-muted mt-3" for="">Rua</label>
-						<input type="text" class="form-control" id="" placeholder="Nove Milimetros Barbosa" name="rua">
-					</div>
-
-					<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-2 form-group">
-						<label class="text-muted mt-3" for="">Número</label>
-						<input type="text" class="form-control" id="" placeholder="1422" name="numero">
+							<div class="col-6 form-group">
+								<label for="numero">Número</label>
+								<input class="form-control" id="numero" type="number" name="numero" placeholder="1524">
+							</div>
+				
+							<div class="col-6 form-group">
+								<label for="numero">Complemento</label>
+								<input class="form-control" id="complemento" type="text" name="complemento" placeholder="67 ab">
+							</div>
+						</div>
 					</div>
 				</div>
 
@@ -198,5 +212,40 @@
 		<script src="../bootstrap/jquery-3.5.1.slim.min.js"></script> <!-- jQuery -->
 		<script src="../bootstrap/bootstrap.bundle-4.5.3.min.js"></script> <!-- Bundle -->
 		<script type="text/javascript" src="jquery/navbar.js"></script> <!-- jQuery NavBar -->
+
+		<script>
+			
+			function cep() {
+				
+				const adicionar = window.document.querySelector('#adicionar')
+				
+				function pegarCep(){
+					
+					var resposta
+					var cep = window.document.querySelector('#cep').value
+					const localidade = window.document.querySelector('#localidade')
+					const uf = window.document.querySelector('#uf')
+					const xhr = new XMLHttpRequest()
+
+					xhr.responseType = 'json'
+					xhr.onreadystatechange = function (){
+
+						if (xhr.readyState == 4 && xhr.status == 200) {
+
+							resposta  = xhr.response
+							localidade.value = resposta['localidade']
+							uf.value = resposta['uf']
+						}
+					}
+					xhr.open('GET', 'https://viacep.com.br/ws/' + cep + '/json/')
+					xhr.send()
+				}
+				
+				adicionar.addEventListener('click', pegarCep)
+			}
+			
+			cep()
+
+		</script>
 	</body>
 </html>
