@@ -114,11 +114,11 @@
 
 						<p>
 							<div class="input-group mb-3">
-								<div class="input-group-prepend w-25">
+								<div class="input-group-prepend w-50">
 									<span class="input-group-text w-100" id="basic-addon1">Nascimento</span>
 								</div>
 
-								<input type="date" class="form-control" value="<?= $usuario['nascimento_usua'] ?>" aria-label="Email" aria-describedby="basic-addon1" name="nascimento">
+								<input type="date" class="form-control" value="<?= $usuario['nascimento_usua'] ?>" aria-describedby="basic-addon1" name="nascimento">
 							</div>
 						</p>
 
@@ -128,7 +128,7 @@
 									<span class="input-group-text w-100" id="basic-addon1">Telefone</span>
 								</div>
 
-								<input type="text" class="form-control" placeholder="<?= $usuario['telefone_usua'] ?>" value="<?= $usuario['telefone_usua'] ?>" aria-label="Email" aria-describedby="basic-addon1" name="telefone">
+								<input type="text" class="form-control" placeholder="<?= $usuario['telefone_usua'] ?>" value="<?= $usuario['telefone_usua'] ?>" aria-describedby="basic-addon1" name="telefone">
 							</div>
 						</p>
 
@@ -138,7 +138,7 @@
 									<span class="input-group-text w-100" id="basic-addon1">RG</span>
 								</div>
 
-								<input type="text" class="form-control" placeholder="<?= $usuario['rg_usua'] ?>" value="<?= $usuario['rg_usua'] ?>" aria-label="Email" aria-describedby="basic-addon1" name="rg">
+								<input type="text" class="form-control" placeholder="<?= $usuario['rg_usua'] ?>" value="<?= $usuario['rg_usua'] ?>" aria-describedby="basic-addon1" name="rg">
 							</div>
 						</p>
 
@@ -148,7 +148,7 @@
 									<span class="input-group-text w-100" id="basic-addon1">CPF</span>
 								</div>
 
-								<input type="text" class="form-control" placeholder="<?= $usuario['cpf_usua'] ?>" value="<?= $usuario['cpf_usua'] ?>" aria-label="Email" aria-describedby="basic-addon1" name="cpf">
+								<input type="text" class="form-control" placeholder="<?= $usuario['cpf_usua'] ?>" value="<?= $usuario['cpf_usua'] ?>" aria-describedby="basic-addon1" name="cpf">
 							</div>
 						</p>
 
@@ -160,21 +160,21 @@
 						<p>
 							<div class="input-group mb-3">
 								<div class="input-group-prepend w-25">
-									<span class="input-group-text w-100" id="basic-addon1">Cidade</span>
+									<span class="input-group-text w-100" id="basic-addon1">CEP</span>
 								</div>
 
-								<input type="text" class="form-control" placeholder="<?= $usuario['cidade_usua'] ?>" value="<?= $usuario['cidade_usua'] ?>" aria-label="Email" aria-describedby="basic-addon1" name="cidade">
-								<input type="text" class="form-control" placeholder="<?= $usuario['estado_usua'] ?>" value="<?= $usuario['estado_usua'] ?>" aria-label="Email" aria-describedby="basic-addon1" name="estado">
+								<input type="text" id="cep" class="form-control w-50" placeholder="<?= $usuario['cep_usua'] ?>" value="<?= $usuario['cep_usua'] ?>" aria-describedby="basic-addon1" name="cep">
+
+								<div class="input-group-append w-25">
+									<button id="adicionar" class="btn btn-outline-info w-100" type="button">Buscar</button>
+								</div>
 							</div>
 						</p>
 
 						<p>
 							<div class="input-group mb-3">
-								<div class="input-group-prepend w-25">
-									<span class="input-group-text w-100" id="basic-addon1">Bairro</span>
-								</div>
-
-								<input type="text" class="form-control" placeholder="<?= $usuario['bairro_usua'] ?>" value="<?= $usuario['bairro_usua'] ?>" aria-label="Email" aria-describedby="basic-addon1" name="bairro">
+								<input type="text" id="localidade" class="form-control w-75" placeholder="<?= $usuario['cidade_usua'] ?>" value="<?= $usuario['cidade_usua'] ?>" aria-describedby="basic-addon1" name="cidade" readonly="readonly">
+								<input type="text" id="uf" class="form-control w-25" placeholder="<?= $usuario['estado_usua'] ?>" value="<?= $usuario['estado_usua'] ?>" aria-describedby="basic-addon1" name="estado" readonly="readonly">
 							</div>
 						</p>
 
@@ -184,17 +184,27 @@
 									<span class="input-group-text w-100" id="basic-addon1">Rua</span>
 								</div>
 
-								<input type="text" class="form-control" placeholder="<?= $usuario['rua_usua'] ?>" value="<?= $usuario['rua_usua'] ?>" aria-label="Email" aria-describedby="basic-addon1" name="rua">
+								<input type="text" class="form-control" placeholder="<?= $usuario['rua_usua'] ?>" value="<?= $usuario['rua_usua'] ?>" aria-describedby="basic-addon1" name="rua">
 							</div>
 						</p>
 
 						<p>
 							<div class="input-group mb-3">
-								<div class="input-group-prepend w-25">
+								<div class="input-group-prepend w-50">
 									<span class="input-group-text w-100" id="basic-addon1">Número</span>
 								</div>
 
-								<input type="text" class="form-control" placeholder="<?= $usuario['numero_usua'] ?>" value="<?= $usuario['numero_usua'] ?>" aria-label="Email" aria-describedby="basic-addon1" name="numero">
+								<input type="text" class="form-control" placeholder="<?= $usuario['numero_usua'] ?>" value="<?= $usuario['numero_usua'] ?>" aria-describedby="basic-addon1" name="numero">
+							</div>
+						</p>
+
+						<p>
+							<div class="input-group mb-3">
+								<div class="input-group-prepend w-50">
+									<span class="input-group-text w-100" id="basic-addon1">Complemento</span>
+								</div>
+
+								<input type="text" class="form-control" placeholder="<?= $usuario['complemento_usua'] ?>" value="<?= $usuario['complemento_usua'] ?>" aria-describedby="basic-addon1" name="complemento">
 							</div>
 						</p>
 					</div>
@@ -219,7 +229,7 @@
 									<span class="input-group-text w-100" id="basic-addon1">Nome</span>
 								</div>
 
-								<a href="cartao.php?editar=<?= $cartao['id_cart'] ?>" type="button" class="form-control text-left" aria-label="Email" aria-describedby="basic-addon1" name="estado">
+								<a href="cartao.php?editar=<?= $cartao['id_cart'] ?>" type="button" class="form-control text-left" aria-describedby="basic-addon1" name="estado">
 									<?= $cartao['nome_cart'] ?>
 								</a>
 							</div>
@@ -251,5 +261,40 @@
 		<script src="../bootstrap/jquery-3.5.1.slim.min.js"></script> <!-- jQuery -->
 		<script src="../bootstrap/bootstrap.bundle-4.5.3.min.js"></script> <!-- Bundle -->
 		<script type="text/javascript" src="jquery/navbar.js"></script> <!-- jQuery NavBar -->
+
+		<script>
+			
+			function cep() {
+				
+				const adicionar = window.document.querySelector('#adicionar')
+				
+				function pegarCep(){
+					
+					var resposta
+					var cep = window.document.querySelector('#cep').value
+					const localidade = window.document.querySelector('#localidade')
+					const uf = window.document.querySelector('#uf')
+					const xhr = new XMLHttpRequest()
+
+					xhr.responseType = 'json'
+					xhr.onreadystatechange = function (){
+
+						if (xhr.readyState == 4 && xhr.status == 200) {
+
+							resposta  = xhr.response
+							localidade.value = resposta['localidade']
+							uf.value = resposta['uf']
+						}
+					}
+					xhr.open('GET', 'https://viacep.com.br/ws/' + cep + '/json/')
+					xhr.send()
+				}
+				
+				adicionar.addEventListener('click', pegarCep)
+			}
+			
+			cep()
+
+		</script>
 	</body>
 </html>
