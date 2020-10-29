@@ -86,7 +86,7 @@
 						</li>
 
 						<li class="list-group-item d-inline-block text-truncate text-muted">
-							<h5>Endereço: </h5><?= $inf['estado_loja']?>, <?= $inf['cidade_loja']?>, <?= $inf['bairro_loja']?>, <?= $inf['rua_loja']?>, <?= $inf['numero_loja']?>
+							<h5>Endereço: </h5><?= $inf['cidade_loja']?>, <?= $inf['estado_loja']?>, <?= $inf['cep_loja']?> - <?= $inf['rua_loja']?>, <?= $inf['numero_loja']?> (<?= $inf['complemento_loja']?>)
 						</li>
 					</ul>
 				</div>

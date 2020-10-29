@@ -4,28 +4,38 @@
 	session_start();
 	include_once('../conexao/conexao.php');
 
-	$id = filter_input(INPUT_POST, 'id', FILTER_SANITIZE_NUMBER_INT);
+	$id = $_SESSION['id'];
 
 	$sobre = $_POST['sobre'];
-	$estado = $_POST['estado'];
+	$estado = $_POST['uf'];
 	$cidade = $_POST['cidade'];
-	$bairro = $_POST['bairro'];
+	$cep = $_POST['cep'];
 	$rua = $_POST['rua'];
 	$numero = $_POST['numero'];
+	$complemento = $_POST['complemento'];
 
-	$sql = $conexao -> prepare ("
-		UPDATE
+	$sql = $conexao -> prepare (
+		"UPDATE
 			loja
 		SET
-			sobre_loja = '$sobre',
-			estado_loja = '$estado',
-			cidade_loja = '$cidade',
-			bairro_loja = '$bairro',
-			rua_loja = '$rua',
-			numero_loja = '$numero'
+			sobre_loja = :sobre,
+			estado_loja = :estado,
+			cidade_loja = :cidade,
+			cep_loja = :cep,
+			rua_loja = :rua,
+			numero_loja = :numero,
+			complemento_loja = :complemento
 		WHERE
 			id_loja = '$id'
 	");
+
+	$sql -> bindParam(':sobre', $sobre);
+	$sql -> bindParam(':estado', $estado);
+	$sql -> bindParam(':cidade', $cidade);
+	$sql -> bindParam(':cep', $cep);
+	$sql -> bindParam(':rua', $rua);
+	$sql -> bindParam(':numero', $numero);
+	$sql -> bindParam(':complemento', $complemento);
 
 	$sql -> execute();
 	$loja = $conexao -> lastInsertId();

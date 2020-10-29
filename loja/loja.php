@@ -4,13 +4,12 @@
 	session_start();
 	include_once('conexao/conexao.php');
 
-	$sql = $conexao -> prepare("SELECT
+	$sql = $conexao -> prepare(
+		"SELECT
 			*
 		FROM
-			imagem AS i
-		JOIN
-			loja AS l
-			ON i.referencia_refe = :id
+			imagem i
+			JOIN loja l ON (i.referencia_refe = :id)
 		WHERE
 			i.tabela_imag = 'loja'
 			AND id_loja = referencia_refe");
@@ -58,46 +57,56 @@
 					<div class="col-5">
 						<label class="col-form-label">Insira uma Logo:</label>
 						<input type="file" class="form-control-file" name="imagem" onchange="previewFile()">
-						<img src="../imagens/<?php if(isset($loja['arquivo_imag'])) echo $loja['arquivo_imag']; ?>" class="d-block img-thumbnail w-75 mt-4">
+						<img src="../imagens/<?= $loja['arquivo_imag'] ?>" class="d-block img-thumbnail w-75 mt-4">
 					</div>
 
 					<div class="col-7">
 						<label class="col-form-label" for="nome">Nome da Loja:</label>
-						<input type="text" class="form-control" placeholder="insira o nome da loja" id="nome" name="nome" value="<?php if(isset($loja['nome_loja'])) echo $loja['nome_loja']; ?>" disabled>
+						<input type="text" class="form-control" value="<?= $loja['nome_loja']?>" disabled>
 
 						<label class="col-form-label mt-3" for="sobre">Sobre:</label>
-						<textarea name="sobre" id="sobre" class="form-control" placeholder="Dê uma descrição para a sua loja" rows="5"><?php if(isset($loja['sobre_loja'])) echo $loja['sobre_loja']; ?></textarea>
+						<textarea name="sobre" id="sobre" class="form-control" placeholder="<?= $loja['sobre_loja'] ?>" rows="5"><?= $loja['sobre_loja'] ?></textarea>
 					</div>
 				</div>
 
 				<hr class="my-4">
 
-				<div class="row">
-					<div class="col-4 form-row">
-						<label class="col-form-label" for="estado">Estado:</label>
-						<input type="text" class="form-control" id="estado" placeholder="O seu estado do País" name="estado" value="<?php if(isset($loja['estado_loja'])) echo $loja['estado_loja']; ?>">
-					</div>
-						
-					<div class="col-4 form-row">
-						<label class="col-form-label" for="cidade">Cidade:</label>
-						<input type="text" class="form-control" id="cidade" placeholder="Diga-nos a sua localização" name="cidade" value="<?php if(isset($loja['cidade_loja'])) echo $loja['cidade_loja']; ?>">						
-					</div>
-					
-					<div class="col-4 form-row">
-						<label class="col-form-label" for="rua">Rua:</label>
-						<input type="text" class="form-control" id="rua" placeholder="A rua ode se encontra a sua loja" name="rua" value="<?php if(isset($loja['rua_loja'])) echo $loja['rua_loja']; ?>">
+				<div class="form-row">
+					<div class="col-1"></div>
+
+					<div class="col-4">
+						<label for="estado">CEP</label>
+						<div class="input-group mb-3">
+							<input id="cep" type="number" class="form-control" name="cep" placeholder="<?= $loja['cep_loja'] ?>" value="<?= $loja['cep_loja'] ?>">
+							<div class="input-group-append">
+								<button id="adicionar" class="btn btn-outline-info" type="button">Adicionar</button>
+							</div>
+						</div>
+
+						<label for="estado">Cidade e UF</label>	
+						<div class="input-group mb-3">
+							<input type="text" class="form-control w-75" id="localidade" type="text" name="cidade" placeholder="<?= $loja['cidade_loja'] ?>" value="<?= $loja['cidade_loja'] ?>" readonly="readonly">
+							<input type="text" class="form-control w-25" id="uf" type="text" name="uf" placeholder="<?= $loja['estado_loja'] ?>" value="<?= $loja['estado_loja'] ?>" readonly="readonly">
+						</div>
 					</div>
 
-					<div class="col-2"></div>
-					
-					<div class="col-4 form-row">
-						<label class="col-form-label" for="bairro">Bairro:</label>
-						<input type="text" class="form-control" id="bairro" placeholder="O bairro ode se encontra a sua loja" name="bairro" value="<?php if(isset($loja['bairro_loja'])) echo $loja['bairro_loja']; ?>">
-					</div>
-					
-					<div class="col-4 form-row">
-						<label class="col-form-label" for="numero">Número:</label>
-						<input type="text" class="form-control" id="numero" placeholder="O número da sua loja" name="numero" value="<?php if(isset($loja['numero_loja'])) echo $loja['numero_loja']; ?>">
+					<div class="col-6">
+						<div class="form-row">
+							<div class="col-12 form-group">
+								<label for="rua">Rua</label>
+								<input class="form-control" id="rua" type="text" name="rua" placeholder="<?= $loja['rua_loja'] ?>" value="<?= $loja['rua_loja'] ?>">
+							</div>
+
+							<div class="col-6 form-group">
+								<label for="numero">Número</label>
+								<input class="form-control" id="numero" type="number" name="numero" placeholder="<?= $loja['numero_loja'] ?>" value="<?= $loja['numero_loja'] ?>">
+							</div>
+				
+							<div class="col-6 form-group">
+								<label for="numero">Complemento</label>
+								<input class="form-control" id="complemento" type="text" name="complemento" placeholder="<?= $loja['complemento_loja'] ?>" value="<?= $loja['complemento_loja'] ?>">
+							</div>
+						</div>
 					</div>
 				</div>
 
@@ -142,6 +151,37 @@
 				}
 			}
 
+			function cep() {
+				
+				const adicionar = window.document.querySelector('#adicionar')
+				
+				function pegarCep(){
+					
+					var resposta
+					var cep = window.document.querySelector('#cep').value
+					const localidade = window.document.querySelector('#localidade')
+					const uf = window.document.querySelector('#uf')
+					const xhr = new XMLHttpRequest()
+
+					xhr.responseType = 'json'
+					xhr.onreadystatechange = function (){
+
+						if (xhr.readyState == 4 && xhr.status == 200) {
+
+							resposta  = xhr.response
+							localidade.value = resposta['localidade']
+							uf.value = resposta['uf']
+						}
+					}
+					xhr.open('GET', 'https://viacep.com.br/ws/' + cep + '/json/')
+					xhr.send()
+				}
+				
+				adicionar.addEventListener('click', pegarCep)
+			}
+			
+			cep()
+			
 		</script>
 	</body>
 </html>

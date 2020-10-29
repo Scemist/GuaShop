@@ -10,11 +10,11 @@
 	$estado = 'entregue'; // entregue, finalizado.
 
 	// Pega os dados do usuario
-	$sql = $conexao -> prepare("SELECT * FROM	usuario	WHERE	email_usua = :email");
+	$sql = $conexao -> prepare("SELECT * FROM	usuario	WHERE email_usua = :email");
 	$sql -> bindParam(':email', $_SESSION['email']);
 	$sql -> execute();
 	$usuario = $sql -> fetch();
-	$endereco = $_POST['estado'] . ', ' . $_POST['cidade'] . ', ' . $_POST['bairro'] . ', ' . $_POST['rua'] . ', ' . $_POST['numero'];
+	$endereco = $_POST['cidade'] . ', ' . $_POST['estado'] . ', ' . $_POST['cep'] . ' - ' . $_POST['rua'] . ', ' . $_POST['numero'] . ' (' . $_POST['complemento'] . ')';
 
 	// Cria o pedido
 	$sql = $conexao -> prepare('INSERT INTO pedido (horario_pedi, data_pedi, endereco_pedi, formapagamento_pedi, destinatario_pedi, estado_pedi, id_cart, id_usua) VALUES (:horario, :data, :endereco, :pagamento, :destinatario, :estado, :cartao, :usuario)');
