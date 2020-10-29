@@ -8,7 +8,7 @@
 
 	// Pega as informações da loja
 
-	$sql = $conexao -> prepare ('SELECT id_loja, nome_loja, sobre_loja, estado_loja, cidade_loja, bairro_loja, rua_loja, numero_loja, ativo_loja FROM loja WHERE id_loja = :id');
+	$sql = $conexao -> prepare ('SELECT * FROM loja WHERE id_loja = :id');
 	$sql -> bindParam(':id', $id);
 	$sql -> execute();
 	$loja = $sql -> fetch();
@@ -61,7 +61,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 		<link rel="icon" type="imagem/png" href="../favicon.ico"> <!-- Flavicon -->
-		<link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css"> <!-- CSS Bootstrap -->
+		<link rel="stylesheet" href="../bootstrap/bootstrap-4.5.3.min.css"> <!-- CSS Bootstrap -->
 	
 		<title>GuaShop ADM - Loja</title>
 	</head>
