@@ -74,7 +74,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> <!-- Tag de viewport -->
 
 		<link rel="icon" type="imagem/png" href="../favicon.ico"> <!-- Flavicon -->
-		<link rel="stylesheet" href="../bootstrap/bootstrap-4.5.3.min.css"> <!-- CSS Bootstrap -->
+		<link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css"> <!-- CSS Bootstrap -->
 
 		<title>GuaShop ADM - Produtos</title>
 	</head>
@@ -169,7 +169,8 @@
 
 		</main>
 
-		<script src="../bootstrap/jquery-3.5.1.slim.min.js"></script> <!-- jQuery -->
-		<script src="../bootstrap/bootstrap.bundle-4.5.3.min.js"></script> <!-- Bundle -->
+		<script src="../bootstrap/jquery/jquery-3.3.1.min.js"></script> <!-- jQuery -->
+		<script src="../bootstrap/popper/popper.min.js"></script> <!-- Popper.js -->
+		<script src="../bootstrap/js/bootstrap.min.js"></script> <!-- Bootstrap JS -->
 	</body>
 </html>

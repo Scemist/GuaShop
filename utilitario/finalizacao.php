@@ -36,7 +36,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> <!-- Tag de viewport -->
 
 		<link rel="icon" type="imagem/png" href="../favicon.ico"> <!-- Flavicon -->
-		<link rel="stylesheet" href="../bootstrap/bootstrap-4.5.3.min.css"> <!-- CSS Bootstrap -->
+		<link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css"> <!-- CSS Bootstrap -->
 
 		<title>GuaShop - Finalizar compra</title>
 	</head>
