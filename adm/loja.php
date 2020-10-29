@@ -123,29 +123,42 @@
 
 				<hr>
 
-				<h3 class="text-muted mb-4">Endereço</h3>
 				<div class="form-row">
-					<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-1"></div>
+					<div class="col-1"></div>
 
-					<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-2 form-group">
-						<label for="estado">Estado</label>
-						<input class="form-control" id="estado" type="text" name="estado" placeholder="<?= $loja['estado_loja'] ?>" value="<?= $loja['estado_loja'] ?>">
+					<div class="col-4">
+						<label for="estado">CEP</label>
+						<div class="input-group mb-3">
+							<input id="cep" type="number" class="form-control" name="cep" placeholder="<?= $loja['cep_loja'] ?>" value="<?= $loja['cep_loja'] ?>">
+							<div class="input-group-append">
+								<button id="adicionar" class="btn btn-outline-info" type="button">Adicionar</button>
+							</div>
+						</div>
+
+						<label for="estado">Cidade e UF</label>	
+						<div class="input-group mb-3">
+							<input type="text" class="form-control w-75" id="localidade" type="text" name="cidade" placeholder="<?= $loja['cidade_loja'] ?>" value="<?= $loja['cidade_loja'] ?>" readonly="readonly">
+							<input type="text" class="form-control w-25" id="uf" type="text" name="uf" placeholder="<?= $loja['estado_loja'] ?>" value="<?= $loja['estado_loja'] ?>" readonly="readonly">
+						</div>
 					</div>
-					<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-2 form-group">
-						<label for="cidade">Cidade</label>
-						<input class="form-control" id="cidade" type="text" name="cidade" placeholder="<?= $loja['cidade_loja'] ?>" value="<?= $loja['cidade_loja'] ?>">
-					</div>
-					<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-2 form-group">
-						<label for="bairro">Bairro</label>
-						<input class="form-control" id="bairro" type="text" name="bairro" placeholder="Medeiros" value="<?= $loja['bairro_loja'] ?>">
-					</div>
-					<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-2 form-group">
-						<label for="rua">Rua</label>
-						<input class="form-control" id="rua" type="text" name="rua" value="<?= $loja['rua_loja'] ?>">
-					</div>
-					<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-2 form-group">
-						<label for="numero">Número</label>
-						<input class="form-control" id="numer" type="number" name="numero" value="<?= $loja['numero_loja'] ?>">
+
+					<div class="col-6">
+						<div class="form-row">
+							<div class="col-12 form-group">
+								<label for="rua">Rua</label>
+								<input class="form-control" id="rua" type="text" name="rua" placeholder="<?= $loja['rua_loja'] ?>" value="<?= $loja['rua_loja'] ?>">
+							</div>
+
+							<div class="col-6 form-group">
+								<label for="numero">Número</label>
+								<input class="form-control" id="numero" type="number" name="numero" placeholder="<?= $loja['numero_loja'] ?>" value="<?= $loja['numero_loja'] ?>">
+							</div>
+				
+							<div class="col-6 form-group">
+								<label for="numero">Complemento</label>
+								<input class="form-control" id="complemento" type="text" name="complemento" placeholder="<?= $loja['complemento_loja'] ?>" value="<?= $loja['complemento_loja'] ?>">
+							</div>
+						</div>
 					</div>
 				</div>
 
@@ -178,5 +191,38 @@
 
 		<script src="../bootstrap/jquery-3.5.1.slim.min.js"></script> <!-- jQuery -->
 		<script src="../bootstrap/bootstrap.bundle-4.5.3.min.js"></script> <!-- Bundle -->
+		<script>
+			function cep() {
+				
+				const adicionar = window.document.querySelector('#adicionar')
+				
+				function pegarCep(){
+					
+					var resposta
+					var cep = window.document.querySelector('#cep').value
+					const localidade = window.document.querySelector('#localidade')
+					const uf = window.document.querySelector('#uf')
+					const xhr = new XMLHttpRequest()
+
+					xhr.responseType = 'json'
+					xhr.onreadystatechange = function (){
+
+						if (xhr.readyState == 4 && xhr.status == 200) {
+
+							resposta  = xhr.response
+							localidade.value = resposta['localidade']
+							uf.value = resposta['uf']
+						}
+					}
+					xhr.open('GET', 'https://viacep.com.br/ws/' + cep + '/json/')
+					xhr.send()
+				}
+				
+				adicionar.addEventListener('click', pegarCep)
+			}
+			
+			cep()
+			
+		</script>
 	</body>
 </html>

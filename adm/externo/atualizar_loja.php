@@ -6,7 +6,7 @@
 
 	// Código PHP da página
 
-	$loja = $_POST['id'];
+	$id = $_POST['id'];
 
 	if ($_POST['ativo'] == 0) { // Se está ativo
 		$ativo = 0;
@@ -15,33 +15,44 @@
 		$ativo = 1;
 	}
 
-	$sql = $conexao -> prepare ('
-		UPDATE
+	$sobre = $_POST['sobre'];
+	$estado = $_POST['uf'];
+	$cidade = $_POST['cidade'];
+	$cep = $_POST['cep'];
+	$rua = $_POST['rua'];
+	$numero = $_POST['numero'];
+	$complemento = $_POST['complemento'];
+
+	echo $id;
+
+	$sql = $conexao -> prepare (
+		"UPDATE
 			loja
 		SET
-			nome_loja = :nome,
 			sobre_loja = :sobre,
 			estado_loja = :estado,
 			cidade_loja = :cidade,
-			bairro_loja = :bairro,
+			cep_loja = :cep,
 			rua_loja = :rua,
 			numero_loja = :numero,
+			complemento_loja = :complemento,
 			ativo_loja = :ativo
 		WHERE
 			id_loja = :id
-	');
+	");
 
-	$sql -> bindParam(':nome', $_POST['nome']);
-	$sql -> bindParam(':sobre', $_POST['sobre']);
-	$sql -> bindParam(':estado', $_POST['estado']);
-	$sql -> bindParam(':cidade', $_POST['cidade']);
-	$sql -> bindParam(':bairro', $_POST['bairro']);
-	$sql -> bindParam(':rua', $_POST['rua']);
-	$sql -> bindParam(':numero', $_POST['numero']);
+	$sql -> bindParam(':sobre', $sobre);
+	$sql -> bindParam(':estado', $estado);
+	$sql -> bindParam(':cidade', $cidade);
+	$sql -> bindParam(':cep', $cep);
+	$sql -> bindParam(':rua', $rua);
+	$sql -> bindParam(':numero', $numero);
+	$sql -> bindParam(':complemento', $complemento);
 	$sql -> bindParam(':ativo', $ativo);
-	$sql -> bindParam(':id', $loja);
+	$sql -> bindParam(':id', $id);
 
 	$sql -> execute();
+	$loja = $conexao -> lastInsertId();
 
 	// Salva imagem
 

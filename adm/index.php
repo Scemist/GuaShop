@@ -14,15 +14,17 @@
 		$filtro = $_GET['filtro'];
 
 		if (!empty($chave)) {
+
 			$placeholder = "value='$chave' placeholder='$chave'";
 		}
 
 		function filtroRefinado ($valor, $chave) {
+			
 			global $conexao;
 			$chave = '%' . $chave . '%';
 
-			$sql = $conexao -> prepare ('
-				SELECT
+			$sql = $conexao -> prepare (
+				'SELECT
 					*
 				FROM
 					loja
@@ -30,8 +32,8 @@
 					ativo_loja = :valor
 					AND (nome_loja LIKE :chave
 					OR sobre_loja LIKE :chave
-					OR cidade_loja LIKE :chave)
-			');
+					OR cidade_loja LIKE :chave)'
+			);
 			$sql -> bindParam(':valor', $valor);
 			$sql -> bindParam(':chave', $chave);
 
@@ -39,19 +41,20 @@
 		}
 
 		function filtroTodos ($chave) {
+
 			global $conexao;
 			$chave = '%' . $chave . '%';
 
-			$sql = $conexao -> prepare ('
-				SELECT
+			$sql = $conexao -> prepare (
+				'SELECT
 					*
 				FROM
 					loja
 				WHERE
 					nome_loja LIKE :chave
 					OR sobre_loja LIKE :chave
-					OR cidade_loja LIKE :chave
-			');
+					OR cidade_loja LIKE :chave'
+			);
 			$sql -> bindParam(':chave', $chave);
 			return $sql;
 		}
@@ -60,27 +63,28 @@
 			case 'todos':
 				$selectedTodos = 'selected';
 				$sql = filtroTodos($chave);
-				break;
+			break;
 
 			case 'ativado':
 				$valor = 1;
 				$selectedAtivado = 'selected';
 				$sql = filtroRefinado($valor, $chave);
-				break;
+			break;
 
 			case 'desativado':
 				$valor = 0;
 				$selectedDesativado = 'selected';
 				$sql = filtroRefinado($valor, $chave);
-				break;
+			break;
 			
 			default:
 				header ('index.php');
 				exit;
-				break;
+			break;
 		}
 
 		if (isset($sql)) {
+
 			$sql -> execute();
 			$lojas = $sql -> fetchAll();
 		}
@@ -93,7 +97,6 @@
 		$sql -> execute();
 		$lojas = $sql -> fetchAll();
 	}
-
 
 ?>
 
@@ -183,7 +186,7 @@
 					<tbody>
 
 						<?php
-							foreach ($lojas as $controle => $loja) {
+							foreach ($lojas as $controle => $loja):
 						?>
 
 								<tr>
@@ -197,29 +200,34 @@
 									<td><?= $loja['nome_loja'] ?></td>
 									<td><?= $loja['sobre_loja'] ?></td>
 									<td>
-										<?= $loja['estado_loja'] . ','?>
-										<?= $loja['cidade_loja'] . ','?>
-										<?= $loja['cep_loja'] . ','?>
-										<?= $loja['rua_loja'] . ','?>
-										<?= $loja['numero_loja'] ?>
-										<?= $loja['complemento_loja'] ?>
+										<small>
+											<?= $loja['cidade_loja'] ?>,
+											<?= $loja['estado_loja'] ?>,
+											<?= $loja['cep_loja'] ?> -
+											<?= $loja['rua_loja'] ?>,
+											<?= $loja['numero_loja'] ?>
+											<?php
+												if (!empty($loja['complemento_loja'])):
+													echo '(' . $loja['complemento_loja'] . ')';
+												endif;
+											?>
+										</small>
 									</td>
 
 									<td>
 										<?php
-											if ($loja['ativo_loja'] == 1) {
+											if ($loja['ativo_loja'] == 1):
 												echo "Ativado";
-											} else {
+											else:
 												echo "Desativado";
-											}
+											endif;
 										?>
 									</td>
 
 								</tr>
 
 						<?php
-							}
-							
+							endforeach;
 						?>
 
 					</tbody>
