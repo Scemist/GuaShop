@@ -36,21 +36,23 @@
 		<?php require_once('externo/navbar.php'); ?>
 
 		<main class="container">
-			<div class="row col-md-6">
-				<h1 class="my-2 text-muted display-4">Lojas Cadastradas</h1>
-
-				<p class="text-truncate text-muted">Lojas que fazem parte</p>
+			<div class="row">
+				<div class="col-12">
+					<h1 class="my-2 text-muted display-4">Lojas Cadastradas</h1>
+					
+					<p class="text-truncate text-muted">Lojas que fazem parte</p>
+				</div>
 			</div>
 
 			<hr>
 
-			<div class="row featurette">
-				<?php foreach ($lojas as $loja) { ?>
-			  			<div class="col-6 text-center p-3">
+			<div class="row">
+				<?php foreach ($lojas as $loja): ?>
+			  			<div class="col-6 col-md-4 col-xl-3 text-center p-3">
 							<a href="loja.php?id=<?= $loja['id_loja'] ?>" class="">
 					  			<div class="row">
 									<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 bg-white rounded p-3 shadow-sm loja">
-										<img class="img imageem card-img-top rounded col-10 px-0" style="width:100%;" src="../imagens/<?= $loja['arquivo_imag'] ?>">
+										<img class="img imageem card-img-top rounded col-10 px-0" src="../imagens/<?= $loja['arquivo_imag'] ?>">
 										<hr>
 
 										<div class="col-md-12">
@@ -60,7 +62,7 @@
 								</div>
 							</a>
 						</div>
-				<?php } ?>
+				<?php endforeach; ?>
 			</div>
 		</main>
 
