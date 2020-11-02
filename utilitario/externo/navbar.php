@@ -29,7 +29,7 @@
           <a class="nav-link" href="promocoes.php">Promoções</a>
         </li>
 
-        <li class="nav-item d-none d-md-block">
+        <li class="nav-item d-none d-lg-block">
           <a class="navbar-brand p-0" href="index.php">
             <div class="float-left">
               <?php include('externo/logosm.html') ?>

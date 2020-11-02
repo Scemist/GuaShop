@@ -39,17 +39,32 @@
 		<link rel="stylesheet" href="../bootstrap/bootstrap-4.5.3.min.css"> <!-- CSS Bootstrap -->
 
 		<title>GuaShop - Finalizar compra</title>
+
+		<style>
+			@media screen and (max-width: 991px) {
+				.botao {
+					width: 100%;
+				}
+			}
+
+			@media screen and (min-width: 992px) {
+				.botao {
+					width: 50%;
+				}
+			}
+
+		</style>
 	</head>
 
 	<body class="bg-light">
 
-		<main class="container pt-5">
+		<main class="container py-3 py-lg-4">
 
 			<form class="" action="externo/comprar.php" method="POST">
-				<div class="form-row rounded bg-white shadow p-5">
+				<div class="form-row rounded bg-white shadow px-3 px-sm-5 py-4">
 
-					<div class="col-12 col-md-6 pr-5">
-						<h3 class="text-muted mt-4">Forma de pagamento</h3>
+					<div class="col-12 col-lg-6 pr-lg-5">
+						<h4 class="text-muted mt-4">Forma de pagamento</h4>
 						<h5 class="lead">Escolha a forma de pagamento ou selecione o cartão</h5>
 
 						<div class="d-block pt-2 btn-group btn-group-toggle" data-toggle="buttons">
@@ -60,19 +75,19 @@
 									</label>
 							<?php endforeach; ?>
 
-							<div class="d-block w-50">
+							<div class="d-block botao">
 								<a href="cartao.php" class="w-100 btn btn-outline-info">Adicionar cartão</a>
 							</div>
 						</div>
 
-						<h3 class="text-muted mt-5">Destinatário</h3>
+						<h4 class="text-muted mt-5">Destinatário</h4>
 						<h5 class="lead">Digíte o nome de quem receberá o pedido</h5>
 
-						<input class="form-control w-50" type="text" name="destinatario" value="<?= $usuario['nome_usua'] ?>">
+						<input class="form-control botao" type="text" name="destinatario" value="<?= $usuario['nome_usua'] ?>">
 					</div>
 
-					<div class="col-12 col-md-6 pl-5">
-						<h3 class="text-muted mt-4">Endereço</h3>
+					<div class="col-12 col-lg-6 pl-lg-5">
+						<h4 class="text-muted mt-5 mt-md-4">Endereço</h4>
 						<h5 class="lead">Pode editar o endereço de entrega aqui, se quiser. :)</h5>
 
 						<p>
@@ -91,8 +106,8 @@
 
 						<p>
 							<div class="input-group mb-3">
-								<input type="text" id="localidade" class="form-control" placeholder="<?= $usuario['cidade_usua'] ?>" value="<?= $usuario['cidade_usua'] ?>" readonly="readonly" aria-describedby="basic-addon1" name="cidade">
-								<input type="text" id="uf" class="form-control" placeholder="<?= $usuario['estado_usua'] ?>" value="<?= $usuario['estado_usua'] ?>" readonly="readonly" aria-describedby="basic-addon1" name="estado">
+								<input type="text" id="localidade" class="form-control w-75" placeholder="<?= $usuario['cidade_usua'] ?>" value="<?= $usuario['cidade_usua'] ?>" readonly="readonly" aria-describedby="basic-addon1" name="cidade">
+								<input type="text" id="uf" class="form-control w-25" placeholder="<?= $usuario['estado_usua'] ?>" value="<?= $usuario['estado_usua'] ?>" readonly="readonly" aria-describedby="basic-addon1" name="estado">
 							</div>
 						</p>
 
@@ -137,11 +152,11 @@
 						<input type="hidden" name="total" value="<?= $total ?>">
 
 						<div class="row">
-							<div class="col-6">
+							<div class="col-12 col-md-6">
 								<a href="carrinho.php" class="btn float-left btn-outline-warning w-100 mt-5">Voltar</a>
 							</div>
-							<div class="col-6">
-								<input class="btn btn-success float-left w-100 mt-5" type="submit" name="" value="Concluir compra">
+							<div class="col-12 col-md-6">
+								<input class="btn btn-success float-left w-100 mt-2 mt-md-5" type="submit" name="" value="Concluir compra">
 							</div>
 						</div>
 					</div>

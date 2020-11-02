@@ -33,7 +33,7 @@
 		<main class="container">
 			<div class="row">
 
-				<div class="col-5">
+				<div class="col-12 col-md-5">
 					<h1 class="my-3 display-4">Sobre nós</h1>
 					<p class="mt-4 mb-5 lead">O que nós fazemos. O que queremos fazer.</p>
 
@@ -49,7 +49,7 @@
 					<p class="font-weight-normal text-muted text-center my-5 px-2">Garantimos pra você o conforto, a informação, a facilidade e a qualidade necessária para o seu consumo. </p>
 				</div>
 				
-				<div class="col-7">
+				<div class="col-12 col-md-7">
 					<blockquote class="bg-white shadow-sm rounded p-5 text-center">
 						
 						<h4 class="font-weight-normal">O GuaShop foi desenvolvido especialmente para você comerciante de <strong>Guararapes SP</strong></h4>
