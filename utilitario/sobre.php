@@ -13,7 +13,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> <!-- Tag de viewport -->
 
 		<link rel="icon" type="imagem/png" href="../favicon.ico"> <!-- Flavicon -->
-		<link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css"> <!-- CSS Bootstrap -->
+		<link rel="stylesheet" href="../bootstrap/bootstrap-4.5.3.min.css"> <!-- CSS Bootstrap -->
 		<link rel="stylesheet" type="text/css" href="css/navbar.css"> <!-- CSS NavBar -->
 		<link rel="stylesheet" type="text/css" href="css/geral.css"> <!-- CSS Personalizado -->
 
@@ -33,7 +33,7 @@
 		<main class="container">
 			<div class="row">
 
-				<div class="col-5">
+				<div class="col-12 col-md-5">
 					<h1 class="my-3 display-4">Sobre nós</h1>
 					<p class="mt-4 mb-5 lead">O que nós fazemos. O que queremos fazer.</p>
 
@@ -49,7 +49,7 @@
 					<p class="font-weight-normal text-muted text-center my-5 px-2">Garantimos pra você o conforto, a informação, a facilidade e a qualidade necessária para o seu consumo. </p>
 				</div>
 				
-				<div class="col-7">
+				<div class="col-12 col-md-7">
 					<blockquote class="bg-white shadow-sm rounded p-5 text-center">
 						
 						<h4 class="font-weight-normal">O GuaShop foi desenvolvido especialmente para você comerciante de <strong>Guararapes SP</strong></h4>
@@ -74,9 +74,8 @@
 
 	    <?php require_once('externo/footer.php') ?>
 
-		<script src="../bootstrap/jquery/jquery-3.3.1.min.js"></script> <!-- jQuery -->
-		<script src="../bootstrap/popper/popper.min.js"></script> <!-- Popper.js -->
-		<script src="../bootstrap/js/bootstrap.min.js"></script> <!-- Bootstrap JS -->
-    	<script type="text/javascript" src="jquery/navbar.js"></script> <!-- jQuery NavBar -->
+		<script src="../bootstrap/jquery-3.5.1.slim.min.js"></script> <!-- jQuery -->
+		<script src="../bootstrap/bootstrap.bundle-4.5.3.min.js"></script> <!-- Bundle -->
+		<script type="text/javascript" src="jquery/navbar.js"></script> <!-- jQuery NavBar -->
 	</body>
 </html>

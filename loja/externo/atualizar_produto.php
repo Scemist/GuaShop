@@ -37,8 +37,6 @@
 	if (isset($_POST['diversos'])) {
 		$setor = $setor . '9,';}
 
-		echo $setor;
-
 	// Pega as informaçoes do produto e cadastra
 
 	$nome = $_POST['nome'];
@@ -66,7 +64,6 @@
 
 	if (is_uploaded_file($_FILES['imagem']['tmp_name'])) {
  		$tabela = 'produto';
- 		$titulo = $_POST['titulo'];
 
 		$pasta = '../../imagens/';
 		$tipo = substr($_FILES['imagem']['name'], -4);
@@ -86,7 +83,6 @@
 				$sql = $conexao -> prepare (
 					"UPDATE imagem
 					SET
-					titulo_imag = '$titulo',
 					arquivo_imag = '$imagem',
 					tabela_imag = '$tabela',
 					referencia_refe = '$referencia'
@@ -127,7 +123,7 @@
 	else{
 
 		$_SESSION['msg'] = "<p>Erro ao salvar os dados</p>";
-		// header("Location: ../index.php");
+		header("Location: ../index.php");
 	}
 
 ?>

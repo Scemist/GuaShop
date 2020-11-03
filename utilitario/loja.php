@@ -74,11 +74,11 @@
 
 		<main class="container">
 			<div class="row">
-				<div class="col-5">
-					<img src="../imagens/<?= $loja['arquivo_imag'] ?>" class="w-100 img-thumbnail shadow-sm rounded mt-5">
+				<div class="col-12 col-md-5">
+					<img src="../imagens/<?= $loja['arquivo_imag'] ?>" class="w-100 img-thumbnail shadow-sm rounded mt-md-5">
 				</div>
 
-				<div class="col-7">
+				<div class="col-12 col-md-7">
 					<div class="row pt-3">
 						<div class="col-8">
 							<h1 class="display-4"><?= $loja['nome_loja'] ?></h1>

@@ -14,7 +14,8 @@
 }
 
 .titulo {
-    height: 19%;
+    height: 3.7rem;
+    overflow: hidden;
 }
 
 .cartao-login {
