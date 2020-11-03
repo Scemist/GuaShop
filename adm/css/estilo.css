@@ -1,0 +1,6 @@
+@media screen and (max-width: 768px) {
+	.atualizar {
+		position: unset !important;
+		margin-top: 1rem;
+	}
+}

@@ -21,56 +21,55 @@
 	<body class="bg-light">
 
 		<main class="container">
-			<div class="row mt-5">
+			<div class="row my-sm-5">
 
-				<div class="col-12 mt-5"></div>
-        <div class="col-12 col-xl-2"></div>
+				<div class="d-none d-md-block col-12 mt-5"></div>
+				<div class="d-none d-md-block col-12 col-lg-2"></div>
 
-				<div class="col-12 col-xl-8 p-3 bg-secondary rounded text-white cartao shadow"> <!-- Abre cartão -->
-          <div class="row">
-            <div class="col-12">
-              <h1 class="p-3">GuaShop Login</h1>
-              <p class="px-3 d-inline-block">Faça login para acessar esta página</p>
+				<div class="col-12 col-lg-8 py-5 p-sm-3 bg-secondary rounded text-white cartao shadow"> <!-- Abre cartão -->
+					<div class="row">
+						<div class="col-12">
+							<h1 class="p-3">GuaShop Login</h1>
+							<p class="px-3 d-inline-block">Faça login para acessar esta página</p>
 
-			  <?php
-			 	if (isset($_GET['men'])) {
-					 echo "<p class='float-right bg-danger rounded px-3 d-inline-block p-1'>Informações de login inexistentes</p>";
-				 } 
-			  ?>
-            </div>
-          </div>
+							<?php
+							if (isset($_GET['men'])):
+								echo "<p class='float-right bg-danger rounded px-3 d-inline-block p-1'>Informações de login inexistentes</p>";
+							endif;
+							?>
+						</div>
+					</div>
 
-          <form action="externo/logar.php" method="POST">
-            <div class="row">
-              <div class="col-12 col-xl-1"></div>
+					<form action="externo/logar.php" method="POST">
+						<div class="row">
+							<div class="col-12 col-xl-1"></div>
 
-              <div class="col-12 col-xl-10">
-                <hr class="bg-white">
+							<div class="col-12 col-xl-10">
+								<hr class="bg-white my-5 my-md-2">
 
-                <div class="row">
-                  <div class="col-12 form-group">
-                    <label for="">Usuário</label>
-                    <input class="form-control text-center" type="text" name="usuario" value="" placeholder="Romanov">
-                  </div>
+								<div class="row">
+									<div class="col-12 form-group">
+										<label for="">Usuário</label>
+										<input class="form-control text-center" type="text" name="usuario" value="" placeholder="Romanov">
+									</div>
 
-                  <div class="col-12 form-group">
-                    <label for="">Senha</label>
-                    <input class="form-control text-center" type="password" name="senha" value="" placeholder=". . . . . . . . . . . . . . . . .">
-                  </div>
-                </div>
+									<div class="col-12 form-group">
+										<label for="">Senha</label>
+										<input class="form-control text-center" type="password" name="senha" value="" placeholder=". . . . . . . . . . . . . . . . .">
+									</div>
+								</div>
+							</div>
 
-              </div>
+						</div>
 
-            </div>
+						<div class="row">
+							<div class="col-12">
+								<input class="btn btn-info m-3 float-right" type="submit" value="Entrar">
+							</div>
+						</div>
 
-            <div class="row">
-              <div class="col-12">
-                <input class="btn btn-primary m-3 float-right" type="submit" value="Entrar">
-              </div>
-            </div>
-
-          </form>
-        </div> <!-- Fecha cartão -->
+					</form>
+				</div> <!-- Fecha cartão -->
 
 			</div>
 		</main>

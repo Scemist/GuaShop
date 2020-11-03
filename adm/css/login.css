@@ -1,3 +1,15 @@
 .cartao {
-  background-image: linear-gradient(to right, #111d48, #541a6f);
+	background-image: linear-gradient(to right, #111d48, #541a6f);
+}
+
+@media screen and (max-width: 576px){
+	.cartao {
+		border-radius: 0 !important;
+		box-shadow: none !important;
+	}
+
+	body {
+		overflow: hidden;
+		background-image: linear-gradient(to right, #111d48, #541a6f);
+	}
 }
