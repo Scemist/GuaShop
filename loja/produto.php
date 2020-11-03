@@ -162,11 +162,6 @@
 						<input type="file" class="form-control-file" name="imagem" onchange="previewFile()">
 					</div>
 
-					<div class="form-group col-md-6">
-						<label class="col-form-label">Nome da imagem:</label>
-						<input type="text" placeholder="Nome da imagem" class="form-control" name="titulo" value="<?php if(isset($produto['titulo_imag'])) echo $produto['titulo_imag']; ?>">
-					</div>
-
 					<div class="form-row">
 						<div class="form-group col-md-6">
 							<img src="../imagens/<?php if(isset($imagem['arquivo_imag'])) echo $imagem['arquivo_imag']; ?>" style="width: 400px;" class="img-thumbnail img-fluid">
