@@ -105,11 +105,18 @@
 <html lang="pt-br">
 	<head>
 		<meta charset="utf-8">
+		<meta name="theme-color" content="#343a40"> <!-- Cor do brownser -->
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 		<link rel="icon" type="imagem/png" href="../favicon.ico"> <!-- Flavicon -->
 		<link rel="stylesheet" href="../bootstrap/bootstrap-4.5.3.min.css"> <!-- CSS Bootstrap -->
 		<link rel="stylesheet" href="css/estilo.css">
+
+		<style>
+			table {
+				min-width: 800px;
+			}
+		</style>
 
 		<title>GuaShop Administração</title>
 	</head>
@@ -178,7 +185,7 @@
 
 			<section class="row">
 				<div class="table-responsive">
-					<table class="table table-hover shadow">
+					<table class="table table-hover shadow border border-info ml-3 ml-sm-0">
 
 						<thead>
 							<tr>

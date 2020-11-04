@@ -12,6 +12,7 @@
 
 	<head>
 		<meta charset="utf-8">
+		<meta name="theme-color" content="#343a40"> <!-- Cor do brownser -->
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> <!-- Tag de viewport -->
 
 		<link rel="icon" type="imagem/png" href="../favicon.ico"> <!-- Flavicon -->
@@ -43,7 +44,7 @@
 			<div class="row">
 				<div class="col-7 pt-2"></div>
 				<div class="col-5 pt-2">
-					<?php if (isset($_GET['msg'])) : ?>
+					<?php if (isset($_GET['msg'])): ?>
 						<div class="alert alert-danger alert-dismissible fade show my-0" role="alert">
 							As senhas não estão iguais.
 							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -59,12 +60,12 @@
 					<div class="col-12">
 						<h3 class="text-muted mb-4">Apresentação</h3>
 					</div>
-					<div class="col-1"></div>
-					<div class="col-5 form-group">
+					<div class="col-0 col-lg-1"></div>
+					<div class="col-12 col-lg-5 form-group">
 						<label for="nome">Nome</label>
 						<input class="form-control" id="nome" type="text" name="nome" placeholder="Nome da loja">
 					</div>
-					<div class="col-5 form-group">
+					<div class="col-12 col-lg-5 form-group">
 						<label for="sobre">Sobre</label>
 						<textarea class="form-control" id="sobre" type="textarea" name="sobre" placeholder="Escreva uma breve apresentação sobre a loja, será exibido para todos os clientes"></textarea>
 					</div>
@@ -76,14 +77,14 @@
 						<h3 class="text-muted mb-4">Endereço</h3>
 					</div>
 
-					<div class="col-1"></div>
+					<div class="col-0 col-xl-1"></div>
 
-					<div class="col-4">
+					<div class="col-12 col-md-6 col-lg-5 col-xl-4">
 						<label for="estado">CEP</label>
 						<div class="input-group mb-3">
-							<input id="cep" type="input" class="form-control" name="cep" placeholder="00000 000" aria-label="Recipient's username" aria-describedby="basic-addon2">
-							<div class="input-group-append">
-								<button id="adicionar" class="btn btn-outline-info" type="button">Adicionar</button>
+							<input id="cep" type="input" class="form-control w-75" name="cep" placeholder="00000 000" aria-label="Recipient's username" aria-describedby="basic-addon2">
+							<div class="input-group-append w-25">
+								<button id="adicionar" class="btn btn-outline-info w-100" type="button">Buscar</button>
 							</div>
 						</div>
 
@@ -94,7 +95,7 @@
 						</div>
 					</div>
 
-					<div class="col-6">
+					<div class="col-12 col-md-6 col-xl-5">
 						<div class="form-row">
 							<div class="col-12 form-group">
 								<label for="rua">Rua</label>
@@ -120,26 +121,28 @@
 						<h3 class="text-muted mb-4">Dados de Login</h3>
 					</div>
 
-					<div class="col-1"></div>
+					<div class="col-0 col-xl-1"></div>
 
-					<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-3">
+					<div class="col-12 col-lg-4 col-xl-3">
 						<label for="titulo_imagem">Imagem ou logo para a loja</label>
 						<div class="custom-file">
-							<input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" name="imagem">
-							<label class="custom-file-label" for="inputGroupFile01">Clique para escolher</label>
+							<input type="file" class="custom-file-input form-control-file" id="arquivoImagem" name="imagem" >
+							<label class="custom-file-label" for="inputGroupFile01">Clique para escolher</label>							
 						</div>
+
+						<img class="img-thumbnail mb-1 w-100">
 					</div>
 
-					<div class="col-1"></div>
+					<div class="d-none d-xl-block col-1"></div>
 
-					<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-6">
+					<div class="col-12 col-lg-8 col-xl-6">
 						<div class="form-row">
-							<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-6 form-group">
+							<div class="col-12 col-lg-6 form-group">
 								<label for="rua">Usuario</label>
 								<input class="form-control" id="usuario" type="text" name="usuario" placeholder="Usuario para login">
 							</div>
 
-							<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-6 form-group">
+							<div class="col-12 col-lg-6 form-group">
 								<label for="exampleFormControlSelect1">Status atual da loja</label>
 								<select class="form-control" id="exampleFormControlSelect1" name="ativo">
 									<option value="ativado">Ativado</option>
@@ -147,12 +150,12 @@
 								</select>
 							</div>
 
-							<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-6 form-group">
+							<div class="col-12 col-lg-6 form-group">
 								<label for="rua">Senha</label>
 								<input class="form-control" id="senha" type="password" name="senha" placeholder="**************">
 							</div>
 
-							<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-6 form-group">
+							<div class="col-12 col-lg-6 form-group">
 								<label for="rua">Confirme a senha</label>
 								<input class="form-control" id="senha-confirmacao" type="password" name="confirmacaosenha" placeholder="**************">
 							</div>
@@ -201,8 +204,33 @@
 				
 				adicionar.addEventListener('click', pegarCep)
 			}
+
+			function exibirImagem() {
+
+				const arquivoImagem = document.querySelector('#arquivoImagem')
+
+				function exibir () {
+
+					var vizualizacao = document.querySelector('img')
+					var file = document.querySelector('input[name="imagem"]').files[0]
+					var leitor = new FileReader();
+
+					leitor.onloadend = function () {
+
+						vizualizacao.src = leitor.result
+					}
+
+					if (file) {
+
+						leitor.readAsDataURL(file)
+					} 
+				}
+
+				arquivoImagem.addEventListener('change', exibir)
+			}
 			
 			cep()
+			exibirImagem()
 
 		</script>
 	</body>
