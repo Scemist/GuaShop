@@ -41,14 +41,14 @@
 
 	if (isset($imagem['id_imag'])) { // Tem imagem
 
-		$exibir = "<img src='../imagens/" . $imagem['arquivo_imag'] . " ' width='250px' class='rounded'><br>";
-		$arquivoImagem = $imagem['arquivo_imag'];
-		$avisoSemImagem = 1;
+		$exibir = "<img src='../imagens/" . $imagem['arquivo_imag'] . " ' width='250px' class='mx-auto rounded img-thumbnail'>";
+		$nomeImagem = $imagem['arquivo_imag'];
+		$antigaImagem = true;
 	}
 	else { // Se não tem imagem
 
 		$exibir = "<p>Sem imagem</p>";
-		$avisoSemImagem = 0;
+		$antigaImagem = false;
 	}
 
 ?>
@@ -89,19 +89,20 @@
 			<form action="externo/atualizar_loja.php" method="POST" enctype="multipart/form-data">
 				<div class="form-row">
 
-					<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-6 mb-3">
+				<div class="col-1"></div>
+
+					<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-5 mb-3">
 						<div class="row">
-							<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 input-group mb-3">
-								<div class="img mx-auto">
-									<?= $exibir ?>
-								</div>
+							<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 input-group my-2">
+								<?= $exibir ?>
 							</div>
-							<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 input-group px-5 mb-3">
+
+							<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 input-group mb-3">
 								<div class="custom-file">
-									<input type="file" class="custom-file-input" id="titulo_imagem" aria-describedby="inputGroupFileAddon01" name="imagem">
-									<label class="custom-file-label" for="inputGroupFile01">Alterar ou adicionar logo ou imagem para a loja</label>
-									<input type="hidden" name="arquivoImagem" value="<?= $arquivoImagem ?>">
-									<input type="hidden" name="avisoSemImagem" value="<?= $avisoSemImagem ?>">
+									<input type="file" class="custom-file-input" id="imagem" name="imagem">
+									<label class="custom-file-label">Alterar ou adicionar imagem da loja</label>
+									<input type="hidden" name="antigaImagemNome" value="<?= $nomeImagem ?>">
+									<input type="hidden" name="antigaImagem" value="<?= $antigaImagem ?>">
 								</div>
 							</div>
 						</div>
@@ -165,6 +166,7 @@
 				<hr>
 
 				<div class="row">
+					<div class="col-1"></div>
 					<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-3 form-group">
 						<label for="exampleFormControlSelect1">Status atual da loja</label>
 						<select class="form-control" id="exampleFormControlSelect1" name="ativo">
@@ -174,14 +176,14 @@
 					</div>
 
 					<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-2">
-						<a class="btn btn-danger m-3 w-100" href="externo/apagar_loja.php?id=<?= $id ?>">Apagar</a>
+						<a class="btn btn-danger position-absolute fixed-bottom mb-3 w-100" href="externo/apagar_loja.php?id=<?= $id ?>">Apagar</a>
 					</div>
 
-					<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-5"></div>
+					<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-3"></div>
 
 					<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-2">
 						<input type="hidden" name="id" value="<?= $id ?>">
-						<input class="btn btn-info w-100 float-right m-3" type="submit" value="Atualizar">
+						<input class="btn btn-info w-100 position-absolute fixed-bottom mb-3 w-100" type="submit" value="Atualizar">
 					</div>
 				</div>
 
