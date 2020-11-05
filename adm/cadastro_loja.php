@@ -175,65 +175,7 @@
 
 		<script src="../bootstrap/jquery-3.5.1.slim.min.js"></script> <!-- jQuery -->
 		<script src="../bootstrap/bootstrap.bundle-4.5.3.min.js"></script> <!-- Bundle -->
-
-		<script>
-			
-			function cep() {
-				
-				const adicionar = window.document.querySelector('#adicionar')
-				
-				function pegarCep(){
-					
-					var resposta
-					var cep = window.document.querySelector('#cep').value
-					const localidade = window.document.querySelector('#localidade')
-					const uf = window.document.querySelector('#uf')
-					const xhr = new XMLHttpRequest()
-
-					xhr.responseType = 'json'
-					xhr.onreadystatechange = function (){
-
-						if (xhr.readyState == 4 && xhr.status == 200) {
-
-							resposta  = xhr.response
-							localidade.value = resposta['localidade']
-							uf.value = resposta['uf']
-						}
-					}
-					xhr.open('GET', 'https://viacep.com.br/ws/' + cep + '/json/')
-					xhr.send()
-				}
-				
-				adicionar.addEventListener('click', pegarCep)
-			}
-
-			function exibirImagem() {
-
-				const arquivoImagem = document.querySelector('#arquivoImagem')
-
-				function exibir () {
-
-					var vizualizacao = document.querySelector('img')
-					var file = document.querySelector('input[name="imagem"]').files[0]
-					var leitor = new FileReader();
-
-					leitor.onloadend = function () {
-
-						vizualizacao.src = leitor.result
-					}
-
-					if (file) {
-
-						leitor.readAsDataURL(file)
-					} 
-				}
-
-				arquivoImagem.addEventListener('change', exibir)
-			}
-			
-			cep()
-			exibirImagem()
-
-		</script>
+		<script src="../funcoes/js/cep.js"></script> <!-- Funções de CEP -->
+		<script src="../funcoes/js/imagem.js"></script> <!-- Funções de imagens -->
 	</body>
 </html>
