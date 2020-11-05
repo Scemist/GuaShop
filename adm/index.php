@@ -116,6 +116,10 @@
 			table {
 				min-width: 800px;
 			}
+
+			.titulo {
+				min-width: 10rem;
+			}
 		</style>
 
 		<title>GuaShop Administração</title>
@@ -125,23 +129,24 @@
 
 		<main class="container">
 
-			<div class="row">
-				<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-					<h1 class="my-2">Página de Administração</h1>
-					<p class="text-muted">Lojas cadastradas no sistema GuaShop</p>
+			<div class="row mt-2">
+				<div class="col-md-6">
+					<h1 class="my-2 font-weight-normal">Administração GuaShop</h1>
+					<p class="text-muted mb-1">Lojas cadastradas no sistema</p>
 				</div>
-			</div>
 
-			<div class="row mt-3">
-				<div class="col-0 col-md-3 col-xl-6"></div>
-				<div class="col-12 col-sm-4 col-md-3 col-xl-2 mt-3 mt-sm-0">
-					<a href="cadastro_loja.php"><button class="btn btn-info w-100">Adicionar loja</button></a>
-				</div>
-				<div class="col-12 col-sm-4 col-md-3 col-xl-2 mt-3 mt-sm-0">
-					<a href="produtos.php"><button class="btn btn-info w-100">Produtos</button></a>
-				</div>
-				<div class="col-12 col-sm-4 col-md-3 col-xl-2 mt-3 mt-sm-0">
-					<a href="externo/sair.php"><button class="btn btn-outline-warning w-100">Finalizar Sessão</button></a>
+				<div class="col-md-6">	
+					<div class="row">
+						<div class="col-12 col-sm-6 col-md-12 col-lg-4 pl-lg-0">
+							<a href="cadastro_loja.php"><button class="mt-4 btn btn-info w-100">Adicionar loja</button></a>
+						</div>
+						<div class="col-12 col-sm-6 col-md-12 col-lg-4 px-lg-0">
+							<a href="produtos.php"><button class="mt-4 btn btn-info w-100">Produtos</button></a>
+						</div>
+						<div class="col-12 col-md-12 col-lg-4 pr-lg-0">
+							<a href="externo/sair.php"><button class="mt-4 btn btn-outline-warning w-100">Finalizar Sessão</button></a>
+						</div>
+					</div>
 				</div>
 			</div>
 
@@ -150,11 +155,13 @@
 					<hr>
 				</div>
 
-				<div class="col-12 col-lg-6">
-					<h2 class="text-muted my-2">Lista de lojas cadastradas</h2>
+				<div class="col-12">
+					<h2 class="text-muted my-2 font-weight-normal">Lista de lojas cadastradas</h2>
 				</div>
 
-				<div class="col-12 col-lg-6 mb-2 mt-4">
+				<div class="col-4 col-lg-6"></div>
+
+				<div class="col-12 col-md-8 col-lg-6 mb-2 mt-3 mt-lg-0">
 					<form action="" method="GET">
 						<div class="form-row">
 
@@ -180,17 +187,16 @@
 					</form>
 				</div>
 			</div>
+		</main>
 
-			<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 my-5"></div>
-
+		<main class="container-lg">
 			<section class="row">
-				<div class="table-responsive">
-					<table class="table table-hover shadow border border-info ml-3 ml-sm-0">
+				<div class="table-responsive shadow">
+					<table class="table table-hover shadow border border-info ml-3 ml-lg-0 bg-white">
 
 						<thead>
 							<tr>
 								<th scope="col">ID</th>
-								<th scope="col"></th>
 								<th scope="col">Nome</th>
 								<th scope="col">Sobre</th>
 								<th scope="col">Endereço</th>
@@ -204,42 +210,43 @@
 								foreach ($lojas as $controle => $loja):
 							?>
 
-									<tr>
+								<tr>
 
-										<th><?= $loja['id_loja'] ?></th>
-										<td>
-											<a href="loja.php?id=<?= $loja['id_loja'] ?>">
-												<button class="btn btn-warning btn-sm">Editar</button>
-											</a>
-										</td>
-										<td><?= $loja['nome_loja'] ?></td>
-										<td><?= $loja['sobre_loja'] ?></td>
-										<td>
-											<small>
-												<?= $loja['cidade_loja'] ?>,
-												<?= $loja['estado_loja'] ?>,
-												<?= $loja['cep_loja'] ?> -
-												<?= $loja['rua_loja'] ?>,
-												<?= $loja['numero_loja'] ?>
-												<?php
-													if (!empty($loja['complemento_loja'])):
-														echo '(' . $loja['complemento_loja'] . ')';
-													endif;
-												?>
-											</small>
-										</td>
-
-										<td>
+									<th><?= $loja['id_loja'] ?></th>
+									<td class="titulo">
+										<a href="loja.php?id=<?= $loja['id_loja'] ?>" class="text-decoration-none">
+											<p class="bg-info text-light rounded-lg text-center p-1">
+												<?= $loja['nome_loja'] ?>
+											</p>	
+										</a>
+									</td>
+									<td><?= $loja['sobre_loja'] ?></td>
+									<td>
+										<small>
+											<?= $loja['cidade_loja'] ?>,
+											<?= $loja['estado_loja'] ?>,
+											<?= $loja['cep_loja'] ?> -
+											<?= $loja['rua_loja'] ?>,
+											<?= $loja['numero_loja'] ?>
 											<?php
-												if ($loja['ativo_loja'] == 1):
-													echo "Ativado";
-												else:
-													echo "Desativado";
+												if (!empty($loja['complemento_loja'])):
+													echo '(' . $loja['complemento_loja'] . ')';
 												endif;
 											?>
-										</td>
+										</small>
+									</td>
 
-									</tr>
+									<td>
+										<?php
+											if ($loja['ativo_loja'] == 1):
+												echo "Ativado";
+											else:
+												echo "<p class='bg-danger ronded-lg text-light p-1 rounded'>Desativado</p>";
+											endif;
+										?>
+									</td>
+
+								</tr>
 
 							<?php
 								endforeach;
@@ -250,12 +257,13 @@
 				</div>
 
 				<?php
-					if (empty($lojas)) {
+					if (empty($lojas)):
 						echo
-							'<div class="alert alert-secondary mx-auto" role="alert">
-								Não há resultados para essa busca com ess filtro. o.O
+							'<div class="alert text-center mx-auto shadow p-3" role="alert">
+								Não encontramos nada por aqui para esta busca e filtro. o.O
+								<br><a href="index.php" class="btn btn-light text-info mt-1">Limpar tudo</a>
 					  		</div>';
-					}
+					endif;
 				?>
 			</section>
 

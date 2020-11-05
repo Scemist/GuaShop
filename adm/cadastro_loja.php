@@ -17,6 +17,7 @@
 
 		<link rel="icon" type="imagem/png" href="../favicon.ico"> <!-- Flavicon -->
 		<link rel="stylesheet" href="../bootstrap/bootstrap-4.5.3.min.css"> <!-- CSS Bootstrap -->
+		<link rel="stylesheet" href="css/estilo.css">
 
 		<title>GuaShop ADM - Cadastro</title>
 	</head>
@@ -79,7 +80,7 @@
 
 					<div class="col-0 col-xl-1"></div>
 
-					<div class="col-12 col-md-6 col-lg-5 col-xl-4">
+					<div class="col-12 col-md-5 col-xl-4">
 						<label for="estado">CEP</label>
 						<div class="input-group mb-3">
 							<input id="cep" type="input" class="form-control w-75" name="cep" placeholder="00000 000" aria-label="Recipient's username" aria-describedby="basic-addon2">
@@ -95,7 +96,7 @@
 						</div>
 					</div>
 
-					<div class="col-12 col-md-6 col-xl-5">
+					<div class="col-12 col-md-7 col-xl-5">
 						<div class="form-row">
 							<div class="col-12 form-group">
 								<label for="rua">Rua</label>
@@ -123,11 +124,11 @@
 
 					<div class="col-0 col-xl-1"></div>
 
-					<div class="col-12 col-lg-4 col-xl-3">
+					<div class="col-12 col-md-6 col-lg-4 col-xl-3">
 						<label for="titulo_imagem">Imagem ou logo para a loja</label>
-						<div class="custom-file">
+						<div class="custom-file pointer">
 							<input type="file" class="custom-file-input form-control-file" id="arquivoImagem" name="imagem" >
-							<label class="custom-file-label" for="inputGroupFile01">Clique para escolher</label>							
+							<label class="custom-file-label" for="inputGroupFile01">Clique para escolher</label>
 						</div>
 
 						<img class="img-thumbnail mb-1 w-100">
@@ -135,7 +136,7 @@
 
 					<div class="d-none d-xl-block col-1"></div>
 
-					<div class="col-12 col-lg-8 col-xl-6">
+					<div class="col-12 col-md-6 col-lg-8 col-xl-6">
 						<div class="form-row">
 							<div class="col-12 col-lg-6 form-group">
 								<label for="rua">Usuario</label>
@@ -162,8 +163,9 @@
 						</div>
 					</div>
 
-					<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-						<input class="btn btn-info float-right m-3" type="submit" value="Cadastrar">
+					<div class="col-0 col-sm-9"></div>
+					<div class="col-12 col-sm-3">
+						<input class="btn btn-info w-100 my-3" type="submit" value="Cadastrar">
 					</div>
 
 				</div>
