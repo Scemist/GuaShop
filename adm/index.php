@@ -105,7 +105,7 @@
 <html lang="pt-br">
 	<head>
 		<meta charset="utf-8">
-		<meta name="theme-color" content="#343a40"> <!-- Cor do brownser -->
+		<meta name="theme-color" content="#e2e6ea"> <!-- Cor do brownser -->
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 		<link rel="icon" type="imagem/png" href="../favicon.ico"> <!-- Flavicon -->
@@ -192,6 +192,16 @@
 		<main class="container-lg">
 			<section class="row">
 				<div class="table-responsive shadow">
+
+					<?php if (empty($lojas)): ?>
+
+						<div class="alert text-center mx-auto shadow p-3" role="alert">
+							Não encontramos nada por aqui para esta busca e filtro. o.O
+							<br><a href="index.php" class="btn btn-light text-info mt-1">Limpar tudo</a>
+						</div>
+
+					<?php else: ?>
+
 					<table class="table table-hover shadow border border-info ml-3 ml-lg-0 bg-white">
 
 						<thead>
@@ -206,65 +216,53 @@
 
 						<tbody>
 
-							<?php
-								foreach ($lojas as $controle => $loja):
-							?>
+							<?php foreach ($lojas as $controle => $loja): ?>
+							<tr>
 
-								<tr>
-
-									<th><?= $loja['id_loja'] ?></th>
-									<td class="titulo">
-										<a href="loja.php?id=<?= $loja['id_loja'] ?>" class="text-decoration-none">
-											<p class="bg-info text-light rounded-lg text-center p-1">
-												<?= $loja['nome_loja'] ?>
-											</p>	
-										</a>
-									</td>
-									<td><?= $loja['sobre_loja'] ?></td>
-									<td>
-										<small>
-											<?= $loja['cidade_loja'] ?>,
-											<?= $loja['estado_loja'] ?>,
-											<?= $loja['cep_loja'] ?> -
-											<?= $loja['rua_loja'] ?>,
-											<?= $loja['numero_loja'] ?>
-											<?php
-												if (!empty($loja['complemento_loja'])):
-													echo '(' . $loja['complemento_loja'] . ')';
-												endif;
-											?>
-										</small>
-									</td>
-
-									<td>
+								<th><?= $loja['id_loja'] ?></th>
+								<td class="titulo">
+									<a href="loja.php?id=<?= $loja['id_loja'] ?>" class="text-decoration-none">
+										<p class="bg-info text-light rounded-lg text-center p-1">
+											<?= $loja['nome_loja'] ?>
+										</p>	
+									</a>
+								</td>
+								<td><?= $loja['sobre_loja'] ?></td>
+								<td>
+									<small>
+										<?= $loja['cidade_loja'] ?>,
+										<?= $loja['estado_loja'] ?>,
+										<?= $loja['cep_loja'] ?> -
+										<?= $loja['rua_loja'] ?>,
+										<?= $loja['numero_loja'] ?>
 										<?php
-											if ($loja['ativo_loja'] == 1):
-												echo "Ativado";
-											else:
-												echo "<p class='bg-danger ronded-lg text-light p-1 rounded'>Desativado</p>";
+											if (!empty($loja['complemento_loja'])):
+												echo '(' . $loja['complemento_loja'] . ')';
 											endif;
 										?>
-									</td>
+									</small>
+								</td>
 
-								</tr>
+								<td>
+									<?php
+										if ($loja['ativo_loja'] == 1):
+											echo "Ativado";
+										else:
+											echo "<p class='bg-danger ronded-lg text-light p-1 rounded'>Desativado</p>";
+										endif;
+									?>
+								</td>
 
-							<?php
-								endforeach;
-							?>
+							</tr>
+							<?php endforeach; ?>
 
 						</tbody>
 					</table>
+
+					<?php endif; ?>
 				</div>
 
-				<?php
-					if (empty($lojas)):
-						echo
-							'<div class="alert text-center mx-auto shadow p-3" role="alert">
-								Não encontramos nada por aqui para esta busca e filtro. o.O
-								<br><a href="index.php" class="btn btn-light text-info mt-1">Limpar tudo</a>
-					  		</div>';
-					endif;
-				?>
+				
 			</section>
 
 		</main>

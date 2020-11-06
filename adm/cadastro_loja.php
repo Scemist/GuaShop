@@ -1,7 +1,6 @@
 <?php
 
 	require_once('conexao/conexao.php'); // Conexão com banco de dados
-
 	require_once('externo/verificar.php'); // Confere a sessão
 
 ?>
@@ -12,7 +11,7 @@
 
 	<head>
 		<meta charset="utf-8">
-		<meta name="theme-color" content="#343a40"> <!-- Cor do brownser -->
+		<meta name="theme-color" content="#e2e6ea"> <!-- Cor do brownser -->
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> <!-- Tag de viewport -->
 
 		<link rel="icon" type="imagem/png" href="../favicon.ico"> <!-- Flavicon -->
@@ -45,6 +44,7 @@
 			<div class="row">
 				<div class="col-7 pt-2"></div>
 				<div class="col-5 pt-2">
+
 					<?php if (isset($_GET['msg'])): ?>
 						<div class="alert alert-danger alert-dismissible fade show my-0" role="alert">
 							As senhas não estão iguais.
@@ -53,13 +53,14 @@
 							</button>
 						</div>
 					<?php endif; ?>
+
 				</div>
 			</div>
 
 			<form action="externo/cadastrar_loja.php" method="POST" enctype="multipart/form-data">
 				<div class="form-row">
 					<div class="col-12">
-						<h3 class="text-muted mb-4">Apresentação</h3>
+						<h3 class="font-weight-normal text-muted mb-4">Apresentação</h3>
 					</div>
 					<div class="col-0 col-lg-1"></div>
 					<div class="col-12 col-lg-5 form-group">
@@ -75,7 +76,7 @@
 				<div class="form-row">
 					<div class="col-12">
 						<hr>
-						<h3 class="text-muted mb-4">Endereço</h3>
+						<h3 class="font-weight-normal text-muted mb-4">Endereço</h3>
 					</div>
 
 					<div class="col-0 col-xl-1"></div>
@@ -96,7 +97,7 @@
 						</div>
 					</div>
 
-					<div class="col-12 col-md-7 col-xl-5">
+					<div class="col-12 col-md-7 col-xl-6">
 						<div class="form-row">
 							<div class="col-12 form-group">
 								<label for="rua">Rua</label>
@@ -119,7 +120,7 @@
 				<div class="form-row">
 					<div class="col-12">
 						<hr>
-						<h3 class="text-muted mb-4">Dados de Login</h3>
+						<h3 class="font-weight-normal text-muted mb-4">Dados de Login</h3>
 					</div>
 
 					<div class="col-0 col-xl-1"></div>

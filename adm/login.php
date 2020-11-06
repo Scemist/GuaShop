@@ -9,6 +9,7 @@
 <html lang="pt-br">
 	<head>
 		<meta charset="utf-8">
+		<meta name="theme-color" content="#e2e6ea"> <!-- Cor do brownser -->
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> <!-- Tag de viewport -->
 
 		<link rel="icon" type="imagem/png" href="../favicon.ico"> <!-- Flavicon -->
@@ -28,8 +29,8 @@
 
 				<div class="col-12 col-lg-8 py-5 p-sm-3 bg-secondary rounded text-white cartao shadow"> <!-- Abre cartão -->
 					<div class="row">
-						<div class="col-12">
-							<h1 class="p-3">GuaShop Login</h1>
+						<div class="col-12 text-center">
+							<h1 class="p-3 font-weight-normal">GuaShop</h1>
 							<p class="px-3 d-inline-block">Faça login para acessar esta página</p>
 
 							<?php
@@ -50,12 +51,12 @@
 								<div class="row">
 									<div class="col-12 form-group">
 										<label for="">Usuário</label>
-										<input class="form-control text-center" type="text" name="usuario" value="" placeholder="Romanov">
+										<input class="form-control text-center" type="text" name="usuario" value="">
 									</div>
 
 									<div class="col-12 form-group">
 										<label for="">Senha</label>
-										<input class="form-control text-center" type="password" name="senha" value="" placeholder=". . . . . . . . . . . . . . . . .">
+										<input class="form-control text-center" type="password" name="senha" value="">
 									</div>
 								</div>
 							</div>
@@ -64,7 +65,7 @@
 
 						<div class="row">
 							<div class="col-12">
-								<input class="btn btn-info m-3 float-right" type="submit" value="Entrar">
+								<input class="btn btn-light m-3 float-right" type="submit" value="Entrar">
 							</div>
 						</div>
 
