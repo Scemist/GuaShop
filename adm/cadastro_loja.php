@@ -23,7 +23,7 @@
 
 	<body class="bg-light">
 
-		<nav class="container">
+		<nav class="container-fluid">
 			<div class="row">
 				<div class="col-12">
 					<h2 class="text-light bg-dark py-2 px-5 mt-1 mb-0 text-right font-weight-light rounded">Cadastro de loja</h2>
@@ -154,12 +154,12 @@
 
 							<div class="col-12 col-lg-6 form-group">
 								<label for="rua">Senha</label>
-								<input class="form-control" id="senha" type="password" name="senha" placeholder="**************">
+								<input class="form-control" id="senha" type="password" name="senha">
 							</div>
 
 							<div class="col-12 col-lg-6 form-group">
 								<label for="rua">Confirme a senha</label>
-								<input class="form-control" id="senha-confirmacao" type="password" name="confirmacaosenha" placeholder="**************">
+								<input class="form-control" id="senha-confirmacao" type="password" name="confirmacaosenha">
 							</div>
 						</div>
 					</div>

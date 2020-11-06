@@ -1,7 +1,6 @@
 <?php
 
 	require_once('conexao/conexao.php'); // Conexão com banco de dados
-
 	require_once('externo/verificar.php'); // Confere a sessão
 
 	$id = $_GET['id'];
@@ -14,6 +13,7 @@
 	$loja = $sql -> fetch();
 
 	if (!isset($loja['id_loja'])) {
+
 		header('Location: index.php?men=1');
 		exit;
 	}
@@ -41,7 +41,7 @@
 
 	if (isset($imagem['id_imag'])) { // Tem imagem
 
-		$exibir = "<img src='../imagens/" . $imagem['arquivo_imag'] . " ' width='250px' class='mx-auto rounded img-thumbnail'>";
+		$exibir = "<img src='../imagens/" . $imagem['arquivo_imag'] . " ' width='250px' class='mx-auto d-block rounded img-thumbnail'>";
 		$nomeImagem = $imagem['arquivo_imag'];
 		$antigaImagem = true;
 	}
@@ -68,10 +68,10 @@
 
 	<body class="bg-light">
 
-		<nav class="container">
+		<nav class="container-fluid">
 			<div class="row">
 				<div class="col-12">
-					<h2 class="text-light bg-dark py-2 px-5 mt-1 mb-0 text-right font-weight-light rounded"><spam class="h5 font-weight-light mr-4">Informações da loja </spam> <?= $loja['nome_loja'] ?></h2>
+				<h2 class="text-light bg-dark py-2 px-5 mt-1 mb-0 text-right font-weight-light rounded"><spam class="h5 font-weight-light mr-4">Informações da loja </spam> <?= $loja['nome_loja'] ?></h2>
 				</div>
 
 				<div class="col-12">
@@ -87,36 +87,35 @@
 
 		<main class="container">
 			<form action="externo/atualizar_loja.php" method="POST" enctype="multipart/form-data">
-				<div class="form-row">
+				<div class="row">
 
-				<div class="col-1"></div>
+				<div class="col-0 col-xl-1"></div>
 
-					<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-5 mb-3">
-						<div class="row">
-							<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 input-group my-2">
-								<?= $exibir ?>
-							</div>
+					<div class="col-12 col-md-6 col-xl-5 my-3">
+				
+						<?= $exibir ?>
 
-							<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 input-group mb-3">
-								<div class="custom-file">
-									<input type="file" class="custom-file-input" id="imagem" name="imagem">
-									<label class="custom-file-label">Alterar ou adicionar imagem da loja</label>
-									<input type="hidden" name="antigaImagemNome" value="<?= $nomeImagem ?>">
-									<input type="hidden" name="antigaImagem" value="<?= $antigaImagem ?>">
-								</div>
-							</div>
+						<div class="custom-file my-2">
+							<input type="file" class="custom-file-input" id="imagem" name="imagem">
+							<label class="custom-file-label">Clique para escolher</label>
+							<input type="hidden" name="antigaImagemNome" value="<?= $nomeImagem ?>">
+							<input type="hidden" name="antigaImagem" value="<?= $antigaImagem ?>">
+						</div>
+
+						<div class="text-center">
+							<small class="text-muted">Alterar ou adicionar imagem da loja</small>
 						</div>
 					</div>
 
-					<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-6">
+					<div class="col-12 col-sm-12 col-md-6 col-xl-5">
 						<div class="row">
-							<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-10 form-group">
+							<div class="col-12 form-group">
 								<label for="nome">Nome</label>
 								<input class="form-control" id="nome" type="textarea" name="nome" placeholder="<?= $loja['nome_loja'] ?>" value="<?= $loja['nome_loja'] ?>">
 							</div>
-							<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-10 form-group">
+							<div class="col-12 form-group">
 								<label for="sobre">Sobre</label>
-								<textarea class="form-control" id="nome" type="textarea" name="sobre" placeholder="<?= $loja['sobre_loja'] ?>"><?= $loja['sobre_loja'] ?></textarea>
+								<textarea class="form-control" id="nome" type="textarea" name="sobre" rows="4" placeholder="<?= $loja['sobre_loja'] ?>"><?= $loja['sobre_loja'] ?></textarea>
 							</div>
 						</div>
 					</div>
@@ -125,14 +124,14 @@
 				<hr>
 
 				<div class="form-row">
-					<div class="col-1"></div>
+					<div class="col-0 col-xl-1"></div>
 
-					<div class="col-4">
+					<div class="col-12 col-md-5 col-xl-4">
 						<label for="estado">CEP</label>
 						<div class="input-group mb-3">
-							<input id="cep" type="number" class="form-control" name="cep" placeholder="<?= $loja['cep_loja'] ?>" value="<?= $loja['cep_loja'] ?>">
-							<div class="input-group-append">
-								<button id="adicionar" class="btn btn-outline-info" type="button">Adicionar</button>
+							<input id="cep" type="input" class="form-control w-75" name="cep" placeholder="<?= $loja['cep_loja'] ?>" value="<?= $loja['cep_loja'] ?>">
+							<div class="input-group-append w-25">
+								<button id="adicionar" class="btn btn-outline-info w-100" type="button">Buscar</button>
 							</div>
 						</div>
 
@@ -143,7 +142,7 @@
 						</div>
 					</div>
 
-					<div class="col-6">
+					<div class="col-12 col-md-7 col-xl-6">
 						<div class="form-row">
 							<div class="col-12 form-group">
 								<label for="rua">Rua</label>
@@ -166,24 +165,25 @@
 				<hr>
 
 				<div class="row">
-					<div class="col-1"></div>
-					<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-3 form-group">
+					<div class="col-0 col-xl-1"></div>
+					<div class="col-12 col-sm-12 col-lg-3 form-group">
 						<label for="exampleFormControlSelect1">Status atual da loja</label>
 						<select class="form-control" id="exampleFormControlSelect1" name="ativo">
 							<option <?= $checkAtivado ?> value="1">Ativado</option>
 							<option  <?= $checkDesativado ?> value="0">Desativado</option>
 						</select>
 					</div>
+					
+					<div class="col-12 col-sm-12 col-lg-5 col-xl-3"></div>
 
-					<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-2">
-						<a class="btn btn-danger position-absolute fixed-bottom mb-3 w-100" href="externo/apagar_loja.php?id=<?= $id ?>">Apagar</a>
+					<div class="col-12 col-sm-6 col-lg-2">
+						<a class="btn btn-danger d-inline-block mb-3 w-100" href="externo/apagar_loja.php?id=<?= $id ?>">Apagar</a>
 					</div>
 
-					<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-3"></div>
 
-					<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-2">
+					<div class="col-12 col-sm-6 col-lg-2">
 						<input type="hidden" name="id" value="<?= $id ?>">
-						<input class="btn btn-info w-100 position-absolute fixed-bottom mb-3 w-100" type="submit" value="Atualizar">
+						<input class="btn btn-info w-100 mb-3 w-100" type="submit" value="Atualizar">
 					</div>
 				</div>
 
@@ -194,6 +194,6 @@
 		<script src="../bootstrap/jquery-3.5.1.slim.min.js"></script> <!-- jQuery -->
 		<script src="../bootstrap/bootstrap.bundle-4.5.3.min.js"></script> <!-- Bundle -->
 		<script src="../funcoes/js/cep.js"></script> <!-- Funções de CEP -->
-		<script src="../funcoes/js/imagem.js"></script> <!-- Funções de imagens -->
+		<!-- <script src="../funcoes/js/imagem.js"></script> Funções de imagens -->
 	</body>
 </html>
