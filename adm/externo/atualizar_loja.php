@@ -9,7 +9,8 @@
 	if ($_POST['ativo'] == 0) { // Se está ativo
 
 		$ativo = 0;
-	} else {
+	}
+	else {
 
 		$ativo = 1;
 	}
@@ -57,5 +58,6 @@
 	salvarImagem('loja', $loja);
 
 	header('Location: ../loja.php?men=1&id=' . $_POST['id']);
+	exit;
 
 ?>

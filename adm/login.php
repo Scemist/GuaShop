@@ -16,7 +16,7 @@
 		<link rel="stylesheet" href="../bootstrap/bootstrap-4.5.3.min.css"> <!-- CSS Bootstrap -->
 		<link rel="stylesheet" href="css/login.css"> <!-- CSS Personalizado -->
 
-		<title>Guararapes Compras</title>
+		<title>Administração GuaShop</title>
 	</head>
 
 	<body class="bg-light">
@@ -34,9 +34,9 @@
 							<p class="px-3 d-inline-block">Faça login para acessar esta página</p>
 
 							<?php
-							if (isset($_GET['men'])):
-								echo "<p class='float-right bg-danger rounded px-3 d-inline-block p-1'>Informações de login inexistentes</p>";
-							endif;
+								if (isset($_GET['men'])):
+									echo "<p class='float-right bg-danger rounded px-3 d-inline-block p-1'>Informações de login inexistentes</p>";
+								endif;
 							?>
 						</div>
 					</div>
@@ -68,7 +68,6 @@
 								<input class="btn btn-light m-3 float-right" type="submit" value="Entrar">
 							</div>
 						</div>
-
 					</form>
 				</div> <!-- Fecha cartão -->
 

@@ -8,3 +8,11 @@
 #arquivoImagem {
 	cursor: pointer !important;
 }
+
+table {
+	min-width: 800px;
+}
+
+.titulo {
+	min-width: 10rem;
+}

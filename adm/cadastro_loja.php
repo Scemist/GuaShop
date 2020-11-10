@@ -16,9 +16,9 @@
 
 		<link rel="icon" type="imagem/png" href="../favicon.ico"> <!-- Flavicon -->
 		<link rel="stylesheet" href="../bootstrap/bootstrap-4.5.3.min.css"> <!-- CSS Bootstrap -->
-		<link rel="stylesheet" href="css/estilo.css">
+		<link rel="stylesheet" href="css/estilo.css"> <!-- CSS Personalizado -->
 
-		<title>GuaShop ADM - Cadastro</title>
+		<title>Cadastro - GuaShop Adm</title>
 	</head>
 
 	<body class="bg-light">
@@ -62,11 +62,14 @@
 					<div class="col-12">
 						<h3 class="font-weight-normal text-muted mb-4">Apresentação</h3>
 					</div>
+
 					<div class="col-0 col-lg-1"></div>
+
 					<div class="col-12 col-lg-5 form-group">
 						<label for="nome">Nome</label>
 						<input class="form-control" id="nome" type="text" name="nome" placeholder="Nome da loja">
 					</div>
+					
 					<div class="col-12 col-lg-5 form-group">
 						<label for="sobre">Sobre</label>
 						<textarea class="form-control" id="sobre" type="textarea" name="sobre" placeholder="Escreva uma breve apresentação sobre a loja, será exibido para todos os clientes"></textarea>

@@ -63,15 +63,14 @@
 		<link rel="icon" type="imagem/png" href="../favicon.ico"> <!-- Flavicon -->
 		<link rel="stylesheet" href="../bootstrap/bootstrap-4.5.3.min.css"> <!-- CSS Bootstrap -->
 	
-		<title>GuaShop ADM - Loja</title>
+		<title><?= $loja['nome_loja'] ?> - GuaShop Adm</title>
 	</head>
 
 	<body class="bg-light">
-
 		<nav class="container-fluid">
 			<div class="row">
 				<div class="col-12">
-				<h2 class="text-light bg-dark py-2 px-5 mt-1 mb-0 text-right font-weight-light rounded"><spam class="h5 font-weight-light mr-4">Informações da loja </spam> <?= $loja['nome_loja'] ?></h2>
+					<h2 class="text-light bg-dark py-2 px-5 mt-1 mb-0 text-right font-weight-light rounded"><spam class="h5 font-weight-light mr-4">Informações da loja </spam> <?= $loja['nome_loja'] ?></h2>
 				</div>
 
 				<div class="col-12">
@@ -113,6 +112,7 @@
 								<label for="nome">Nome</label>
 								<input class="form-control" id="nome" type="textarea" name="nome" placeholder="<?= $loja['nome_loja'] ?>" value="<?= $loja['nome_loja'] ?>">
 							</div>
+
 							<div class="col-12 form-group">
 								<label for="sobre">Sobre</label>
 								<textarea class="form-control" id="nome" type="textarea" name="sobre" rows="4" placeholder="<?= $loja['sobre_loja'] ?>"><?= $loja['sobre_loja'] ?></textarea>
@@ -166,6 +166,7 @@
 
 				<div class="row">
 					<div class="col-0 col-xl-1"></div>
+
 					<div class="col-12 col-sm-12 col-lg-3 form-group">
 						<label for="exampleFormControlSelect1">Status atual da loja</label>
 						<select class="form-control" id="exampleFormControlSelect1" name="ativo">
@@ -180,7 +181,6 @@
 						<a class="btn btn-danger d-inline-block mb-3 w-100" href="externo/apagar_loja.php?id=<?= $id ?>">Apagar</a>
 					</div>
 
-
 					<div class="col-12 col-sm-6 col-lg-2">
 						<input type="hidden" name="id" value="<?= $id ?>">
 						<input class="btn btn-info w-100 mb-3 w-100" type="submit" value="Atualizar">
@@ -188,7 +188,6 @@
 				</div>
 
 			</form>
-
 		</main>
 
 		<script src="../bootstrap/jquery-3.5.1.slim.min.js"></script> <!-- jQuery -->

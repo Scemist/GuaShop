@@ -1,32 +1,31 @@
 <?php
 
-  require_once('../conexao/conexao.php');
+	require_once('../conexao/conexao.php');
 
-  $usuario = $_POST['usuario'];
-  $senha = $_POST['senha'];
+	$usuario = $_POST['usuario'];
+	$senha = $_POST['senha'];
 
-  $sql = $conexao -> prepare('SELECT id_admi FROM administrador WHERE usuario_admi = :usuario AND senha_admi = :senha');
+	$sql = $conexao -> prepare('SELECT id_admi FROM administrador WHERE usuario_admi = :usuario AND senha_admi = :senha');
+	$sql -> bindParam(':usuario', $usuario);
+	$sql -> bindParam(':senha', $senha);
+	$sql -> execute();
 
-  $sql -> bindParam(':usuario', $usuario);
-  $sql -> bindParam(':senha', $senha);
+	$administrador = $sql -> fetch();
 
-  $sql -> execute();
+	if (isset($administrador['id_admi'])) { // Se existir o administrador
 
-  $administrador = $sql -> fetch();
+		session_name('adm');
+		session_start();
+		$_SESSION['logado'] = true;
+		$_SESSION['usuario'] = $usuario;
 
-  if (isset($administrador['id_admi'])) { // Se existir o administrador
+		header('Location: ../index.php');
+		exit;
+	}
+	else { // Se não existir o administrador
 
-    session_name('adm');
-    session_start();
-    $_SESSION['logado'] = true;
-    $_SESSION['usuario'] = $usuario;
-
-    header('Location: ../index.php');
-  }
-  else { // Se não existir o administrador
-
-    header('Location: ../login.php?men=1');
-  }
-
+		header('Location: ../login.php?men=1');
+		exit;
+	}
 
 ?>

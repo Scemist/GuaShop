@@ -74,18 +74,9 @@
 
 		<link rel="icon" type="imagem/png" href="../favicon.ico"> <!-- Flavicon -->
 		<link rel="stylesheet" href="../bootstrap/bootstrap-4.5.3.min.css"> <!-- CSS Bootstrap -->
+		<link rel="stylesheet" href="css/estilo.css"> <!-- CSS Personalizado -->
 
-		<title>GuaShop ADM - Produtos</title>
-
-		<style>
-			table {
-				min-width: 800px;
-			}
-
-			.titulo {
-				min-width: 10rem;
-			}
-		</style>
+		<title>Produtos - GuaShop Adm</title>
 	</head>
 
 	<body class="bg-light">
@@ -135,12 +126,9 @@
 
 							<input class="btn btn-secondary" type="hidden" name="get" value="pesquisa">
 						</div>
-
 					</form>
 				</div>
-
 			</div>
-
 		</main>
 
 		<main class="container-lg">
@@ -194,8 +182,8 @@
 
 				<?php endif; ?>
 				</div>
+				
 			</section>
-
 		</main>
 
 		<script src="../bootstrap/jquery-3.5.1.slim.min.js"></script> <!-- jQuery -->

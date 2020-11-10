@@ -60,6 +60,7 @@
 		}
 
 		switch ($filtro) {
+			
 			case 'todos':
 				$selectedTodos = 'selected';
 				$sql = filtroTodos($chave);
@@ -110,23 +111,12 @@
 
 		<link rel="icon" type="imagem/png" href="../favicon.ico"> <!-- Flavicon -->
 		<link rel="stylesheet" href="../bootstrap/bootstrap-4.5.3.min.css"> <!-- CSS Bootstrap -->
-		<link rel="stylesheet" href="css/estilo.css">
-
-		<style>
-			table {
-				min-width: 800px;
-			}
-
-			.titulo {
-				min-width: 10rem;
-			}
-		</style>
+		<link rel="stylesheet" href="css/estilo.css"> <!-- CSS Personalizado -->
 
 		<title>GuaShop Administração</title>
 	</head>
 
 	<body class="bg-light">
-
 		<main class="container">
 
 			<div class="row mt-2">
@@ -140,9 +130,11 @@
 						<div class="col-12 col-sm-6 col-md-12 col-lg-4 pl-lg-0">
 							<a href="cadastro_loja.php"><button class="mt-4 btn btn-info w-100">Adicionar loja</button></a>
 						</div>
+
 						<div class="col-12 col-sm-6 col-md-12 col-lg-4 px-lg-0">
 							<a href="produtos.php"><button class="mt-4 btn btn-info w-100">Produtos</button></a>
 						</div>
+
 						<div class="col-12 col-md-12 col-lg-4 pr-lg-0">
 							<a href="externo/sair.php"><button class="mt-4 btn btn-outline-warning w-100">Finalizar Sessão</button></a>
 						</div>
@@ -164,7 +156,6 @@
 				<div class="col-12 col-md-8 col-lg-6 mb-2 mt-3 mt-lg-0">
 					<form action="" method="GET">
 						<div class="form-row">
-
 							<div class="col-6 col-md-5">
 								<label for="">Pesquisa</label>
 								<input class="form-control form-control-sm" id="chave" type="text" name="chave" <?= $placeholder ?>>
@@ -182,7 +173,6 @@
 							<div class="col-12 col-md-2">
 								<input class="btn btn-sm btn-outline-info w-100 float-right position-absolute fixed-bottom atualizar" type="submit" value="Atualizar">
 							</div>
-
 						</div>
 					</form>
 				</div>
@@ -262,9 +252,7 @@
 					<?php endif; ?>
 				</div>
 
-				
 			</section>
-
 		</main>
 
 		<script src="../bootstrap/jquery-3.5.1.slim.min.js"></script> <!-- jQuery -->
