@@ -22,7 +22,6 @@ CREATE TABLE usuario (
 	cpf_usua INT NOT NULL,
 	rg_usua VARCHAR(11) NOT NULL,
 	nascimento_usua DATE NOT NULL,
-
 	estado_usua VARCHAR(50) NOT NULL,
 	cidade_usua VARCHAR(50) NOT NULL,
 	cep_usua INT(8) NOT NULL,
@@ -52,14 +51,12 @@ CREATE TABLE loja (
 	senha_loja VARCHAR(200) NOT NULL,
 	nome_loja VARCHAR(100) NOT NULL,
 	sobre_loja VARCHAR(5000) NOT NULL,
-
 	estado_loja VARCHAR(50) NOT NULL,
 	cidade_loja VARCHAR(50) NOT NULL,
 	cep_loja INT(8) NOT NULL,
 	rua_loja VARCHAR(100) NOT NULL,
 	numero_loja VARCHAR(20) NOT NULL,
 	complemento_loja VARCHAR(100) NOT NULL,
-
 	ativo_loja INT(1) NOT NULL
 
 ) ENGINE=InnoDB;
@@ -142,8 +139,8 @@ CREATE TABLE salvo_produto (
 -- Insere os dados dos primeiros administradores e setores
 
 INSERT INTO `administrador` (`nome_admi`, `usuario_admi`, `senha_admi`) VALUES
-('Lucas', 'lucasgoncalves', 'lucas'),
-('Nathan', 'nathanhenrique', 'nathan');
+('Lucas', 'lucas', 'lucasgoncalves'),
+('Nathan', 'nathan', 'nathanhenrique');
 
 INSERT INTO `setor` (`id_seto`, `nome_seto`, `descricao_seto`) VALUES
 (1, 'Fast Food', ''),

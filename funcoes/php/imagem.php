@@ -1,6 +1,6 @@
 <?php
 
-	function salvarImagem($tabela, $referencia) {
+	function salvarImagem($tabela, $referencia, $apagar) {
 
 		global $conexao;
 
@@ -34,7 +34,10 @@
 				$sql -> bindParam(':referencia', $referencia);
 				$sql -> execute();
 				
-				apagarImagem();
+				if ($apagar == true) {
+
+					apagarImagem();
+				}
 			}
 		}
 	}

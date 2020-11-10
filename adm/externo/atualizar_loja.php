@@ -55,7 +55,7 @@
 	$sql -> execute();
 
 	require_once('../../funcoes/php/imagem.php'); // Funções de manipulação de imagem
-	salvarImagem('loja', $loja);
+	salvarImagem('loja', $loja, true);
 
 	header('Location: ../loja.php?men=1&id=' . $_POST['id']);
 	exit;

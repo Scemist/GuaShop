@@ -58,6 +58,7 @@
 <html lang="pt-br">
 	<head>
 		<meta charset="utf-8">
+		<meta name="theme-color" content="#e2e6ea"> <!-- Cor do brownser -->
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 		<link rel="icon" type="imagem/png" href="../favicon.ico"> <!-- Flavicon -->

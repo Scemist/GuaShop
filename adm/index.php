@@ -222,7 +222,7 @@
 									<small>
 										<?= $loja['cidade_loja'] ?>,
 										<?= $loja['estado_loja'] ?>,
-										<?= $loja['cep_loja'] ?> -
+										<spam class="text-muted"><?= $loja['cep_loja'] ?></spam><br>
 										<?= $loja['rua_loja'] ?>,
 										<?= $loja['numero_loja'] ?>
 										<?php

@@ -76,37 +76,8 @@
 	$sql -> execute();
 	$loja = $conexao -> lastInsertId();
 
-	// Salva imagem
-	if (is_uploaded_file($_FILES['imagem']['tmp_name'])) { // Se existir uma imagem
-
-		// Salva na pasta imagens
-		$tabela = 'loja';
-		$pasta_upload = '../../imagens/';
-		$extensao = substr($_FILES['imagem']['name'], -4);
-		$arquivo = "loja_" . date('dmYhmis') . $extensao;
-		$imagem_final = $pasta_upload . $arquivo;
-
-		if (move_uploaded_file($_FILES['imagem']['tmp_name'], $imagem_final)) { // Se for salvo com sucesso
-
-			// Salva o nome no banco de dados
-			$sql = $conexao -> prepare (
-				'INSERT INTO
-					imagem (
-					arquivo_imag,
-					tabela_imag,
-					referencia_refe)
-				VALUES (
-					:arquivo,
-					:tabela,
-					:referencia)
-			');
-			$sql -> bindParam(':arquivo', $arquivo);
-			$sql -> bindParam(':tabela', $tabela);
-			$sql -> bindParam(':referencia', $loja);
-
-			$sql -> execute();
-		}
-	}
+	require_once('../../funcoes/php/imagem.php'); // Funções de manipulação de imagem
+	salvarImagem('loja', $loja, false);
 
 	$conexao = null;
 	$sql = null;
