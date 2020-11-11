@@ -25,5 +25,16 @@ Onde as pessoas comuns, podem se tornar clientes cadastrando no site de vendas, 
 
 ### Para clonar o repositório
 
-Na pasta raiz __> DOCUMENTOS > sql > Banco com dados como exemplo__ há tudo o que você precisa se quiser um banco de dados já preenchido para usar como exemplo e ver o site preenchido.
-Basta executar o documento guashop.sql do local, e mover as imagens do local para a pasta __imagens__ vazia na pasta raiz do projeto.
+* Após clonar o repositório:
+
+* Você precisa executar o arquivo _.sql_ no _MySQL_.
+Você tem duas opções a partir daqui:
+
+1. Você pode executar o arquivo SQL onde não há nada cadastrado, além do essencial.
+
+Você pode encontrar o arquivo em __DOCUMENTOS > SQLOriginal > guashop.sql__.
+
+2. Ou você pode executar o arquivo SQL onde há dados já cadastrados para servir como exemplo.
+
+Nesse caso, vá para __DOCUMENTOS > SQLPreenchido > guashop.sql__.
+Além disso, você vai precisar mover as imagens que estão em __DOCUMENTOS > sql > SQLPreenchido > Imagens__ para a pasta __Imagens__ na raiz do projeto.
