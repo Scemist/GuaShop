@@ -52,7 +52,7 @@
         <li class="mostrar nav-item">
 
             <?php
-              if($_SESSION['logado'] != 1) {
+              if($_SESSION['logado'] == false) {
 
                 echo '<a class="nav-link" href="login.php">Login</a>';
               }

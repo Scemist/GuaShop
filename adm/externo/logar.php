@@ -1,6 +1,8 @@
 <?php
 
-	require_once('../conexao/conexao.php');
+	// Conexão e sessão
+	require_once('../../funcoes/php/conexao.php');
+	$conexao = estabelecerConexao('adm', false);
 
 	$usuario = $_POST['usuario'];
 	$senha = $_POST['senha'];

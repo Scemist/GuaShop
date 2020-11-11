@@ -5,7 +5,7 @@
 	session_start();
 	 
 	// muda o valor de logged_in para false
-	$_SESSION['logged_in'] = false;
+	$_SESSION['logado'] = false;
 	 
 	// finaliza a sessão
 	session_destroy();

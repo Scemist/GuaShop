@@ -1,5 +1,8 @@
 <?php
-	include_once('conexao/conexao.php');
+	
+	// Conexão e sessão
+	require_once('../funcoes/php/conexao.php');
+	$conexao = estabelecerConexao('utilitario', false);
 
 	$id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
 ?>

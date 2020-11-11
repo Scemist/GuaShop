@@ -1,6 +1,8 @@
 <?php
 
-	require_once('../conexao/conexao.php');
+	// Conexão e sessão
+	require_once('../../funcoes/php/conexao.php');
+	$conexao = estabelecerConexao('utilitario', true);
 
 	date_default_timezone_set('America/Sao_Paulo');
 

@@ -1,12 +1,12 @@
 <?php
 
-	// Conexão com banco de dados
-
-	require_once('conexao/conexao.php');
+	// Conexão e sessão
+	require_once('../funcoes/php/conexao.php');
+	$conexao = estabelecerConexao('utilitario', true);
 
 	// Código PHP da página
 
-	if ($_SESSION['logado'] == 1) {
+	if ($_SESSION['logado'] == true) {
 
 		// Pega as informações do usuario
 
@@ -47,7 +47,7 @@
 	}
 	else {
 
-		header("Location: login.php?msg=1");
+		// header("Location: login.php?msg=1");
 	}
 
 ?>

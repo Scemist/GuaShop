@@ -1,6 +1,8 @@
 <?php
 
-  require_once('../conexao/conexao.php');
+  // Conexão e sessão
+	require_once('../../funcoes/php/conexao.php');
+	$conexao = estabelecerConexao('utilitario', false);
 
   $email = $_POST['email'];
   $senha = $_POST['senha'];
@@ -16,7 +18,7 @@
 
   if (isset($usuario['id_usua'])) {
 
-    $_SESSION['logado'] = 1;
+    $_SESSION['logado'] = true;
     $_SESSION['email'] = $email;
     $_SESSION['id'] = $usuario['id_usua'];
 

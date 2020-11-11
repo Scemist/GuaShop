@@ -19,7 +19,8 @@
   $numero = $_POST['numero'];
   $complemento = $_POST['complemento'];
 
-  include_once('../conexao/conexao.php');
+  require_once('../../funcoes/php/conexao.php');
+	$conexao = estabelecerConexao();
 
   $sql = $conexao -> prepare('
     INSERT INTO usuario (
@@ -79,7 +80,9 @@
 
   if ($id > 0) {
 
-    $_SESSION['logado'] = 1;
+    session_name('utilitario');
+    session_start();
+    $_SESSION['logado'] = true;
     $_SESSION['email'] = $email;
     $_SESSION['id'] = $id;
 

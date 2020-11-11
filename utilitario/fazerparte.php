@@ -1,10 +1,8 @@
 <?php
 
-	// Conexão com banco de dados
-
-	require_once('conexao/conexao.php');
-
-	// Código PHP da página
+	// Conexão e sessão
+	require_once('../funcoes/php/conexao.php');
+	$conexao = estabelecerConexao('utilitario', false);
 
 ?>
 

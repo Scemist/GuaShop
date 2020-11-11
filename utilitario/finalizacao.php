@@ -1,6 +1,8 @@
 <?php
 
-	include_once('conexao/conexao.php');
+	// Conexão e sessão
+	require_once('../funcoes/php/conexao.php');
+	$conexao = estabelecerConexao('utilitario', true);
 
 	$total = $_POST['total'];
 

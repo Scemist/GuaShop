@@ -1,7 +1,8 @@
 <?php
 
-	// Conexão com o banco de dados
-	require_once('../conexao/conexao.php');
+	// Conexão e sessão
+	require_once('../../funcoes/php/conexao.php');
+	$conexao = estabelecerConexao('adm', true);
 
 	// Confere a Senha
 	if ($_POST['senha'] !== $_POST['confirmacaosenha']) {
@@ -15,7 +16,7 @@
 	$nome = $_POST['nome'];
 	$sobre = $_POST['sobre'];
 	$usuario = $_POST['usuario'];
-	$senha = $_POST['senha'];
+	$senha = md5($_POST['senha']);
 	$uf = $_POST['uf'];
 	$cidade = $_POST['cidade'];
 	$cep = $_POST['cep'];
