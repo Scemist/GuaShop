@@ -1,8 +1,8 @@
 <?php
 	
-	session_name('loja');
-	session_start();
-	include_once('../conexao/conexao.php');
+	// Conexão e sessão
+	require_once('../../funcoes/php/conexao.php');
+	$conexao = estabelecerConexao('loja', false);
 
 	$id = filter_input(INPUT_POST, 'id', FILTER_SANITIZE_NUMBER_INT);
 

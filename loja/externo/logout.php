@@ -1,8 +1,8 @@
 <?php
 
-	// inicia a sessão
-	session_name('loja');
-	session_start();
+	// Conexão e sessão
+	require_once('../../funcoes/php/conexao.php');
+	$conexao = estabelecerConexao('loja', false);
 	 
 	// muda o valor de logged_in para false
 	$_SESSION['logado'] = false;

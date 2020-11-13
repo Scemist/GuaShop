@@ -10,8 +10,7 @@
 		FROM
 			imagem i
 			JOIN produto p ON i.referencia_refe = p.id_prod
-			JOIN  loja l
-			ON p.id_loja = l.id_loja
+			JOIN loja l ON p.id_loja = l.id_loja
 		WHERE
 			p.id_loja = :loja
 			AND i.tabela_imag = "produto"
@@ -20,7 +19,7 @@
 
 	$sql -> bindParam(':loja', $_SESSION['id']);
 	$sql -> execute();
-	$colunas_id = $sql -> fetchAll();
+	$produtos = $sql -> fetchAll();
 
 ?>
 
@@ -66,30 +65,32 @@
 			</div>
 
 			<div class="row">
-				<?php foreach ($colunas_id as $coluna_id): ?>
+				<?php foreach ($produtos as $produto): ?>
 
 				<div class="col-3 p-1">
 					<div class="bg-white rounded shadow-sm produto p-3 position-relative">
 
 						<div class="imagem rounded">
 							<img class="img miniatura" alt="Responsive image"
-								src="../imagens/<?= $coluna_id['arquivo_imag']?>">
+								src="../imagens/<?= $produto['arquivo_imag'] ?>">
 						</div>
 
 						<div class="titulo">
-							<h5 class="text-muted px-2 py-2"><?= $coluna_id['nome_prod']?></h5>
+							<h5 class="text-muted px-2 py-2"><?= $produto['nome_prod'] ?></h5>
 						</div>
 
 						<ul class="list-group lista w-100">
 							<li class="list-group-item py-2 d-inline-block text-truncate">
-								Preço: <?=$coluna_id['preco_prod']?>"
+								Preço: <?= $produto['preco_prod'] ?>
 							</li>
 
+							<?php if ($produto['promocao_prod'] > 0): $promocao = $produto['preco_prod'] - $produto['promocao_prod']; ?>
 							<li class="list-group-item py-2 d-inline-block text-truncate">
-								Promoção: <?= $coluna_id['promocao_prod']?>
+								Promoção: <?= $promocao ?>
 							</li>
+							<?php endif; ?>
 
-							<a class="list-group-item list-group-item-info py-2 list-group-item-action active" href="produto.php?id=<?=$coluna_id['id_prod']?>">Editar</a>
+							<a class="list-group-item list-group-item-info py-2 list-group-item-action active" href="produto.php?id=<?=$produto['id_prod']?>">Editar</a>
 						</ul>
 					</div>
 				</div>
