@@ -1,8 +1,8 @@
 <?php
 
-	session_name('loja');
-	session_start();
-	require('externo/checar.php');
+	// Conexão e sessão
+	require_once('../funcoes/php/conexao.php');
+	$conexao = estabelecerConexao('loja', true);
 
 	$sql = $conexao -> prepare(
 		'SELECT

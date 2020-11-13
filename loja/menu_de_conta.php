@@ -1,8 +1,8 @@
 <?php
 
-	session_name('loja');
-	session_start();
-	require('conexao/conexao.php');
+	// Conexão e sessão
+	require_once('../funcoes/php/conexao.php');
+	$conexao = estabelecerConexao('loja', true);
 
 	$sql = "SELECT
 			*
@@ -68,9 +68,6 @@
 				<div class="col-7 mx-auto my-2 px-5">
 					<h4 for="disabledTextInput" class="text-capitalize pt-4">Usuário:</h4>
 					<input type="text" class="form-control text-center" id="disabledTextInput" value="<?php if(isset($inf['usuario_loja'])) echo $inf['usuario_loja']; ?>" disabled>
-
-					<h4 for="disabledTextInput" class="text-capitalize pt-4">Senha:</h4>
-					<input type="text" class="form-control text-center" id="disabledTextInput" value="<?php if(isset($inf['senha_loja'])) echo $inf['senha_loja']; ?>" disabled>
 
 					<a role="button" class="btn btn-info float-right mt-5" href="mudar_login.php?id=<?=$inf['id_loja']?>">Mudar login</a>
 				</div>

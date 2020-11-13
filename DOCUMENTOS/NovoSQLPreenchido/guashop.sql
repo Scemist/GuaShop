@@ -161,6 +161,6 @@ INSERT INTO `imagem` (`id_imag`, `arquivo_imag`, `tabela_imag`, `referencia_refe
 (3, 'loja_2020_11_19_17_15.png', 'loja', '3');
 
 INSERT INTO `loja` (`id_loja`, `usuario_loja`, `senha_loja`, `nome_loja`, `sobre_loja`, `estado_loja`, `cidade_loja`, `cep_loja`, `rua_loja`, `numero_loja`, `complemento_loja`, `ativo_loja`) VALUES
-(1, 'bruna', 'oliveramora', 'Gatteria', 'Gatinho feliz, gatinho dorminhoco, móveis, brinquedos e alimentação.', 'SP', 'Guararapes', 16700000, 'Centro', '213', '', 1),
-(2, 'clave', 'sol', 'Clave de Sol', 'Instrumentos, partituras, e ferramentas para músicos e musicistas.', 'MG', 'Fronteira', 38230000, 'Avenida Ruaro', '465', 'Frente ao Coreto', 1),
-(3, 'crimson', 'vinhos', 'Crimson Vinhos', 'A adega oficial do projeto Crimson Vinhos, com o melhor catálogo explicado em scemist.github/crimson', 'MG', 'Prata', 38140000, 'Rua dos tridentes', '50', 'Casa', 0);
+(1, 'bruna', '0e00810c8e1d6a7b11516e6ec9b1d0a8', 'Gatteria', 'Gatinho feliz, gatinho dorminhoco, móveis, brinquedos e alimentação.', 'SP', 'Guararapes', 16700000, 'Centro', '213', '', 1),
+(2, 'clave', '12313a3d28f802e3a22b07d2e01c6dcf', 'Clave de Sol', 'Instrumentos, partituras, e ferramentas para músicos e musicistas.', 'MG', 'Fronteira', 38230000, 'Avenida Ruaro', '465', 'Frente ao Coreto', 1),
+(3, 'crimson', '2d92876b2dfe87d8ac442b581a9f0445', 'Crimson Vinhos', 'A adega oficial do projeto Crimson Vinhos, com o melhor catálogo explicado em scemist.github/crimson', 'MG', 'Prata', 38140000, 'Rua dos tridentes', '50', 'Casa', 0);

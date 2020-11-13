@@ -1,6 +1,8 @@
 <?php
 
-	require('../conexao/conexao.php');
+	// Conexão e sessão
+	require_once('../../funcoes/php/conexao.php');
+	$conexao = estabelecerConexao('loja', false);
 
 	$usuario = $_POST['usuario'];
 	$senha = md5($_POST['senha']);
@@ -9,12 +11,10 @@
 	$sql -> bindParam(':usuario', $usuario);
  	$sql -> bindParam(':senha', $senha);
  	$sql -> execute();
- 	$loja = $sql -> fetch();
+	$loja = $sql -> fetch();
 
- 	if (count($loja) == 1) {
+ 	if (isset($loja['id_loja'])) {
 
-		session_name('loja');
-		session_start();
 		$_SESSION['logado'] = true;
 		$_SESSION['id'] = $loja['id_loja'];
 
