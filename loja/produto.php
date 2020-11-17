@@ -168,9 +168,11 @@
 						</div>
 
 						<div class="form-group col-md-6" style="margin-top: 5rem;">
-							<a href="index.php" class="btn btn-outline-primary btn-lg">Cancelar</a>
-							<input type="hidden" name="id" value="<?php echo $id ?>">
-							<input type="submit" name="SendCadEdit" class="btn btn-outline-primary btn-lg" value="Salvar">
+							<input type="hidden" name="id" value="<?= $id ?>">
+
+							<a href="externo/deletar_produto.php?id=<?= $id ?>" class="btn btn-danger">Deletar</a>
+							<a href="index.php" class="btn btn-outline-warning">Cancelar</a>
+							<input type="submit" name="SendCadEdit" class="btn btn-outline-info" value="Salvar">
 						</div>
 					</div>
 				</div>

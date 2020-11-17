@@ -4,27 +4,15 @@
 	require_once('../../funcoes/php/conexao.php');
 	$conexao = estabelecerConexao('loja', false);
 
-	$id = $_GET['id'];
+	$produto = $_GET['id'];
 
-	$sql = $conexao -> prepare( 
-		"DELETE FROM
-					imagem
-				WHERE
-					referencia_refe = :id
-					AND tabela_imag = 'produto';
-		DELETE FROM
-					setor 
-				WHERE 
-					id_prod = :id;
-		DELETE FROM
-					produto
-				WHERE
-					id_prod = :id
-				");
+	// Funções de manipulação de imagem
+	require_once('../../funcoes/php/imagem.php');
+	apagarImagem('produto', $produto, false);
 
-	$sql -> bindParam(':id', $id);
-
+	$sql = $conexao -> prepare('DELETE FROM produto WHERE id_prod = :produto');
+	$sql -> bindParam(':produto', $produto);
 	$sql -> execute();
 
-	header('Location: ../index.php');
+	header('Location: ../produtos.php');
 ?>

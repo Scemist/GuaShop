@@ -73,12 +73,12 @@
 
 	if ($produto > 0) {
 
-		$_SESSION['msg'] = "<p>Sucesso ao salvar os dados</p>";
-		header("Location: ../index.php");
+		header("Location: ../produtos.php");
+		exit;
 	}
-	else{
+	else {
 
-		$_SESSION['msg'] = "<p>Erro ao salvar os dados</p>";
 		header("Location: ../cadastro_produtos.php");
+		exit;
 	}
 ?>

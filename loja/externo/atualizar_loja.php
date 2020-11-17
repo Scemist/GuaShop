@@ -15,7 +15,7 @@
 	$complemento = $_POST['complemento'];
 
 	$sql = $conexao -> prepare (
-		"UPDATE
+		'UPDATE
 			loja
 		SET
 			sobre_loja = :sobre,
@@ -26,8 +26,8 @@
 			numero_loja = :numero,
 			complemento_loja = :complemento
 		WHERE
-			id_loja = '$id'
-	");
+			id_loja = :id
+	');
 
 	$sql -> bindParam(':sobre', $sobre);
 	$sql -> bindParam(':estado', $estado);
@@ -36,48 +36,16 @@
 	$sql -> bindParam(':rua', $rua);
 	$sql -> bindParam(':numero', $numero);
 	$sql -> bindParam(':complemento', $complemento);
+	$sql -> bindParam(':id', $id);
 
 	$sql -> execute();
-	$loja = $conexao -> lastInsertId();
 
-  if (is_uploaded_file($_FILES['imagem']['tmp_name'])) { 
-
-    $titulo = $_POST['titulo'];
-    $tabela = 'loja';
-	$referencia = $id;
-
-    $pasta = '../../imagens/';
-    $tipo = substr($_FILES['imagem']['name'], -4);
-    $imagem = $titulo . date('dmYhmis') . $tipo;
-    $nome_imagem = $pasta . $imagem;
-
-		if(move_uploaded_file($_FILES['imagem']['tmp_name'], $nome_imagem)){
-			$sql = $conexao -> prepare (
-				"UPDATE imagem
-					SET
-						titulo_imag = '$titulo',
-						arquivo_imag = '$imagem',
-						tabela_imag = '$tabela',
-						referencia_refe = '$referencia'
-					WHERE
-						referencia_refe = '$id'
-						");
-
-			$sql -> execute();
-		}
-	}
+	require_once('../../funcoes/php/imagem.php'); // Funções de manipulação de imagem
+	salvarImagem('loja', $id, true);
 
 	$conexao = null;
 	$sql = null;
 
-	if ($id > 0) {
-
-		header("Location: ../index.php");
-	}
-	else{
-
-		$_SESSION['msg'] = "<p>Erro ao salvar os dados</p>";
-		header("Location: ../menu_de_conta.php");
-	}
+	header("Location: ../menu_de_conta.php");
 
 ?>
