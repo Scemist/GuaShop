@@ -5,7 +5,7 @@
 	$conexao = estabelecerConexao('adm', false);
 
 	$usuario = $_POST['usuario'];
-	$senha = $_POST['senha'];
+	$senha = md5($_POST['senha']);
 
 	$sql = $conexao -> prepare('SELECT id_admi FROM administrador WHERE usuario_admi = :usuario AND senha_admi = :senha');
 	$sql -> bindParam(':usuario', $usuario);

@@ -8,29 +8,30 @@
 
 	$usuario = $_POST['usuario'];
 	$senha = $_POST['senha'];
-	$csenha = $_POST['csenha'];
+	$confirmacaoSenha = $_POST['csenha'];
 
 	$loja = 'loja';
 
-	if (empty($usuario) || empty($senha)) {
-    	echo "Informe email e senha";
-            return true;
-	}
-	if ($senha != $csenha) {
-            echo "As senhas devem ser iguais!";
-            return true;
-    }  
+	if ($senha != $confirmacaoSenha) {
 
-	$sql =  $conexao -> prepare("
-		UPDATE
+		echo "As senhas devem ser iguais!";	
+	}  
+	
+	$senha = md5($senha);
+
+	$sql =  $conexao -> prepare(
+		'UPDATE
 			loja
 		SET
-			usuario_loja = '$usuario',
-			senha_loja = '$senha'
+			usuario_loja = :usuario,
+			senha_loja = :senha
 		WHERE
-			id_loja = '$id'
-	");
+			id_loja = :id'
+	);
 
+	$sql -> bindParam(':usuario', $usuario);
+	$sql -> bindParam(':senha', $senha);
+	$sql -> bindParam(':id', $id);
 	$sql -> execute();
 
 	$conexao = null;

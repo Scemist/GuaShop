@@ -60,7 +60,7 @@
 
 					<div class="form-group col-5">
 						<label class="col-form-label" for="senha">Senha</label>
-						<input type="password" class="form-control" placeholder="Insira uma senha" id="senha" name="senha" value="<?php if(isset($login['senha_loja'])) echo $login['senha_loja']; ?>">
+						<input type="password" class="form-control" id="senha" name="senha">
 					</div>
 
 					<div class="col-1 mt-4"></div>
@@ -82,7 +82,7 @@
 
 					<div class="form-group col-5">
 						<label class="col-form-label" for="csenha">Confirmar Senha</label>
-						<input type="password" class="form-control" placeholder="Insira uma senha" id="csenha" name="csenha" value="<?php if(isset($login['senha_loja'])) echo $login['senha_loja']; ?>">
+						<input type="password" class="form-control" id="csenha" name="csenha">
 					</div>
 				</div>
 			</form>

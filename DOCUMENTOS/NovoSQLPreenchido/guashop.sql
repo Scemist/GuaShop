@@ -139,8 +139,9 @@ CREATE TABLE salvo_produto (
 -- Insere os dados dos primeiros administradores e setores
 
 INSERT INTO `administrador` (`nome_admi`, `usuario_admi`, `senha_admi`) VALUES
-('Lucas', 'lucas', 'lucasgoncalves'),
-('Nathan', 'nathan', 'nathanhenrique');
+('Lucas', 'lucas', '3f71c2f545e0331bb971b592f73ac2e4'), -- Senha 'goncalves'
+('Nathan', 'nathan', '83a6c8fb8e054de73cb4f76c3c6f9701'), -- Senha 'henrique'
+('Admin', 'admin', '21232f297a57a5a743894a0e4a801fc3'); -- Senha 'admin'
 
 INSERT INTO `setor` (`id_seto`, `nome_seto`, `descricao_seto`) VALUES
 (1, 'Fast Food', ''),
