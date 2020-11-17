@@ -12,7 +12,6 @@
 	}
 
 	// Salva a loja no banco de dados
-
 	$nome = $_POST['nome'];
 	$sobre = $_POST['sobre'];
 	$usuario = $_POST['usuario'];
@@ -85,13 +84,13 @@
 
 	if ($loja > 0) {
 
-	  header("Location: ../loja.php?id=$loja");
-	  exit;
+		header("Location: ../loja.php?id=$loja");
+		exit;
 	}
 	else {
 
-	  header('Location: ../cadastro_loja.php?msg=2');
-	  exit;
+		header('Location: ../cadastro_loja.php?msg=2');
+		exit;
 	}
 
 ?>

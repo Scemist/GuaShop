@@ -1,8 +1,8 @@
 <?php
 
-	// Cadastrar
-	// Atualizar
-	// Apagar
+	// Cadastrar - função salvarImagem com atualizar false
+	// Atualizar - função salvarImagem com atualizar true
+	// Apagar - função apagarImagem com atualizar false
 
 	function salvarImagem($tabela, $referencia, $atualizar) {
 
@@ -69,7 +69,7 @@
 
 		global $conexao;
 
-		$sql = $conexao -> prepare ('SELECT id_imag FROM imagem WHERE tabela_imag = :tabela AND referencia_refe = :referencia');
+		$sql = $conexao -> prepare ('SELECT id_imag, arquivo_imag FROM imagem WHERE tabela_imag = :tabela AND referencia_refe = :referencia');
 		$sql -> bindParam (':tabela', $tabela);
 		$sql -> bindParam (':referencia', $referencia);
 		$sql -> execute();
