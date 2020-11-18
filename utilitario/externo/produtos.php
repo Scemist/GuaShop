@@ -1,9 +1,11 @@
 <?php
 
+  session_name('utilitario');
   session_start();
-  if ($_SESSION['logado'] == 0) {
 
-    header('Location: ../login.php?');
+  if ($_SESSION['logado'] != true) {
+
+    header('Location: ../login.php');
     exit;
   }
 

@@ -1,35 +1,29 @@
 <?php
 
-  // Conexão e sessão
+	// Conexão e sessão
 	require_once('../../funcoes/php/conexao.php');
 	$conexao = estabelecerConexao('utilitario', false);
 
-  $email = $_POST['email'];
-  $senha = $_POST['senha'];
+	$email = $_POST['email'];
+	$senha = md5($_POST['senha']);
 
-  $sql = $conexao -> prepare('SELECT id_usua FROM usuario WHERE email_usua = :email AND senha_usua = :senha');
+	$sql = $conexao -> prepare('SELECT id_usua FROM usuario WHERE email_usua = :email AND senha_usua = :senha');
+	$sql -> bindParam(':email', $email);
+	$sql -> bindParam(':senha', $senha);
+	$sql -> execute();
+	$usuario = $sql -> fetch();
 
-  $sql -> bindParam(':email', $email);
-  $sql -> bindParam(':senha', $senha);
+	if (isset($usuario['id_usua'])) {
 
-  $sql -> execute();
+		$_SESSION['logado'] = true;
+		$_SESSION['email'] = $email;
+		$_SESSION['id'] = $usuario['id_usua'];
 
-  $usuario = $sql -> fetch();
+		header('Location: ../index.php');
+	}
+	else {
 
-  if (isset($usuario['id_usua'])) {
-
-    $_SESSION['logado'] = true;
-    $_SESSION['email'] = $email;
-    $_SESSION['id'] = $usuario['id_usua'];
-
-    echo $_SESSION['logado'] = 1 . ' ' .  $_SESSION['email'] = $email;
-
-    header('Location: ../index.php');
-  }
-  else {
-
-    header('Location: ../login.php?msg=2');
-  }
-
+		header('Location: ../login.php?msg=2');
+	}
 
 ?>

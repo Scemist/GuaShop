@@ -5,6 +5,7 @@
   $conexao = estabelecerConexao('utilitario', true);
 
   if ($_SESSION['logado'] != 1) {
+
     header('Location: login.php');
     exit;
   }
@@ -17,7 +18,6 @@
 		$sql -> bindParam(':cartao', $cartao);
 		$sql -> execute();
 		$cartao = $sql -> fetch();
-
 	}
 
 ?>
@@ -68,7 +68,7 @@
 
       <div class="row">
 
-        <div class="col-1 col-lg-2">rfsdf</div>
+        <div class="col-1 col-lg-2"></div>
 
         <div class="col-10 col-lg-8 mb-5">
           <form class="" action="externo/cartao_ex.php" method="POST">

@@ -13,7 +13,7 @@
 
   // Conexão e sessão
 	require_once('../../funcoes/php/conexao.php');
-	$conexao = estabelecerConexao('utilitario', true);
+	$conexao = estabelecerConexao('utilitario', false);
 
   $sql = $conexao -> prepare
   ('

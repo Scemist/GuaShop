@@ -2,9 +2,10 @@
 
   // Conexão e sessão
 	require_once('../../funcoes/php/conexao.php');
-	$conexao = estabelecerConexao('utilitario', true);
+	$conexao = estabelecerConexao('utilitario', false);
 
   if ($_SESSION['logado'] != 1) {
+    
     header('Location: ../login.php');
     exit;
   }
