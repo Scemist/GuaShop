@@ -18,6 +18,26 @@
     overflow: hidden;
 }
 
-.cartao-login {
-    width: 60%;
+
+@media screen and (min-width: 1001px) {
+    
+    .cartao-login {
+        width: 60%;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    
+    .cartao-login {
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    
+    .cartao-login {
+        width: 100%;
+        min-height: 80vh;
+        margin-bottom: 2rem;
+    }
 }

@@ -3,6 +3,7 @@
 <html lang="pt-br">
 	<head>
 		<meta charset="utf-8">
+		<meta name="theme-color" content="#e2e6ea"> <!-- Cor do brownser -->
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> <!-- Tag de viewport -->
 
 		<link rel="icon" type="imagem/png" href="../favicon.ico"> <!-- Flavicon -->
@@ -13,12 +14,16 @@
 	</head>
 
 	<body class="bg-light">
-		<main class="container">
+		<main class="container-fluid">
 
-			<div class="row my-5 py-4"></div>
+			<div class="row">
+				<div class="col-12 py-0 py-md-4 py-xl-5">
+
+				</div>
+			</div>
 
 			<form action="externo/logar.php" method="POST" enctype="multipart/form-data">
-				<div class="row py-4 px-5 mt-5 bg-white mx-auto rounded shadow cartao-login">
+				<div class="row py-4 px-1 px-md-5 mt-5 bg-white mx-auto rounded shadow cartao-login">
 
 					<div class="col-12 text-center">
 						<h2 class="my-2 text-black display-4">GuaShop</h2>
