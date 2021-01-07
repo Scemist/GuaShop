@@ -132,7 +132,7 @@
 					<h4 class="text-success">Novos Pedidos</h4>
 				</div>
 				<div class="row">
-					<div class="col-4">
+					<div class="col-12 col-md-4">
 						<div class="list-group" id="list-tab" role="tablist">
 							<a class="list-group-item list-group-item-success list-group-item-action active text-center" id="list-home-list" data-toggle="list" href="#list-clean" role="tab" aria-controls="home">. . .</a>
 							<?php
@@ -143,10 +143,10 @@
 							?>
 						</div>
 					</div>
-					<div class="col-8">
+					<div class="co-12 col-md-8">
 						<div class="tab-content" id="nav-tabContent">
 							<div class="tab-pane fade show active" id="list-clean" role="tabpanel" aria-labelledby="list-home-list">
-								<p class="lead">Aqui estão os novos pedidos, que ainda não começaram a ser processados.</p>
+								<p class="lead p-2">Aqui estão os novos pedidos, que ainda não começaram a ser processados.</p>
 							</div>
 							<?php
 								foreach ($pedidos as $controle => $pedido):
@@ -161,7 +161,7 @@
 									$sql -> execute();
 									$usuario = $sql -> fetch();
 							?>
-							<div class="tab-pane fade" id="list-<?= $control ?>" role="tabpanel" aria-labelledby="list-profile-list">
+							<div class="tab-pane fade py-3" id="list-<?= $control ?>" role="tabpanel" aria-labelledby="list-profile-list">
 								<p class="lead"><?= $pedido['endereco_pedi'] ?></p>
 								<?php foreach ($produtos as $controle => $produto): ?>
 								<div class="list-group">
@@ -190,7 +190,7 @@
 					<h4 class="text-warning">Pedidos em processamento</h4>
 				</div>
 				<div class="row">
-					<div class="col-4">
+					<div class="col-12 col-md-4">
 						<div class="list-group" id="list-tab" role="tablist">
 							<a class="list-group-item list-group-item-warning list-group-item-action active text-center" id="list-home-list" data-toggle="list" href="#list-clean2" role="tab" aria-controls="home">. . .</a>
 							<?php
@@ -201,10 +201,10 @@
 							?>
 						</div>
 					</div>
-					<div class="col-8">
+					<div class="col-12 col-md-8">
 						<div class="tab-content" id="nav-tabContent">
 							<div class="tab-pane fade show active" id="list-clean2" role="tabpanel" aria-labelledby="list-home-list">
-								<p class="lead">Aqui estão os pedidos que já estão em andamento de preparação.</p>
+								<p class="lead p-2">Aqui estão os pedidos que já estão em andamento de preparação.</p>
 							</div>
 							<?php
 								foreach ($pedidos as $controle => $pedido):
@@ -219,7 +219,7 @@
 									$sql -> execute();
 									$usuario = $sql -> fetch();
 								?>
-							<div class="tab-pane fade" id="list-<?= $control ?>" role="tabpanel" aria-labelledby="list-profile-list">
+							<div class="tab-pane fade py-3" id="list-<?= $control ?>" role="tabpanel" aria-labelledby="list-profile-list">
 								<p class="lead"><?= $pedido['endereco_pedi'] ?></p>
 								<?php foreach ($produtos as $controle => $produto): ?>
 								<div class="list-group">
@@ -249,7 +249,7 @@
 					<h4 class="text-primary">Pedidos para entrega</h4>
 				</div>
 				<div class="row">
-					<div class="col-4">
+					<div class="col-12 col-md-4">
 						<div class="list-group" id="list-tab" role="tablist">
 							<a class="list-group-item list-group-item-primary list-group-item-action active text-center" id="list-home-list" data-toggle="list" href="#list-clean3" role="tab" aria-controls="home">. . .</a>
 							<?php
@@ -260,10 +260,10 @@
 							?>
 						</div>
 					</div>
-					<div class="col-8">
+					<div class="col-12 col-md-8">
 						<div class="tab-content" id="nav-tabContent">
 							<div class="tab-pane fade show active" id="list-clean3" role="tabpanel" aria-labelledby="list-home-list">
-								<p class="lead">Aqui estão os pedidos esperando para entrega. Após a entrega de todos os produtos do pedido serem feita, o pedido pode ser finalizado.</p>
+								<p class="lead p-2">Aqui estão os pedidos esperando para entrega. Após a entrega de todos os produtos do pedido serem feita, o pedido pode ser finalizado.</p>
 							</div>
 							<?php
 								foreach ($pedidos as $controle => $pedido):
@@ -278,7 +278,7 @@
 									$sql -> execute();
 									$usuario = $sql -> fetch();
 							?>
-							<div class="tab-pane fade" id="list-<?= $control ?>" role="tabpanel" aria-labelledby="list-profile-list">
+							<div class="tab-pane fade py-3" id="list-<?= $control ?>" role="tabpanel" aria-labelledby="list-profile-list">
 								<p class="lead"><?= $pedido['endereco_pedi'] ?></p>
 								<p>Destinatário: <strong class="lead"><?= $pedido['destinatario_pedi'] ?></strong></p>
 								<?php foreach ($produtos as $controle => $produto): ?>
@@ -293,7 +293,7 @@
 									</button>
 								</div>
 								<?php endforeach; ?>
-								<a class="btn mt-3 btn-primary float-right" href="externo/pedido.php?func=finalizar&id=<?= $pedido['id_pedi'] ?>">Marcar como finalizado</a>
+								<a class="btn mt-3 btn-primary float-right" href="externo/pedido.php?func=finalizar&id=<?= $pedido['id_pedi'] ?>">Finalizar</a>
 								<a class="btn mt-3 btn-sucess btn-sm mx-3 float-right" href="externo/pedido.php?func=processo&id=<?= $pedido['id_pedi'] ?>">Voltar processo</a>
 							</div>
 							<?php endforeach; ?>
@@ -303,8 +303,9 @@
 			</section>
 
 			<div class="row">
-				<div class="col-12">
-					<a href="pedidos.php" class="float-right w-25 btn btn-outline-info mb-4">Pedidos finalizados</a>
+				<div class="col-0 col-md-6"></div>
+				<div class="col-12 col-md-6">
+					<a href="pedidos.php" class="float-right w-100 p-3 btn btn-outline-info mb-4">Pedidos finalizados</a>
 				</div>
 			</div>
 
