@@ -38,13 +38,13 @@
 		<main class="container">
 
 			<header class="row">
-				<div class="col-10">
-					<h1 class="mt-4 display-4 d-inline-block"><?= $_SESSION['loja'] ?></h1>
-					<h4 class="ml-4 text-muted d-inline-block mt-4">Conta da loja</h4>
+				<div class="col-9 col-md-10">
+					<h1 class="mt-4 display-4 text-truncate"><?= $_SESSION['loja'] ?></h1>
+					<h4 class="ml-md-4 text-muted d-inline-block mt-4">Conta da loja</h4>
 				</div>
 
-				<div class="col-2 mt-5">
-					<a class="btn btn-info w-100" href="index.php">Início</a>
+				<div class="col-3 col-md-2 mt-5 pl-0">
+					<a class="btn btn-info w-100 float-right" href="index.php">Início</a>
 				</div>
 				
 				<div class="col-12">
@@ -55,24 +55,24 @@
 			<div class="row">
 				<div class="col-md-12 col-lg-12 col-xl-12 mt-3">
 					<div class="text-center">
-						<p class="lead mb-4 text-truncate text-muted">
+						<p class="lead mb-4 text-muted">
 							<?php if(isset($inf['sobre_loja'])) echo $inf['sobre_loja']; ?>
 						</p>
 					</div>
 				</div>
 
-				<div class="col-5 text-center">
-					<img src="../imagens/<?php if(isset($inf['arquivo_imag'])) echo $inf['arquivo_imag']; ?>" class="img-thumbnail rounded my-2 w-75">
+				<div class="col-12 col-md-5 text-center">
+					<img src="../imagens/<?php if(isset($inf['arquivo_imag'])) echo $inf['arquivo_imag']; ?>" class="shadow rounded my-2 w-75">
 				</div>
 
-				<div class="col-7 mx-auto my-2 px-5">
+				<div class="col-11 col-md-7 mx-auto my-2 px-0 px-md-5">
 					<h4 for="disabledTextInput" class="text-capitalize pt-4">Usuário:</h4>
 					<input type="text" class="form-control text-center" id="disabledTextInput" value="<?php if(isset($inf['usuario_loja'])) echo $inf['usuario_loja']; ?>" disabled>
 
 					<a role="button" class="btn btn-info float-right mt-5" href="mudar_login.php?id=<?=$inf['id_loja']?>">Mudar login</a>
 				</div>
 
-				<div class="list-group col-md-12 mt-4">
+				<div class="list-group col-12 px-3 mt-4">
 					<ul class="list-group">
 						<li class="list-group-item d-inline-block text-truncate text-muted">
 							<h5>Razâo social:</h5><?= $inf['nome_loja']?>
