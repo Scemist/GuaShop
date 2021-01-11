@@ -27,19 +27,27 @@
 		<main class="container">
 
 			<header class="row">
-				<div class="col-10">
-					<h1 class="mt-4 display-4 d-inline-block"><?= $_SESSION['loja'] ?></h1>
-					<h4 class="ml-4 text-muted d-inline-block mt-4">Pedidos Finalizados</h4>
+				<div class="col-9 col-md-10">
+					<h1 class="mt-4 display-4 text-truncate"><?= $_SESSION['loja'] ?></h1>
+					<h4 class="ml-md-4 text-muted d-inline-block mt-4">Pedidos finalizados</h4>
 				</div>
 
-				<div class="col-2 mt-5">
-					<a class="btn btn-info w-100" href="index.php">Início</a>
+				<div class="col-3 col-md-2 mt-5 pl-0">
+					<a class="btn btn-info w-100 float-right" href="index.php">Início</a>
+				</div>
+				
+				<div class="col-12">
+					<hr>
 				</div>
 			</header>
 
-			<div class="row">
-				<div class="table-responsive mt-3">
-					<table class="table table-hover">					
+		</main>
+
+		<main class="container-lg">
+			<section class="row">
+				<div class="table-responsive shadow">
+
+					<table class="table table-hover shadow border border-info ml-3 ml-lg-0 bg-white">
 						<thead>
 							<tr>
 								<th>ID</th>
@@ -66,9 +74,9 @@
 							<?php endforeach; ?>
 						</tbody>
 					</table>
-				</div>
-			</div>
 
+				</div>
+			</section>
 		</main>
 
 		<script src="../bootstrap/jquery-3.5.1.slim.min.js"></script> <!-- jQuery -->
