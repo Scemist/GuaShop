@@ -1,2 +1,3 @@
 imagens/*
 !imagens/.gitkeep
+funcoes/php/conexao.php
