@@ -1,5 +1,9 @@
 <?php
 
+  // Conexão e sessão
+	require_once('../../funcoes/php/conexao.php');
+	$conexao = estabelecerConexao('utilitario', false);
+
   session_name('utilitario');
   session_start();
 
@@ -16,28 +20,28 @@
   switch ($funcao) {
 
     case 'adicionarCarrinho':
-      $instancia = new produtos($produto);
+      $instancia = new produtos($produto, $conexao);
       $instancia -> adicionarCarrinho($quantidade);
       header('Location: ../carrinho.php');
       exit;
       break;
 
     case 'removerCarrinho':
-      $instancia = new produtos($produto);
+      $instancia = new produtos($produto, $conexao);
       echo $instancia -> removerCarrinho();
       header('Location: ../carrinho.php');
       exit;
       break;
 
     case 'adicionarFavorito':
-      $instancia = new produtos($produto);
+      $instancia = new produtos($produto, $conexao);
       echo $instancia -> adicionarFavorito();
       header("Location: ../produto.php?produto=$produto");
       exit;
       break;
 
     case 'removerFavorito':
-      $instancia = new produtos($produto);
+      $instancia = new produtos($produto, $conexao);
       echo $instancia -> removerFavoritos();
       header('Location: ../favoritos.php');
       exit;
@@ -56,17 +60,12 @@
     private $quantidade;
     private $conexao;
 
-    public function __construct($produto) {
-      try {
-        $this -> conexao = new PDO('mysql:host=localhost;dbname=guashop;charset=utf8', 'root', '');
-        $this -> conexao -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    public function __construct($produto, $conexao) {
+        $this -> conexao = $conexao;
 
         if (!isset($_SESSION['logado'])) {
           $_SESSION['logado'] = 0;
         }
-      } catch (PDOException $ex) {
-          echo "Erro: " . $e -> getMessage();
-      }
 
       $this -> usuario = $_SESSION['id'];
       $this -> produto = $produto;

@@ -19,7 +19,7 @@ CREATE TABLE usuario (
 	email_usua VARCHAR(100) NOT NULL,
 	senha_usua VARCHAR(100) NOT NULL,
 	telefone_usua VARCHAR(17) NULL,
-	cpf_usua INT NOT NULL,
+	cpf_usua VARCHAR(11) NOT NULL,
 	rg_usua VARCHAR(11) NOT NULL,
 	nascimento_usua DATE NOT NULL,
 

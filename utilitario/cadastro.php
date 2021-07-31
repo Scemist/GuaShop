@@ -88,7 +88,7 @@
 
 					<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-2 form-group">
 						<label class="text-muted mt-3" for="">CPF</label>
-						<input type="text" class="form-control" id="" placeholder="12345678900" name="cpf">
+						<input type="number" class="form-control" id="" placeholder="12345678900" name="cpf">
 					</div>
 
 					<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-2 form-group">

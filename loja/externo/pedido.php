@@ -1,39 +1,43 @@
 <?php
 
+	// Conexão e sessão
+	require_once('../../funcoes/php/conexao.php');
+	$conexao = estabelecerConexao('loja', true);
+
 	if(isset($_GET['func']) && isset($_GET['id'])) {
 
 		switch ($_GET['func']) {
 
 		case 'novo':
-			$instancia = new pedido($_GET['id']);
+			$instancia = new pedido($_GET['id'], $conexao);
 			$instancia -> adicionarNovo();
 			header('Location: ../index.php');
 			exit;
 		break;
 
 		case 'processo':
-			$instancia = new pedido($_GET['id']);
+			$instancia = new pedido($_GET['id'], $conexao);
 			$instancia -> adicionarProcesso();
 			header('Location: ../index.php');
 			exit;
 		break;
 
 		case 'entrega':
-			$instancia = new pedido($_GET['id']);
+			$instancia = new pedido($_GET['id'], $conexao);
 			$instancia -> adicionarEntrega();
 			header('Location: ../index.php');
 			exit;
 		break;
 
 		case 'finalizar':
-			$instancia = new pedido($_GET['id']);
+			$instancia = new pedido($_GET['id'], $conexao);
 			$instancia -> adicionarFinalizado();
 			header('Location: ../index.php');
 			exit;
 		break;
 
 		case 'desfinalizar':
-			$instancia = new pedido($_GET['id']);
+			$instancia = new pedido($_GET['id'], $conexao);
 			$instancia -> removerFinalizado();
 			header('Location: ../index.php');
 			exit;
@@ -57,11 +61,9 @@
 		private $conexao;
 		private $loja;
 
-		function __construct($pedido) {
-			session_name('loja');
-			session_start();
-			$this -> conexao = new PDO('mysql:host=localhost;dbname=guashop;charset=utf8', 'root', '');
-			$this -> conexao -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		function __construct($pedido, $conexao) {
+			
+			$this -> conexao = $conexao;
 			$this -> pedido = $_GET['id'];
 			$this -> loja = $_SESSION['id'];
 		}
