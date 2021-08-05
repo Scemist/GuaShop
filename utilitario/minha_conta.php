@@ -5,50 +5,9 @@
 	$conexao = estabelecerConexao('utilitario', true);
 
 	// Código PHP da página
-
-	if ($_SESSION['logado'] == true) {
-
-		// Pega as informações do usuario
-
-		$email = $_SESSION['email'];
-		$tabela = 'usuario';
-
-		$sql = $conexao -> prepare("SELECT * FROM	usuario	WHERE	email_usua = :email");
-		$sql -> bindParam(':email', $email);
-		$sql -> execute();
-		$usuario = $sql -> fetch();
-
-		// Pega as informações da imagem
-
-		$sql = $conexao -> prepare
-			("
-				SELECT
-					*
-				FROM
-					imagem
-				WHERE
-					referencia_refe = :usuario
-					AND tabela_imag = :tabela
-			");
-		$sql -> bindParam(':usuario', $usuario['id_usua']);
-		$sql -> bindParam(':tabela', $tabela);
-		$sql -> execute();
-		$imagem = $sql -> fetch();
-
-		if (isset($usuario['id_imag'])) {
-
-			$exibir = "<img src='imagens/" . $usuario['arquivo_imag'] . " ' width='250px'><br>";
-		}
-		else {
-
-			$exibir = "<a href='#'>Adicionar Imagem</a>";
-		}
-
-	}
-	else {
-
-		// header("Location: login.php?msg=1");
-	}
+	require_once('externo/usuario.php');
+	$instacia = new usuario($conexao);
+	$usuario = $instacia -> pegarUsuario();
 
 ?>
 
@@ -104,8 +63,11 @@
 
 			</div>
 
-			<form class="" action="externo/atualizar.php" method="POST">
+			<form class="" action="externo/usuario.php" method="POST">
+				<input type="hidden" name="metodo" value="atualizarUsuario">
+
 				<hr>
+
 				<div class="row">
 
 					<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-4 mt-5 mt-5">
@@ -173,7 +135,7 @@
 						<p>
 							<div class="input-group mb-3">
 								<input type="text" id="localidade" class="form-control w-75" placeholder="<?= $usuario['cidade_usua'] ?>" value="<?= $usuario['cidade_usua'] ?>" aria-describedby="basic-addon1" name="cidade" readonly="readonly">
-								<input type="text" id="uf" class="form-control w-25" placeholder="<?= $usuario['estado_usua'] ?>" value="<?= $usuario['estado_usua'] ?>" aria-describedby="basic-addon1" name="estado" readonly="readonly">
+								<input type="text" id="uf" class="form-control w-25" placeholder="<?= $usuario['estado_usua'] ?>" value="<?= $usuario['estado_usua'] ?>" aria-describedby="basic-addon1" name="uf" readonly="readonly">
 							</div>
 						</p>
 

@@ -1,17 +1,17 @@
 <?php
 
-// Conexão e Sessão
-require_once('../../funcoes/php/conexao.php');
-$conexao = estabelecerConexao('utilitario', false);
-
 // Instanciar
 if($_POST):
+
+    // Conexão e Sessão
+    require_once('../../funcoes/php/conexao.php');
+    $conexao = estabelecerConexao('utilitario', false);
 
     switch ($_POST['metodo']):
 
         case 'pegarUsuario':
             $instacia = new usuario($conexao);
-            $instacia -> criarUsuario();
+            $instacia -> pegarUsuario();
         break;
 
         case 'criarUsuario':
@@ -21,7 +21,7 @@ if($_POST):
 
         case 'atualizarUsuario':
             $instacia = new usuario($conexao);
-            $instacia -> criarUsuario();
+            $instacia -> atualizarUsuario();
         break;
 
         case 'apagarUsuario':
@@ -65,7 +65,21 @@ class usuario {
 
     public function pegarUsuario() {
 
-        return true;
+        if ($_SESSION['logado'] == true):
+    
+            $this -> email = $_SESSION['email'];
+    
+            $sql = $this -> conexao -> prepare("SELECT * FROM usuario WHERE	email_usua = :email");
+            $sql -> bindParam(':email', $this -> email);
+            $sql -> execute();
+            $usuario = $sql -> fetch();
+
+            return $usuario;
+        else:
+    
+            header("Location: login.php?msg=1");
+            exit;
+        endif;
     }
 
     public function criarUsuario() {
@@ -166,10 +180,64 @@ class usuario {
         endif;
     }
 
-    public function editarUsuario() {
+    public function atualizarUsuario() {
+
+        $this -> nascimento = $_POST['nascimento'];
+        $this -> telefone = $_POST['telefone'];
+        $this -> rg = $_POST['rg'];
+        $this -> cpf = $_POST['cpf'];
+        $this -> uf = $_POST['uf'];
+        $this -> cidade = $_POST['cidade'];
+        $this -> cep = $_POST['cep'];
+        $this -> rua = $_POST['rua'];
+        $this -> numero = $_POST['numero'];
+        $this -> complemento = $_POST['complemento'];
+
+        $sql = $this -> conexao -> prepare
+        ('
+            UPDATE
+                usuario
+            SET
+                telefone_usua = :telefone,
+                rg_usua = :rg,
+                cpf_usua = :cpf,
+                nascimento_usua = :nascimento,
+                estado_usua = :estado,
+                cidade_usua = :cidade,
+                cep_usua = :cep,
+                rua_usua = :rua,
+                numero_usua = :numero,
+                complemento_usua = :complemento
+            WHERE
+                email_usua = :email
+        ');
+
+        $sql -> bindParam(':telefone', $this -> telefone);
+        $sql -> bindParam(':rg', $this -> rg);
+        $sql -> bindParam(':cpf', $this -> cpf);
+        $sql -> bindParam(':nascimento', $this -> nascimento);
+        $sql -> bindParam(':estado', $this -> uf);
+        $sql -> bindParam(':cidade', $this -> cidade);
+        $sql -> bindParam(':cep', $this -> cep);
+        $sql -> bindParam(':rua', $this -> rua);
+        $sql -> bindParam(':numero', $this -> numero);
+        $sql -> bindParam(':complemento', $this -> complemento);
+        $sql -> bindParam(':email', $_SESSION['email']);
+
+        $sql -> execute();
+
+        if ($sql -> rowCount() > 0):
+
+            header('Location: ../minha_conta.php?msg=1');
+            exit;
+        else:
+
+            header('Location: ../minha_conta.php?msg=2');
+            exit;
+        endif;
 
         return true;
-    }
+    }  
 
     function deletarUsuario() {
 
