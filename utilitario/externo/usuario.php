@@ -102,6 +102,9 @@ class usuario {
         $this -> email = $_POST['email'];
         $this -> senha = $_POST['senha'];
 
+        if (empty($this -> nascimento)) $this -> nascimento = '00/00/0000';
+        if (empty($this -> cep)) $this -> cep = '0';
+
         if (empty($this -> nome) || empty($this -> email) || empty($this -> senha)):
 
             header('Location: ../cadastro.php?men=1');
@@ -192,6 +195,9 @@ class usuario {
         $this -> rua = $_POST['rua'];
         $this -> numero = $_POST['numero'];
         $this -> complemento = $_POST['complemento'];
+
+        if (empty($this -> nascimento)) $this -> nascimento = '00/00/0000';
+        if (empty($this -> cep)) $this -> cep = '0';
 
         $sql = $this -> conexao -> prepare
         ('

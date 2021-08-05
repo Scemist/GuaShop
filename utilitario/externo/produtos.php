@@ -4,9 +4,6 @@
 	require_once('../../funcoes/php/conexao.php');
 	$conexao = estabelecerConexao('utilitario', false);
 
-  session_name('utilitario');
-  session_start();
-
   if ($_SESSION['logado'] != true) {
 
     header('Location: ../login.php');
@@ -134,9 +131,11 @@
 
     public function adicionarFavorito() {
       $this -> salvar_tipo = 'favorito';
+      $this -> quantidade = 1;
 
-      $sql = $this -> conexao -> prepare('INSERT INTO salvo_produto(tipo_salv, id_usua, id_prod) VALUES (:tipo, :usuario, :produto)');
+      $sql = $this -> conexao -> prepare('INSERT INTO salvo_produto(tipo_salv, quantidade_salv, id_usua, id_prod) VALUES (:tipo, :quantidade, :usuario, :produto)');
       $sql -> bindParam(':tipo', $this -> salvar_tipo);
+      $sql -> bindParam(':quantidade', $this -> quantidade);
       $sql -> bindParam(':usuario', $this -> usuario);
       $sql -> bindParam(':produto', $this -> produto);
       $sql -> execute();
