@@ -1,5 +1,5 @@
 <?php
 
-	header('Location: utilitario');
+	header('Location: utilitario/');
 
 ?>
