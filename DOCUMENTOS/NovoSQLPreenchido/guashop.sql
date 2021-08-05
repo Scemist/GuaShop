@@ -19,15 +19,15 @@ CREATE TABLE usuario (
 	email_usua VARCHAR(100) NOT NULL,
 	senha_usua VARCHAR(100) NOT NULL,
 	telefone_usua VARCHAR(17) NULL,
-	cpf_usua VARCHAR(11) NOT NULL,
-	rg_usua VARCHAR(11) NOT NULL,
-	nascimento_usua DATE NOT NULL,
-	estado_usua VARCHAR(50) NOT NULL,
-	cidade_usua VARCHAR(50) NOT NULL,
-	cep_usua INT(8) NOT NULL,
-	rua_usua VARCHAR(100) NOT NULL,
-	numero_usua VARCHAR(20) NOT NULL,
-	complemento_usua VARCHAR(100) NOT NULL
+	cpf_usua VARCHAR(11) NULL,
+	rg_usua VARCHAR(11) NULL,
+	nascimento_usua DATE NULL,
+	estado_usua VARCHAR(50) NULL,
+	cidade_usua VARCHAR(50) NULL,
+	cep_usua INT(8) NULL,
+	rua_usua VARCHAR(100) NULL,
+	numero_usua VARCHAR(20) NULL,
+	complemento_usua VARCHAR(100) NULL
 
 ) ENGINE=InnoDB;
 
