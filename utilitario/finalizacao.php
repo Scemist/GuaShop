@@ -6,11 +6,11 @@
 
 	$total = $_POST['total'];
 
-	for ($controle = 0; $controle <= $total; $controle++) {
+	for ($controle = 0; $controle <= $total; $controle++):
 
 		${'produto_' . $controle} = $_POST["produto_$controle"];
 		${'produto_quantidade_' . $controle} = $_POST["produto_quantidade_$controle"];
-	}
+    endfor;
 
 	// Pega os cartoes cadastrados
 	$sql = $conexao -> prepare("SELECT * FROM cartao WHERE id_usua = :usuario");

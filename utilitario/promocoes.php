@@ -24,11 +24,7 @@
 
 <html lang="pt-br">
 	<head>
-		<meta charset="utf-8">
-
-		<title>Promoções</title>
-
-    <meta charset="utf-8">
+        <meta charset="utf-8">
 		<meta name="theme-color" content="#6b2278"> <!-- Cor do brownser -->
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> <!-- Tag de viewport -->
 
@@ -36,12 +32,15 @@
 		<link rel="stylesheet" href="../bootstrap/bootstrap-4.5.3.min.css"> <!-- CSS Bootstrap -->
 		<link rel="stylesheet" type="text/css" href="css/navbar.css"> <!-- CSS NavBar -->
 		<link rel="stylesheet" type="text/css" href="css/geral.css"> <!-- CSS Personalizado -->
+
+        <title>Promoções</title>
 	</head>
+
 	<body class="bg-light">
 
-    <?php require_once('externo/navbar.php'); ?>
+        <?php require_once('externo/navbar.php'); ?>
 
-	<?php include('externo/carousel.php'); ?>
+        <?php include('externo/carousel.php'); ?>
 
 		<main class="container mt-4">
 			<div class="row col-md-6">
@@ -53,15 +52,18 @@
 			<hr>
 
 	 		<div class="row">
-			  	<?php	foreach ($produtos as $produto) {
-					if ($produto['promocao_prod'] > 0) {
-						$preco_final = $produto['preco_prod'] - $produto['promocao_prod'];
-						$preco = $produto['preco_prod'];
-					}
-					else {
-						$preco_final = $produto['preco_prod'];
-						$preco = '';
-					}
+			  	<?php
+                    foreach ($produtos as $produto):
+
+                        if ($produto['promocao_prod'] > 0):
+
+                            $preco_final = $produto['preco_prod'] - $produto['promocao_prod'];
+                            $preco = $produto['preco_prod'];
+                        else:
+
+                            $preco_final = $produto['preco_prod'];
+                            $preco = '';
+                        endif;
 				?>
 					<div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-3 text-center p-3">
 						<a href="produto.php?produto=<?= $produto['id_prod'] ?>">
@@ -91,13 +93,13 @@
 							</div>
 						</a>
 					</div>
-				<?php	} ?>
+				<?php endforeach; ?>
 			  </div>
 	  	</main>
 
-	  	<?php  require_once('externo/footer.php')  ?>
+	  	<?php require_once('externo/footer.php') ?>
 
-		  <script src="../bootstrap/jquery-3.5.1.slim.min.js"></script> <!-- jQuery -->
+		<script src="../bootstrap/jquery-3.5.1.slim.min.js"></script> <!-- jQuery -->
 		<script src="../bootstrap/bootstrap.bundle-4.5.3.min.js"></script> <!-- Bundle -->
     	<script type="text/javascript" src="jquery/navbar.js"></script> <!-- jQuery NavBar -->
 	</body>

@@ -39,6 +39,7 @@
 	</head>
 
 	<body class="bg-light">
+
 		<?php require_once('externo/navbar.php'); ?>
 
 		<?php include('externo/carousel.php'); ?>
@@ -51,15 +52,16 @@
 			</section>
 
 			<div class="row featurette">
-				<?php	foreach ($produtos as $produto) {
-					if ($produto['promocao_prod'] > 0) {
+				<?php foreach ($produtos as $produto):
+					if ($produto['promocao_prod'] > 0):
+
 						$preco_final = $produto['preco_prod'] - $produto['promocao_prod'];
 						$preco = $produto['preco_prod'];
-					}
-					else {
+                    else:
+
 						$preco_final = $produto['preco_prod'];
 						$preco = '';
-					}
+					endif;
 				?>
 					<div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-3 text-center p-3">
 						<a href="produto.php?produto=<?= $produto['id_prod'] ?>">
@@ -89,12 +91,12 @@
 							</div>
 						</a>
 					</div>
-				<?php	} ?>
+				<?php endforeach; ?>
 			</div>
 
 		</main>
 
-		<?php  require_once('externo/footer.php')  ?>
+		<?php require_once('externo/footer.php') ?>
 
 		<script src="../bootstrap/jquery-3.5.1.slim.min.js"></script> <!-- jQuery -->
 		<script src="../bootstrap/bootstrap.bundle-4.5.3.min.js"></script> <!-- Bundle -->

@@ -88,7 +88,7 @@
 
 		</main>
 
-		<?php  require_once('externo/footer.php')  ?>
+		<?php require_once('externo/footer.php') ?>
 
 		<script src="../bootstrap/jquery-3.5.1.slim.min.js"></script> <!-- jQuery -->
 		<script src="../bootstrap/bootstrap.bundle-4.5.3.min.js"></script> <!-- Bundle -->

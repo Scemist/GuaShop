@@ -6,10 +6,10 @@
 
 	// Código PHP da página
 
-	if ($_SESSION['logado'] == 0) {
+	if ($_SESSION['logado'] == 0):
 
 		header('Location: login.php?msg=5');
-	}
+    endif;
 
 ?>
 
@@ -35,32 +35,30 @@
 
 		<main class="container">
 
-      <div class="row mb-3">
-				<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 my-4">
-					<h2 class="text-muted">Configurações da Conta</h2>
-				</div>
+            <div class="row mb-3">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 my-4">
+                    <h2 class="text-muted">Configurações da Conta</h2>
+                </div>
 
-        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-          <hr class="mt-4">
-					<h3 class="text-dark">Dados da Conta</h3>
-					<a class="text-secondary w-100 text-left" href="#"><h5>Alterar o nome</h5></a>
-					<a class="text-secondary w-100 text-left" href="#"><h5>Alterar o email</h5></a>
-					<a class="text-secondary w-100 text-left" href="#"><h5>Alterar a senha</h5></a>
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                    <hr class="mt-4">
+                        <h3 class="text-dark">Dados da Conta</h3>
+                        <a class="text-secondary w-100 text-left" href="#"><h5>Alterar o nome</h5></a>
+                        <a class="text-secondary w-100 text-left" href="#"><h5>Alterar o email</h5></a>
+                        <a class="text-secondary w-100 text-left" href="#"><h5>Alterar a senha</h5></a>
+                    <hr class="mt-4">
 
-          <hr class="mt-4">
-          <h3 class="text-dark">Dados Pessoais</h3>
-					<a class="text-secondary w-100 text-left" href="#"><h5>Alterar dados do cartão</h5></a>
+                    <h3 class="text-dark">Dados Pessoais</h3>
+                    <a class="text-secondary w-100 text-left" href="#"><h5>Alterar dados do cartão</h5></a>
 
-          <hr class="mt-4">
-          <h3 class="text-dark">Procedimentos</h3>
-					<a class="text-secondary w-100 text-left" href="#"><h5>Apagar conta GuaShop</h5></a>
-
-        </div>
-
-      </div>
+                    <hr class="mt-4">
+                    <h3 class="text-dark">Procedimentos</h3>
+                    <a class="text-secondary w-100 text-left" href="#"><h5>Apagar conta GuaShop</h5></a>
+                </div>
+            </div>
 		</main>
 
-		<?php  require_once('externo/footer.php')  ?>
+		<?php require_once('externo/footer.php') ?>
 
 		<script src="../bootstrap/jquery-3.5.1.slim.min.js"></script> <!-- jQuery -->
 		<script src="../bootstrap/bootstrap.bundle-4.5.3.min.js"></script> <!-- Bundle -->

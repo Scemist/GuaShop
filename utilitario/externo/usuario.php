@@ -199,9 +199,8 @@ class usuario {
         if (empty($this -> nascimento)) $this -> nascimento = '00/00/0000';
         if (empty($this -> cep)) $this -> cep = '0';
 
-        $sql = $this -> conexao -> prepare
-        ('
-            UPDATE
+        $sql = $this -> conexao -> prepare (
+            'UPDATE
                 usuario
             SET
                 telefone_usua = :telefone,
@@ -215,8 +214,8 @@ class usuario {
                 numero_usua = :numero,
                 complemento_usua = :complemento
             WHERE
-                email_usua = :email
-        ');
+                email_usua = :email'
+        );
 
         $sql -> bindParam(':telefone', $this -> telefone);
         $sql -> bindParam(':rg', $this -> rg);

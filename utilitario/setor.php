@@ -6,17 +6,17 @@
 
 	// Código PHP da página
 
-  if (isset($_GET['id'])) {
-    $setor = $_GET['id'];
+    if (isset($_GET['id'])):
 
-		$sql = $conexao -> prepare('SELECT * FROM setor WHERE id_seto = :setor');
-		$sql -> bindParam(':setor', $setor);
-		$sql -> execute();
-		$setor = $sql -> fetch();
-  }
-  else {
-    header('Location: setores.php');
-  }
+        $setor = $_GET['id'];
+        $sql = $conexao -> prepare('SELECT * FROM setor WHERE id_seto = :setor');
+        $sql -> bindParam(':setor', $setor);
+        $sql -> execute();
+        $setor = $sql -> fetch();
+    else:
+
+        header('Location: setores.php');
+    endif;
 
 ?>
 
@@ -57,7 +57,7 @@
 			</section>
 		</main>
 
-		<?php  require_once('externo/footer.php')  ?>
+		<?php require_once('externo/footer.php') ?>
 
 		<script src="../bootstrap/jquery-3.5.1.slim.min.js"></script> <!-- jQuery -->
 		<script src="../bootstrap/bootstrap.bundle-4.5.3.min.js"></script> <!-- Bundle -->

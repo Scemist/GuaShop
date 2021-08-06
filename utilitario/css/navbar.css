@@ -1,119 +1,115 @@
 @import url('https://fonts.googleapis.com/css2?family=Berkshire+Swash&display=swap');
 
 .logo_mobile {
-  font-family: 'Berkshire Swash', cursive;
+    font-family: 'Berkshire Swash', cursive;
 }
 
 .smart-scroll{
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  z-index: 1;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1;
 }
 
 main {
-  margin-top: 4em;
-  /* margin-top: auto; */
+    margin-top: 4em;
+    /* margin-top: auto; */
 }
 
 .scrolled-down{
-  transform:translateY(-100%); transition: all 0.3s ease-in-out;
+    transform:translateY(-100%); transition: all 0.3s ease-in-out;
 }
 
 .scrolled-up{
-  transform:translateY(0); transition: all 0.3s ease-in-out;
+    transform:translateY(0); transition: all 0.3s ease-in-out;
 }
 
 /* NavBar 1 */
 
 .navbar1 {
-  background-image: linear-gradient(to right, #1a1563, #4a207a);
+    background-image: linear-gradient(to right, #1a1563, #4a207a);
 }
 
 /* NavBar 2 */
 
 .navbar2 {
-  top: auto;
+    top: auto;
 }
 
 .logo:hover {
-  background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
 .navbar2 a:hover, .navbar2 svg:hover {
-  text-decoration: none;
-  fill: #d1afee;
+    text-decoration: none;
+    fill: #d1afee;
 }
 
 
-@media (max-width: 767px)
-{
+@media (max-width: 767px) {}
 
-}
+@media (min-width: 768px) {
+    #pesquisa {
+        width: 10em;
+        transition: 0.5s;
+    }
 
-@media (min-width: 768px)
-{
-  #pesquisa {
-    width: 10em;
-    transition: 0.5s;
-  }
-
-  #pesquisa:hover {
-    width: 20em;
-  }
+    #pesquisa:hover {
+        width: 20em;
+    }
 }
 
 .navbar2 .btn-conta {
-  border-radius: 25px;
-  background-color: #250f55;
-  transition: 0.1s;
-  color: white;
+    border-radius: 25px;
+    background-color: #250f55;
+    transition: 0.1s;
+    color: white;
 }
 
 .btn-conta:hover {
-  color: #250f55 !important;
-  background-color: #d1afee;
+    color: #250f55 !important;
+    background-color: #d1afee;
 }
 
 .navbar2 input {
-  border-radius: 25px;
+    border-radius: 25px;
 }
 
 
 /* NavBar 3 */
 
 .navbar3 {
-  top: 50px;
-  background-image: linear-gradient(to right, #1a1563, #4a207a);
-  width: 100%;
+    top: 50px;
+    background-image: linear-gradient(to right, #1a1563, #4a207a);
+    width: 100%;
 }
 
 .navbar3 li {
-  display: inline-block;
-  padding: 0 0 0 20px;
-  margin: 0;
+    display: inline-block;
+    padding: 0 0 0 20px;
+    margin: 0;
 }
 
 .navbar3 a {
-  text-align: center;
-  color: rgba(255,255,255,.5);
+    text-align: center;
+    color: rgba(255,255,255,.5);
 }
 
 .navbar3 a:hover {
-  color: rgba(255,255,255,.75);
+    color: rgba(255,255,255,.75);
 }
 
 .navfaixa {
-  background-image: linear-gradient(to right, #1a1563, #4a207a);
-  height: 1px;
+    background-image: linear-gradient(to right, #1a1563, #4a207a);
+    height: 1px;
 }
 
 .logo_mobile {
-  color: white;
-  font-weight: 400;
+    color: white;
+    font-weight: 400;
 }
 
 .logo_div {
-  margin-top: 0.3em;
+    margin-top: 0.3em;
 }

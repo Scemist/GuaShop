@@ -27,7 +27,6 @@
 		<?php require_once('externo/navbar.php'); ?>
 
 		<main class="container">
-
 			<div class="row">
 
 				<section class="col-12 mb-4"> <!-- FAST FOOD -->
@@ -35,7 +34,7 @@
 					<h2 class="mt-4"><a class="text-muted" href="setor.php?id=1">Fast Food</a></h2>
 					<h6 class="">Comida pronta na sua casa em alguns minutos.</h6>
 
-			  	<div class="row">
+			  	    <div class="row">
 						<?php $setor = 1; $tamanho = 4; include('externo/setores.php') ?>
 					</div>
 				</section>
@@ -121,7 +120,6 @@
 				</section>
 
 			</div>
-
 		</main>
 
 		<?php require_once('externo/footer.php'); ?>

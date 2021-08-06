@@ -11,18 +11,20 @@
 
 	// Informações sobre o produto
 
-  $sql = $conexao -> prepare ('SELECT
-				*
-			FROM
-				imagem i
-				JOIN produto p ON (i.referencia_refe = p.id_prod)
-			WHERE
-				i.tabela_imag = :tabela
-				AND p.id_prod = :produto');
-  $sql -> bindParam (':produto', $id);
-  $sql -> bindParam (':tabela', $tabela);
-  $sql -> execute ();
-  $produto = $sql -> fetch ();
+    $sql = $conexao -> prepare (
+        'SELECT
+            *
+        FROM
+            imagem i
+            JOIN produto p ON (i.referencia_refe = p.id_prod)
+        WHERE
+            i.tabela_imag = :tabela
+            AND p.id_prod = :produto'
+    );
+    $sql -> bindParam (':produto', $id);
+    $sql -> bindParam (':tabela', $tabela);
+    $sql -> execute ();
+    $produto = $sql -> fetch ();
 
 	$preco_bruto = $produto['preco_prod'] - $produto['promocao_prod'];
 	$preco = number_format($preco_bruto, 2, ",", ".");
@@ -31,78 +33,88 @@
 
 	// Informações sobre os setores
 
-	$sql = $conexao -> prepare ('SELECT
-				*
-			FROM
-				setor s
-			WHERE
-				s.id_seto LIKE :setor1
-				OR s.id_seto LIKE :setor2
-				OR s.id_seto LIKE :setor3
-				OR s.id_seto LIKE :setor4
-				OR s.id_seto LIKE :setor5
-				OR s.id_seto LIKE :setor6
-				OR s.id_seto LIKE :setor7
-				OR s.id_seto LIKE :setor8
-				OR s.id_seto LIKE :setor9');
+	$sql = $conexao -> prepare (
+        'SELECT
+            *
+        FROM
+            setor s
+        WHERE
+            s.id_seto LIKE :setor1
+            OR s.id_seto LIKE :setor2
+            OR s.id_seto LIKE :setor3
+            OR s.id_seto LIKE :setor4
+            OR s.id_seto LIKE :setor5
+            OR s.id_seto LIKE :setor6
+            OR s.id_seto LIKE :setor7
+            OR s.id_seto LIKE :setor8
+            OR s.id_seto LIKE :setor9');
 
 	$setores = explode(",", $produto['id_seto']);
 	$total = 0;
 
-	while(!empty($setores[$total])){
+	while(!empty($setores[$total])):
+
 		$sql -> bindParam(':setor' . ($total + 1), $setores[$total]);
 		$total++;
-	}
+    endwhile;
 
-	if ($total < 9) {
-		for ($i = 1; $i <= 9; $i++) {
-			if (!isset($setores[$i])) {
+	if ($total < 9):
+
+		for ($i = 1; $i <= 9; $i++):
+
+			if (!isset($setores[$i])):
+
 				$setores[$i] = 0;
 				$sql -> bindParam(':setor' . $i, $setores[$i]);
-			}
-		}
-	}
+            endif;
+		endfor;
+	endif;
 
-  $sql -> execute ();
-  $setores = $sql -> fetchAll();
+    $sql -> execute ();
+    $setores = $sql -> fetchAll();
 
 	// Informações sobre a loja
 
 	$tabela = 'loja';
 
-	$sql = $conexao -> prepare ('SELECT
-				*
-			FROM
-				imagem i
-				JOIN loja l ON (i.referencia_refe = l.id_loja)
-			WHERE
-				i.tabela_imag = :tabela
-				AND l.id_loja = :loja');
-  $sql -> bindParam(':tabela', $tabela);
-	$sql -> bindParam(':loja', $produto['id_loja']);
-  $sql -> execute();
-  $loja = $sql -> fetch();
+	$sql = $conexao -> prepare (
+        'SELECT
+            *
+        FROM
+            imagem i
+            JOIN loja l ON (i.referencia_refe = l.id_loja)
+        WHERE
+            i.tabela_imag = :tabela
+            AND l.id_loja = :loja'
+    );
+    $sql -> bindParam(':tabela', $tabela);
+    $sql -> bindParam(':loja', $produto['id_loja']);
+    $sql -> execute();
+    $loja = $sql -> fetch();
 
 	// Informações sobre o usuário
 
-	if (isset($_SESSION['id'])) {
+	if (isset($_SESSION['id'])):
+
 		$tipo = 'favorito';
 
-		$sql = $conexao -> prepare ('SELECT
-					*
-				FROM
-					salvo_produto s
-				WHERE
-					s.id_prod = :produto
-					AND s.id_usua = :usuario
-					AND s.tipo_salv = :tipo');
-	  $sql -> bindParam (':produto', $id);
-	  $sql -> bindParam (':usuario', $_SESSION['id']);
-	  $sql -> bindParam (':tipo', $tipo);
-	  $sql -> execute ();
-	  $usuario = $sql -> fetch ();
+		$sql = $conexao -> prepare (
+            'SELECT
+                *
+            FROM
+                salvo_produto s
+            WHERE
+                s.id_prod = :produto
+                AND s.id_usua = :usuario
+                AND s.tipo_salv = :tipo'
+        );
+        $sql -> bindParam (':produto', $id);
+        $sql -> bindParam (':usuario', $_SESSION['id']);
+        $sql -> bindParam (':tipo', $tipo);
+        $sql -> execute ();
+    	$usuario = $sql -> fetch ();
 
-		if ($usuario > 0) { // Está favoritado
+		if ($usuario > 0): // Está favoritado
 
 			$favoritar = "
 			<a class='btn botao_azul float-right' href='externo/produtos.php?prod=$id&func=removerFavorito'>
@@ -111,8 +123,8 @@
 				</svg>
 				<h4 class='legenda_favorito btn hd-inline-block float-right text-white p-0 m-0'>Desfavoritar</h4>
 			</a>";
-		}
-		else { // Não está favoritado
+        else: // Não está favoritado
+
 			$favoritar = "
 			<a class='btn botao_azul float-right' href='externo/produtos.php?prod=$id&func=adicionarFavorito'>
 				<svg height='1.7em' viewBox='0 0 16 16' class='bi bi-heart-fill float-right ml-2' fill='#fff'>
@@ -120,10 +132,10 @@
 				</svg>
 				<h4 class='legenda_favorito btn hd-inline-block float-right text-white p-0 m-0'>Favoritar</h4>
 			</a>";
-		}
+		endif;
 
-	}
-	else { // Nem login tem
+	else: // Nem login tem
+
 		$favoritar = "
 		<a class='btn botao_azul float-right' href='externo/produtos.php?prod=$id&func=adicionarFavorito'>
 			<svg height='1.7em' viewBox='0 0 16 16' class='bi bi-heart-fill float-right ml-2' fill='#fff'>
@@ -131,7 +143,7 @@
 			</svg>
 			<h4 class='legenda_favorito btn hd-inline-block float-right text-white p-0 m-0'>Favoritar</h4>
 		</a>";
-	}
+    endif;
 
 ?>
 
@@ -175,7 +187,6 @@
 				<div class="col-12 col-lg-4">
 					<div class="row">
 
-
 						<div class="col-12 col-lg-12">
 							<hr>
 							<div class="row">
@@ -184,9 +195,7 @@
 								</div>
 
 								<div class="col-7 my-2">
-
 									<?= $favoritar ?>
-
 								</div>
 							</div>
 							<hr>
@@ -195,12 +204,13 @@
 						<div class="col-12">
 							<div class="row">
 							<?php
-							foreach ($setores as $setor) {
-								$id_setor = $setor['id_seto'];
-								$nome_setor = $setor['nome_seto'];
+                                foreach ($setores as $setor):
 
-								echo
-									"<div class='col-6 mt-0'>
+                                    $id_setor = $setor['id_seto'];
+                                    $nome_setor = $setor['nome_seto'];
+
+                                    echo
+                                        "<div class='col-6 mt-0'>
 											<a href='setor.php?id=$id_setor'>
 												<svg width='1.4em' viewBox='0 0 16 16' class='bi bi-tag-fill float-right ml-2' fill='#250f55'>
 													<path fill-rule='evenodd' d='M2 1a1 1 0 0 0-1 1v4.586a1 1 0 0 0 .293.707l7 7a1 1 0 0 0 1.414 0l4.586-4.586a1 1 0 0 0 0-1.414l-7-7A1 1 0 0 0 6.586 1H2zm4 3.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z'/>
@@ -208,9 +218,9 @@
 												<p class='legenda d-inline-block float-right'><strong>$nome_setor</strong></p>
 											</a>
 										</div>";
-								}
+								endforeach;
 							?>
-						</div>
+						    </div>
 						</div>
 
 						<div class="col-12 order-lg-first">
@@ -236,7 +246,6 @@
 				</div>
 			</div>
 
-
 			<div class="row mt-1">
 
 				<div class="col-12 col-md-6 p-3">
@@ -254,7 +263,7 @@
 
 		</main>
 
-		<?php  require_once('externo/footer.php')  ?>
+		<?php require_once('externo/footer.php') ?>
 
 		<script src="../bootstrap/jquery-3.5.1.slim.min.js"></script> <!-- jQuery -->
 		<script src="../bootstrap/bootstrap.bundle-4.5.3.min.js"></script> <!-- Bundle -->

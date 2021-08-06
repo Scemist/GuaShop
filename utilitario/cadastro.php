@@ -24,7 +24,7 @@
 
 	<body class="bg-light">
 
-			<?php require_once('externo/navbar.php'); ?>
+		<?php require_once('externo/navbar.php'); ?>
 
 		<main class="container">
 
@@ -35,8 +35,8 @@
 
 				<div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 p-0">
 						<?php
-							if (isset($_GET['msg'])) { // Se existe aviso
-								if ($_GET['msg'] == 1) { // Se o aviso for para fazer login
+							if (isset($_GET['msg'])): // Se existe aviso
+								if ($_GET['msg'] == 1): // Se o aviso for para fazer login
 									echo
 									"
 										<div class='alert alert-primary alert-dismissible fade show mt-3' role='alert'>
@@ -46,8 +46,8 @@
 											</button>
 										</div>
 									";
-								}
-							}
+								endif;
+							endif;
 						?>
 				</div>
 			</div>
@@ -110,10 +110,11 @@
 				</div>
 
 				<div class="form-row">
-
 					<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mt-5 mb-4">
 						<hr>
+
 						<h4 class="text-dark mb-0">Endereço</h4>
+
 						<small class="text-muted">
 							Também é necessário para compras, mas também pode ser adicionado depois. ^.^
 						</small class="text-muted mb-4 ">
@@ -129,6 +130,7 @@
 						<label for="estado">CEP</label>
 						<div class="input-group mb-3">
 							<input id="cep" type="input" class="form-control" name="cep" placeholder="00000 000" aria-label="Recipient's username" aria-describedby="basic-addon2">
+
 							<div class="input-group-append">
 								<button id="adicionar" class="btn btn-outline-info" type="button">Adicionar</button>
 							</div>
@@ -208,7 +210,7 @@
 
 		</main>
 
-		<?php  require_once('externo/footer.php')  ?>
+		<?php require_once('externo/footer.php') ?>
 
 		<script src="../bootstrap/jquery-3.5.1.slim.min.js"></script> <!-- jQuery -->
 		<script src="../bootstrap/bootstrap.bundle-4.5.3.min.js"></script> <!-- Bundle -->

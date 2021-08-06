@@ -26,26 +26,26 @@
 	$sql -> bindParam(':endereco', $endereco);
 	$sql -> bindParam(':usuario', $usuario['id_usua']);
 	$sql -> bindParam(':destinatario', $_POST['destinatario']);
-	if (isset($_POST['cartao'])) {
+	if (isset($_POST['cartao'])):
 		$cartao = 'cartao';
 		$sql -> bindParam(':pagamento', $cartao);
 		$sql -> bindParam(':cartao', $_POST['cartao']);
-	} else {
+    else:
 		$nada = null;
 		$sql -> bindParam(':pagamento', $null);
 		$sql -> bindParam(':cartao', $null);
-	}
+	endif;
 	$sql -> execute();
 	$pedido = $conexao -> lastInsertId();
 
 	// Cria as intancias de cada pedido
-	for ($controle = 0; $controle <= $total; $controle++) {
+	for ($controle = 0; $controle <= $total; $controle++):
 
 		${'produto_' . $controle} = $_POST["produto_$controle"];
 		${'produto_quantidade_' . $controle} = $_POST["produto_quantidade_$controle"];
 
 		// Pega as informacoes do produto
-		$sql = $conexao -> prepare("SELECT * FROM	produto p	WHERE	p.id_prod = :produto");
+		$sql = $conexao -> prepare("SELECT * FROM produto p	WHERE p.id_prod = :produto");
 		$sql -> bindParam(':produto', ${'produto_' . $controle});
 		$sql -> execute();
 		$produto = $sql -> fetch();
@@ -63,7 +63,7 @@
 		$sql -> bindParam(':produto', $produto['id_prod']);
 		$sql -> bindParam(':pedido', $pedido);
 		$sql -> execute();
-	}
+    endfor;
 
 	// Insere os ultimos dados no pedido
 	$sql = $conexao -> prepare('UPDATE pedido SET valor_pedi = (SELECT SUM(valorfinal_item) FROM item_pedido WHERE id_pedi = :pedido) WHERE id_pedi = :pedido');

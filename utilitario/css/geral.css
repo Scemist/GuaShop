@@ -1,185 +1,185 @@
 @media (max-width: 767px) { /* Mobile */
-  .imageem {
-    min-width: 100%;
-    max-height: 100%;
-    object-fit: cover;
-    height: 10em;
-  }
+    .imageem {
+        min-width: 100%;
+        max-height: 100%;
+        object-fit: cover;
+        height: 10em;
+    }
 
-  .produto {
-    min-height: 18em;
-    max-height: 18em;
-    overflow: hidden;
-    padding: 0.5rem;
-  }
+    .produto {
+        min-height: 18em;
+        max-height: 18em;
+        overflow: hidden;
+        padding: 0.5rem;
+    }
 
-  .produto h3 {
-    font-size: 1.2rem;
-    font-weight: 400;
-    line-height: 1.2rem;
-  }
+    .produto h3 {
+        font-size: 1.2rem;
+        font-weight: 400;
+        line-height: 1.2rem;
+    }
 
-  .produto .titulo {
-    min-height: 27%;
-  }
+    .produto .titulo {
+        min-height: 27%;
+    }
 
-  .imagem {
-    width: 100%;
-    height: 47%;
-    overflow: hidden;
-  }
+    .imagem {
+        width: 100%;
+        height: 47%;
+        overflow: hidden;
+    }
 
-  .informacoes {
-    padding: 0 2rem;
-  }
+    .informacoes {
+        padding: 0 2rem;
+    }
 
-  footer {
-    height: 15em;
-  }
+    footer {
+        height: 15em;
+    }
 
-  main {
-      padding-bottom: 15em;
-  }
+    main {
+        padding-bottom: 15em;
+    }
 }
 
 @media (min-width: 768px) { /* Desktop */
-  .imageem {
-    min-width: 100%;
-    max-height: 100%;
-    object-fit: cover;
-    height: 15em;
-  }
+    .imageem {
+        min-width: 100%;
+        max-height: 100%;
+        object-fit: cover;
+        height: 15em;
+    }
 
-  .login {
-    border-radius: 5px;
-  }
+    .login {
+        border-radius: 5px;
+    }
 
-  .produto {
-    min-height: 24.5em;
-    max-height: 24.5em;
-    overflow: hidden;
-    padding: 1rem;
-  }
+    .produto {
+        min-height: 24.5em;
+        max-height: 24.5em;
+        overflow: hidden;
+        padding: 1rem;
+    }
 
-  .produto h3 {
-    font-size: 1.5rem;
-    font-weight: 400;
-    line-height: 2.2rem;
-  }
+    .produto h3 {
+        font-size: 1.5rem;
+        font-weight: 400;
+        line-height: 2.2rem;
+    }
 
-  .produto .titulo {
-    min-height: 28%;
-  }
+    .produto .titulo {
+        min-height: 28%;
+    }
 
-  .imagem {
-    width: 100%;
-    height: 44%;
-    overflow: hidden;
-  }
+    .imagem {
+        width: 100%;
+        height: 44%;
+        overflow: hidden;
+    }
 
-  .imagem_principal {
-    border-radius: 3px;
-  }
+    .imagem_principal {
+        border-radius: 3px;
+    }
 
-  .loja {
-    border-radius: 5px;
-  }
+    .loja {
+        border-radius: 5px;
+    }
 
-  footer {
-    height: 8em;
-  }
+    footer {
+        height: 8em;
+    }
 
-  main {
-      padding-bottom: 8em;
-  }
+    main {
+        padding-bottom: 8em;
+    }
 }
 
 footer {
-  background-image: linear-gradient(to right, #1a1563, #4a207a);
-  position: absolute;
-  bottom: 0;
+    background-image: linear-gradient(to right, #1a1563, #4a207a);
+    position: absolute;
+    bottom: 0;
 }
 
 body {
-  position: relative;
-  min-height: 100vh;
+    position: relative;
+    min-height: 100vh;
 }
 
 .miniatura {
-  min-width: 100%;
-  max-height: 100%;
-  object-fit: cover;
+    min-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
 }
 
 .produto:hover, .produto_carrinho:hover, .loja:hover {
-  transition: 0.1s;
-  box-shadow: 0px 2px 5px gray !important;
+    transition: 0.1s;
+    box-shadow: 0px 2px 5px gray !important;
 }
 
 a:hover {
-  text-decoration: none;
-  color: none;
+    text-decoration: none;
+    color: none;
 }
 
 .remover {
-  z-index: 1020;
-  left: 5px;
-  top: 1.2em;
+    z-index: 1020;
+    left: 5px;
+    top: 1.2em;
 }
 
 .acoes {
-  background-color: white;
-  padding: 3px;
-  border-radius: 100px;
+    background-color: white;
+    padding: 3px;
+    border-radius: 100px;
 }
 
 .acoes_carrinho {
-  position: absolute;
-  z-index: 1;
-  background-color: white;
-  padding: 3px;
-  border-radius: 100px;
-  margin: -10px 0 0 -30px;
+    position: absolute;
+    z-index: 1;
+    background-color: white;
+    padding: 3px;
+    border-radius: 100px;
+    margin: -10px 0 0 -30px;
 }
 
 .acoes:hover {
-  transition: 0.1s;
-  width: 3em;
+    transition: 0.1s;
+    width: 3em;
 }
 
 .acoes_carrinho:hover {
-  transition: 0.1s;
-  width: 3em;
-  margin: -5px 0 0 -35px;
+    transition: 0.1s;
+    width: 3em;
+    margin: -5px 0 0 -35px;
 }
 
 .logo_loja {
-  border-radius: 100px;
-  width: 5em;
-  height: 5em;
+    border-radius: 100px;
+    width: 5em;
+    height: 5em;
 }
 
-
 .faixa {
-  background-image: linear-gradient(to right, #1a1563, #4a207a);
+    background-image: linear-gradient(to right, #1a1563, #4a207a);
 }
 
 .paragrafo {
-  line-height: 1.6em;
+    line-height: 1.6em;
 }
 
 .legenda {
-  color: #250f55;
+    color: #250f55;
 }
 
 .legenda_favorito {
-  font-weight: 400;
+    font-weight: 400;
 }
 
 .texto_azul {
-  color: #37a5d4;
+    color: #37a5d4;
 }
+
 .botao_azul {
-  background-color: #37a5d4; /* Rosa #9830ab*/
-  color: #fff;
+    background-color: #37a5d4; /* Rosa #9830ab*/
+    color: #fff;
 }

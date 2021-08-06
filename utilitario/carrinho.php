@@ -4,12 +4,10 @@
 	require_once('../funcoes/php/conexao.php');
 	$conexao = estabelecerConexao('utilitario', true);
 
-	// Código PHP da página
-
-	if ($_SESSION['logado'] == 0) {
+    if ($_SESSION['logado'] == 0):
 
 		header('Location: login.php?msg=3');
-	}
+	endif;
 
 	$usuario = $_SESSION['id'];
 	$tabela = 'produto';
@@ -48,9 +46,9 @@
 	$exibir_msg = '';
 
 
-	if (isset($_GET['msg'])) {
+	if (isset($_GET['msg'])):
 
-		switch ($_GET['msg']) {
+		switch ($_GET['msg']):
 			case 1:
 				$msg =
 					"<div class='alert alert-primary alert-dismissible fade show mt-3' role='alert'>
@@ -59,26 +57,27 @@
 							<span aria-hidden='true'>&times;</span>
 						</button>
 					</div>";
-				break;
-
-		case 2:
-			$msg =
-				"<div class='alert alert-success alert-dismissible fade show mt-3' role='alert'>
-					Sua compra foi efetuada com sucesso. O pedido foi enviado para a loja, você receberá um email com o código do pedido. ^.^
-					<button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-						<span aria-hidden='true'>&times;</span>
-					</button>
-				</div>";
 			break;
 
-		default:
-			$msg = '';
-		}
-	}
-	else {
+            case 2:
+                $msg =
+                    "<div class='alert alert-success alert-dismissible fade show mt-3' role='alert'>
+                        Sua compra foi efetuada com sucesso. O pedido foi enviado para a loja, você receberá um email com o código do pedido. ^.^
+                        <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                            <span aria-hidden='true'>&times;</span>
+                        </button>
+                    </div>";
+            break;
+
+            default:
+                $msg = '';
+            break;
+        endswitch;
+	else:
+
 		$msg = '';
 		$exibir_msg = $quantidade_msg;
-	}
+    endif;
 
 	$vazio_msgem = '<div class="alert alert-success" role="alert">
 	<h4 class="alert-heading">Oii!</h4>
@@ -89,16 +88,20 @@
 
 	$vazio_msg = '';
 
-	if ($prod_quantidade == 0) {
-		if (isset($_GET['msg'])) {
-			if ($_GET['msg'] != 2) {
+	if ($prod_quantidade == 0):
+
+		if (isset($_GET['msg'])):
+
+			if ($_GET['msg'] != 2):
+
 				$vazio_msg = $vazio_msgem;
-			}
-		}
-		else {
+            endif;
+
+		else:
+
 			$vazio_msg = $vazio_msgem;
-		}
-	}
+        endif;
+	endif;
 
 ?>
 
@@ -138,18 +141,21 @@
 				<div class="col-12 col-lg-6">
 					<?= $msg ?>
 
-					<?php if ($prod_quantidade > 0) {
-						echo $exibir_msg;
-					} else {
-						echo $vazio_msg;
-					}
+					<?php
+                        if ($prod_quantidade > 0):
+
+                            echo $exibir_msg;
+                        else:
+
+                            echo $vazio_msg;
+                        endif;
 					?>
 
 				</div>
 
 				<div class="col-12 col-lg-6 order-lg-first">
 
-					<?php	foreach ($produtos as $controle => $produto) {	?>
+					<?php foreach ($produtos as $controle => $produto): ?>
 					<div class="row bg-white rounded py-2 shadow-sm produto_carrinho m-3">
 
 						<div class="col-6 col-lg-3 py-4">
@@ -188,7 +194,7 @@
 							</a>
 						</div>
 
-					</div> <?php } ?>
+					</div> <?php endforeach; ?>
 				</div>
 			</div>
 
@@ -197,11 +203,10 @@
 					<input type="hidden" name="total" value="<?= $controle ?>">
 
 					<?php
-						if ($prod_quantidade > 0) {
+						if ($prod_quantidade > 0):
 							echo '<input class="btn botao_azul float-right m-3 mt-0" type="submit" name="" value="Finalizar compra">';
-						}
+                        endif;
 					 ?>
-
 
 				</div>
 			</div>
@@ -210,7 +215,7 @@
 
 		</main>
 
-		<?php  require_once('externo/footer.php')  ?>
+		<?php require_once('externo/footer.php') ?>
 
 		<script src="../bootstrap/jquery-3.5.1.slim.min.js"></script> <!-- jQuery -->
 		<script src="../bootstrap/bootstrap.bundle-4.5.3.min.js"></script> <!-- Bundle -->

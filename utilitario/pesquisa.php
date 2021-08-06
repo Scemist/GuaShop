@@ -7,33 +7,29 @@
 	// Código PHP da página
 
 	$pesquisa = $_GET['pesquisa'];
-  $chave = "%" . $_GET['pesquisa'] . "%";
+    $chave = "%" . $_GET['pesquisa'] . "%";
 	$tabela = 'produto';
 
-  $sql = $conexao -> prepare ('SELECT
-				p.nome_prod,
-				p.preco_prod,
-				p.promocao_prod,
-				p.id_prod,
-				i.arquivo_imag,
-				l.nome_loja
-			FROM
-				produto p
-				JOIN imagem i ON (i.referencia_refe = p.id_prod AND i.tabela_imag = "produto")
-				JOIN loja l ON (l.id_loja = p.id_loja)
-			WHERE
-			 	p.nome_prod LIKE :chave
-      	OR p.descricao_prod LIKE :chave
-      	OR p.caracteristicas_prod LIKE :chave
+    $sql = $conexao -> prepare ('SELECT
+            p.nome_prod,
+            p.preco_prod,
+            p.promocao_prod,
+            p.id_prod,
+            i.arquivo_imag,
+            l.nome_loja
+        FROM
+            produto p
+            JOIN imagem i ON (i.referencia_refe = p.id_prod AND i.tabela_imag = "produto")
+            JOIN loja l ON (l.id_loja = p.id_loja)
+        WHERE
+            p.nome_prod LIKE :chave
+            OR p.descricao_prod LIKE :chave
+            OR p.caracteristicas_prod LIKE :chave
     ');
 
-  $sql -> bindParam (':chave', $chave);
-  $sql -> execute ();
-  $produtos = $sql -> fetchAll ();
-
-	// echo "<pre>";
-	// print_r($produtos);
-	// echo "</pre>";
+    $sql -> bindParam (':chave', $chave);
+    $sql -> execute ();
+    $produtos = $sql -> fetchAll ();
 
 ?>
 
@@ -67,15 +63,19 @@
 			</div>
 
 			<div class="row">
-				<?php	foreach ($produtos as $produto) {
-					if ($produto['promocao_prod'] > 0) {
-						$preco_final = $produto['preco_prod'] - $produto['promocao_prod'];
-						$preco = $produto['preco_prod'];
-					}
-					else {
-						$preco_final = $produto['preco_prod'];
-						$preco = '';
-					}
+				<?php
+                    foreach ($produtos as $produto):
+
+                        if ($produto['promocao_prod'] > 0):
+
+                            $preco_final = $produto['preco_prod'] - $produto['promocao_prod'];
+                            $preco = $produto['preco_prod'];
+
+                        else:
+
+                            $preco_final = $produto['preco_prod'];
+                            $preco = '';
+                        endif;
 				?>
 					<div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-3 text-center p-3">
 						<a href="produto.php?produto=<?= $produto['id_prod'] ?>">
@@ -105,12 +105,12 @@
 							</div>
 						</a>
 					</div>
-				<?php	} ?>
+				<?php endforeach; ?>
 			</div>
 
 		</main>
 
-		<?php  require_once('externo/footer.php')  ?>
+		<?php require_once('externo/footer.php') ?>
 
 		<script src="../bootstrap/jquery-3.5.1.slim.min.js"></script> <!-- jQuery -->
 		<script src="../bootstrap/bootstrap.bundle-4.5.3.min.js"></script> <!-- Bundle -->

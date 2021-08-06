@@ -114,10 +114,13 @@
 
 				<?php
 					foreach ($produtos as $produto):
+
 						if ($produto['promocao_prod'] > 0):
+
 							$preco_final = $produto['preco_prod'] - $produto['promocao_prod'];
 							$preco = $produto['preco_prod'];
 						else:
+
 							$preco_final = $produto['preco_prod'];
 							$preco = '';
 						endif;
@@ -163,10 +166,13 @@
 			<div class="row">
 				<?php
 					foreach ($promocao as $produto):
+
 						if ($produto['promocao_prod'] > 0):
+
 							$preco_final = $produto['preco_prod'] - $produto['promocao_prod'];
 							$preco = $produto['preco_prod'];
 						else:
+
 							$preco_final = $produto['preco_prod'];
 							$preco = '';
 						endif;

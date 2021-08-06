@@ -13,17 +13,16 @@
 	$sql -> execute();
 	$usuario = $sql -> fetch();
 
-	if (isset($usuario['id_usua'])) {
+	if (isset($usuario['id_usua'])):
 
 		$_SESSION['logado'] = true;
 		$_SESSION['email'] = $email;
 		$_SESSION['id'] = $usuario['id_usua'];
 
 		header('Location: ../index.php');
-	}
-	else {
+    else:
 
 		header('Location: ../login.php?msg=2');
-	}
+	endif;
 
 ?>

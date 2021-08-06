@@ -46,63 +46,56 @@
 				<div class="col-12 col-sm-12 col-md-6 col-lg-5 col-xl-5">
 					<h1 class="my-4 text-muted">Login</h1>
 				</div>
+
 				<div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 p-0">
-						<?php
-							if (isset($_GET['msg'])) { // Se existe aviso
+                    <?php
+                        if (isset($_GET['msg'])): // Se existe aviso
 
-								switch ($_GET['msg']) {
-									case 1: // minha_conta
-										$msg = "Faça Login ou Cadastre-se para acessar a <strong>Minha Conta</strong>";
-										break;
+                            switch ($_GET['msg']):
 
-									case 2: // senha ou email errado
-										$msg = "Senha ou email <strong>errados</strong>";
-										break;
+                                case 1: // minha_conta
+                                    $msg = "Faça Login ou Cadastre-se para acessar a <strong>Minha Conta</strong>";
+                                break;
 
-									case 3: // carrinho
-										$msg = "Faça Login ou Cadastre-se para acessar seu <strong>Carrinho</strong>";
-										break;
+                                case 2: // senha ou email errado
+                                    $msg = "Senha ou email <strong>errados</strong>";
+                                break;
 
-									case 4: // favoritos
-										$msg = "Faça Login ou Cadastre-se para acessar seus <strong>Favoritos</strong>";
-										break;
-								}
+                                case 3: // carrinho
+                                    $msg = "Faça Login ou Cadastre-se para acessar seu <strong>Carrinho</strong>";
+                                break;
 
-								echo
-									"<div class='alert alert-primary alert-dismissible fade show mt-3' role='alert'>
-											$msg
-											<button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-												<span aria-hidden='true'>&times;</span>
-											</button>
-										</div>";
-							}
+                                case 4: // favoritos
+                                    $msg = "Faça Login ou Cadastre-se para acessar seus <strong>Favoritos</strong>";
+                                break;
+                            endswitch;
 
-						?>
+                            echo
+                                "<div class='alert alert-primary alert-dismissible fade show mt-3' role='alert'>
+                                        $msg
+                                        <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                                            <span aria-hidden='true'>&times;</span>
+                                        </button>
+                                    </div>";
+                        endif;
+                    ?>
 				</div>
 			</div>
 
 			<div class="row">
-
 				<div class="col-0 col-sm-0 col-md-0 col-lg-3 col-xl-4 lado">
-					<p>
-						Faça login para usar o site, fazer comentários, compras e tudo o que tem direito.
-					</p> <br>
+					<p>Faça login para usar o site, fazer comentários, compras e tudo o que tem direito.</p><br>
 
 					<h4>Caso ainda não tenha uma conta.</h4>
 
 					<div class="text-center">
 						<a href="cadastro.php">
-							<button class="btn mb-5">
-								Cadastre-se aqui
-							</button>
+							<button class="btn mb-5">Cadastre-se aqui</button>
 						</a>
 					</div>
-
 				</div>
 
-				<div class="col-0 col-sm-0 col-md-0 col-lg-1 col-xl-1">
-
-				</div>
+				<div class="col-0 col-sm-0 col-md-0 col-lg-1 col-xl-1"></div>
 
 				<div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-6 m-0 p-0">
 					<div class="row p-0 m-0">
@@ -136,7 +129,7 @@
 
 		</main>
 
-		<?php  require_once('externo/footer.php')  ?>
+		<?php require_once('externo/footer.php'); ?>
 
 		<script src="../bootstrap/jquery-3.5.1.slim.min.js"></script> <!-- jQuery -->
 		<script src="../bootstrap/bootstrap.bundle-4.5.3.min.js"></script> <!-- Bundle -->

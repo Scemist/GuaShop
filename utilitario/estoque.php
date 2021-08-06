@@ -8,6 +8,7 @@
 ?>
 
 <!DOCTYPE html>
+
 <html lang="pt-br">
 	<head>
 		<title>Estoque</title>
@@ -50,26 +51,27 @@
 			$result = $conexao -> query($sql);
 			$loja = $result -> fetch();
 		?>
+
 		<main class="container">
 			<div class="col-md-12">
-				<h1 class="display-4 text-muted"><?php
-							if(isset($loja['nome_loja'])){
-								echo $loja['nome_loja'];
-							}
-						?></h1><h1 class="text-muted ml-3"> Estoque</h1>
+				<h1 class="display-4 text-muted"><?php if(isset($loja['nome_loja'])): echo $loja['nome_loja']; endif; ?></h1>
+
+                <h1 class="text-muted ml-3"> Estoque</h1>
 
 				<hr>
 
 				<div class="row">
-					<?php	foreach ($produtos as $produto) {
-						if ($produto['promocao_prod'] > 0) {
+					<?php foreach ($produtos as $produto):
+
+						if ($produto['promocao_prod'] > 0):
+
 							$preco_final = $produto['preco_prod'] - $produto['promocao_prod'];
 							$preco = $produto['preco_prod'];
-						}
-						else {
+                        else:
+
 							$preco_final = $produto['preco_prod'];
 							$preco = '';
-						}
+						endif;
 					?>
 						<div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-3 text-center p-3">
 							<a href="produto.php?produto=<?= $produto['id_prod'] ?>">
@@ -99,13 +101,13 @@
 								</div>
 							</a>
 						</div>
-					<?php	} ?>
+					<?php endforeach; ?>
 				</div>
 
 			</div>
 		</main>
 
-		<?php  require_once('externo/footer.php')  ?>
+		<?php require_once('externo/footer.php') ?>
 
 		<script src="../bootstrap/jquery-3.5.1.slim.min.js"></script> <!-- jQuery -->
 		<script src="../bootstrap/bootstrap.bundle-4.5.3.min.js"></script> <!-- Bundle -->
