@@ -5,9 +5,7 @@ GuaShop é o sistema de um projeto de unificação de comércio de uma cidade.
 > O objetivo é uma plataforma online, onde qualquer cliente possa comprar de todas as lojas dos mais diversos tipos cadastradas no site.
 > Sempre e somente trabalhando com delivery._
 
-<p align="center">
-<img src="https://github.com/Scemist/GuaShop/blob/desenvolvimento/DOCUMENTOS/Screenshoots/utilitario-desktop-index.png" width="65%" alt="some_text">
-</p>
+![](DOCUMENTOS/Screenshoots/utilitario-desktop-index.png)
 
 ### É um sistema conceitual que não chegou a ser implantado, mas continua sendo desenvolvido com outros fins
     
@@ -42,32 +40,3 @@ Você pode encontrar o arquivo em __DOCUMENTOS > SQLOriginal > guashop.sql__.
 
 Nesse caso, vá para __DOCUMENTOS > SQLPreenchido > guashop.sql__.
 Além disso, você vai precisar mover as imagens que estão em __DOCUMENTOS > sql > SQLPreenchido > Imagens__ para a pasta __Imagens__ na raiz do projeto.
-
-### Imagens do Sistema
-
-#### Utilitario
-<p align="center">
-    <img src="https://github.com/Scemist/GuaShop/blob/desenvolvimento/DOCUMENTOS/Screenshoots/utilitario-desktop-login.png" height="600px">
-    <hr>
-    <img src="https://github.com/Scemist/GuaShop/blob/desenvolvimento/DOCUMENTOS/Screenshoots/utilitario-mobile-index.jpg" height="600px">
-    <img src="https://github.com/Scemist/GuaShop/blob/desenvolvimento/DOCUMENTOS/Screenshoots/utilitario-mobile-login.jpg" height="600px">
-    <hr>
-</p>
-
-#### Loja
-<p align="center">
-    <hr>
-    <img src="https://github.com/Scemist/GuaShop/blob/desenvolvimento/DOCUMENTOS/Screenshoots/loja-desktop-index.png" height="600px">
-    <hr>
-    <img src="https://github.com/Scemist/GuaShop/blob/desenvolvimento/DOCUMENTOS/Screenshoots/loja-mobile.index.jpg" height="600px">
-    <hr>
-</p>
-
-#### Adm
-<p align="center">
-    <hr>
-    <img src="https://github.com/Scemist/GuaShop/blob/desenvolvimento/DOCUMENTOS/Screenshoots/adm-desktop-index.png" height="600px">
-    <hr>
-    <img src="https://github.com/Scemist/GuaShop/blob/desenvolvimento/DOCUMENTOS/Screenshoots/adm-mobile-index.jpg" height="600px">
-    <hr>
-</p>
