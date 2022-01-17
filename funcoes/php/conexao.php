@@ -3,13 +3,18 @@
 	function estabelecerConexao ($site, $checar) {
 
 		try {
-				
-			$conexao = new PDO('mysql:host=localhost;dbname=guashop;charset=utf8', 'root', '');
+			$host = 'localhost';
+			$dbname = 'guashop';
+			$user = 'root';
+			$password = '';
+
+			$conexao = new PDO("mysql:host=${host};dbname=${dbname};charset=utf8", $user, $password);
 			$conexao -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		}
-		catch (PDOException $ex) {
+		catch (Throwable $t) {
 
-			echo "Erro: " . $e -> getMessage();
+			echo "Erro: " . $t -> getMessage();
+			die;
 		}
 
 		session_name($site);
