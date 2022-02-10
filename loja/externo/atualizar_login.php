@@ -1,50 +1,48 @@
 <?php
 
-	// Conexão e sessão
-	require_once('../../funcoes/php/conexao.php');
-	$conexao = estabelecerConexao('loja', false);
+// Conexão e sessão
+require_once('../../funcoes/php/conexao.php');
+$conexao = estabelecerConexao('loja', false);
 
-	$id = filter_input(INPUT_POST, 'id', FILTER_SANITIZE_NUMBER_INT);
+$id = filter_input(INPUT_POST, 'id', FILTER_SANITIZE_NUMBER_INT);
 
-	$usuario = $_POST['usuario'];
-	$senha = $_POST['senha'];
-	$confirmacaoSenha = $_POST['csenha'];
+$usuario = $_POST['usuario'];
+$senha = $_POST['senha'];
+$confirmacaoSenha = $_POST['csenha'];
 
-	$loja = 'loja';
+$loja = 'loja';
 
-	if ($senha != $confirmacaoSenha) {
+if ($senha != $confirmacaoSenha) {
 
-		echo "As senhas devem ser iguais!";	
-	}  
-	
-	$senha = md5($senha);
+	echo "As senhas devem ser iguais!";	
+}  
 
-	$sql =  $conexao -> prepare(
-		'UPDATE
-			loja
-		SET
-			usuario_loja = :usuario,
-			senha_loja = :senha
-		WHERE
-			id_loja = :id'
-	);
+$senha = md5($senha);
 
-	$sql -> bindParam(':usuario', $usuario);
-	$sql -> bindParam(':senha', $senha);
-	$sql -> bindParam(':id', $id);
-	$sql -> execute();
+$sql =  $conexao->prepare(
+	'UPDATE
+		loja
+	SET
+		usuario_loja = :usuario,
+		senha_loja = :senha
+	WHERE
+		id_loja = :id'
+);
 
-	$conexao = null;
-	$sql = null;
+$sql->bindParam(':usuario', $usuario);
+$sql->bindParam(':senha', $senha);
+$sql->bindParam(':id', $id);
+$sql->execute();
 
-	if ($id > 0) {
+$conexao = null;
+$sql = null;
 
-		header("Location: ../menu_de_conta.php");
-	}
-	else {
+if ($id > 0) {
 
-		$_SESSION['msg'] = "<p>Erro ao salvar os dados</p>";
-		header("Location: ../mudar_login.php");
-	}
+	header("Location: ../menu_de_conta.php");
+}
+else {
 
-?>
+	$_SESSION['msg'] = "<p>Erro ao salvar os dados</p>";
+	header("Location: ../mudar_login.php");
+}

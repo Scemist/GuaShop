@@ -6,7 +6,7 @@
 
     if ($tamanho == 4): // Se ocupa uma tela inteira
 
-        $sql = $conexao -> prepare(
+        $sql = $conexao->prepare(
             'SELECT
                 *
             FROM
@@ -23,7 +23,7 @@
         $grid_xl = 3;
     else: // Se ocupa metade da tela
 
-        $sql = $conexao -> prepare(
+        $sql = $conexao->prepare(
             'SELECT
                 *
             FROM
@@ -40,11 +40,11 @@
         $grid_xl = 6;
     endif;
 
-    $sql -> bindParam(':tabela', $tabela);
-    $sql -> bindParam(':setor', $setor_final);
-    $sql -> execute();
-    $produtos = $sql -> fetchAll();
-    $linhas = $sql -> rowCount();
+    $sql->bindParam(':tabela', $tabela);
+    $sql->bindParam(':setor', $setor_final);
+    $sql->execute();
+    $produtos = $sql->fetchAll();
+    $linhas = $sql->rowCount();
 
     if ($linhas == 0):
 

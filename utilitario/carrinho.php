@@ -13,7 +13,7 @@
 	$tabela = 'produto';
 	$tipo = 'carrinho';
 
-	$sql = $conexao -> prepare('
+	$sql = $conexao->prepare('
 		SELECT
 			*
 		FROM
@@ -26,13 +26,13 @@
 			AND s.tipo_salv = :tipo
 			AND i.tabela_imag = :tabela
 	');
-	$sql -> bindParam(':usuario', $usuario);
-	$sql -> bindParam(':tabela', $tabela);
-	$sql -> bindParam(':tipo', $tipo);
-	$sql -> execute();
-	$produtos = $sql -> fetchAll();
+	$sql->bindParam(':usuario', $usuario);
+	$sql->bindParam(':tabela', $tabela);
+	$sql->bindParam(':tipo', $tipo);
+	$sql->execute();
+	$produtos = $sql->fetchAll();
 
-	$prod_quantidade = $sql -> rowCount();
+	$prod_quantidade = $sql->rowCount();
 
 	// Ferifica se tem mensagem
 

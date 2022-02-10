@@ -149,22 +149,20 @@
 		<script src="../bootstrap/bootstrap.bundle-4.5.3.min.js"></script> <!-- Bundle -->
 		<script>
 			function previewFile() {
-					var preview = document.querySelector('img');
-					var file = document.querySelector('input[type=file]').files[0];
-					var reader = new FileReader();
+				let preview = document.querySelector('img')
+				let file = document.querySelector('input[type=file]').files[0]
+				let reader = new FileReader()
 
-					reader.onloadend = function () {
-						preview.src = reader.result;
-					}
-
-					if (file) {
-
-					reader.readAsDataURL(file);
-					} else {
-
-					preview.src = "";
-					}
+				reader.onloadend = function () {
+					preview.src = reader.result
 				}
+
+				if (file) {
+					reader.readAsDataURL(file)
+				} else {
+					preview.src = "";
+				}
+			}
 		</script>
 	</body>
 </html>
