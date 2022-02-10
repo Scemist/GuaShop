@@ -10,7 +10,7 @@ GuaShop é o sistema de um projeto de unificação de comércio de uma cidade.
 ### É um sistema conceitual que não chegou a ser implantado, mas continua sendo desenvolvido com outros fins
     
 As linguagens usadas são: HTML, CSS e PHP.
-Com o front-end em Boostrap (explica a contagem errada do GitHub, pelo jQuery e Javascript usado pelo framework).
+Com o front-end em Boostrap.
 
 ### O sistema é dividido em três sites
 
