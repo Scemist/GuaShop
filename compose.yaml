@@ -1,0 +1,37 @@
+name: guashop-dev
+
+networks:
+  internal:
+  database:
+
+services:
+  nginx:
+    build:
+      context: .
+      dockerfile: ./docker/nginx/Dockerfile
+    restart: unless-stopped
+    ports:
+      - "8070:80"
+    networks:
+      - internal
+    volumes:
+      - .:/srv
+
+  php:
+    build:
+      context: .
+      dockerfile: ./docker/php/Dockerfile
+    restart: unless-stopped
+    networks:
+      - internal
+      - database
+    volumes:
+      - .:/srv
+
+  mysql:
+    build:
+      context: .
+      dockerfile: ./docker/mysql/Dockerfile
+    restart: unless-stopped
+    networks:
+      - database
