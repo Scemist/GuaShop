@@ -9,7 +9,7 @@
 			$password = 'root_password';
 
 			$conexao = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $user, $password);
-			$conexao -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+			$conexao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		}
 		catch (Throwable $t) {
 

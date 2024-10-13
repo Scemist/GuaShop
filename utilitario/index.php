@@ -12,7 +12,7 @@
 			*
 		FROM
 			imagem i
-			JOIN	produto p	ON (i.referencia_refe = p.id_prod)
+			JOIN produto p	ON (i.referencia_refe = p.id_prod)
 			JOIN loja l ON (p.id_loja = l.id_loja)
 		WHERE
 			i.tabela_imag = 'produto'";
@@ -48,7 +48,7 @@
 
 			<!-- <section class="d-lg-none"> -->
 			<section class="mt-5">
-				<h1 class="text-muted font-weight-light">Principais e em alta</h1>
+				<h1 class="text-muted font-weight-light">Principais e em alta açaí</h1>
 			</section>
 
 			<div class="row featurette">
