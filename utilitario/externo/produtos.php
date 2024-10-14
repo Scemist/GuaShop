@@ -4,8 +4,7 @@
 require_once('../../funcoes/php/conexao.php');
 $conexao = estabelecerConexao('utilitario', false);
 
-if ($_SESSION['logado'] != true):
-
+if ($_SESSION['logado'] != true) :
 	header('Location: ../login.php');
 	exit;
 endif;
@@ -18,38 +17,35 @@ switch ($funcao):
 
 	case 'adicionarCarrinho':
 		$instancia = new produtos($produto, $conexao);
-		$instancia->adicionarCarrinho($quantidade);
 		header('Location: ../carrinho.php');
+		$instancia->adicionarCarrinho($quantidade);
 		exit;
-	break;
 
 	case 'removerCarrinho':
 		$instancia = new produtos($produto, $conexao);
-		echo $instancia->removerCarrinho();
 		header('Location: ../carrinho.php');
+		echo $instancia->removerCarrinho();
 		exit;
-	break;
 
 	case 'adicionarFavorito':
 		$instancia = new produtos($produto, $conexao);
-		echo $instancia->adicionarFavorito();
 		header("Location: ../produto.php?produto=$produto");
+		echo $instancia->adicionarFavorito();
 		exit;
-	break;
 
 	case 'removerFavorito':
 		$instancia = new produtos($produto, $conexao);
-		echo $instancia->removerFavoritos();
 		header('Location: ../favoritos.php');
+		echo $instancia->removerFavoritos();
 		exit;
-	break;
 
 	default:
 		// code
-	break;
+		break;
 endswitch;
 
-class produtos {
+class produtos
+{
 
 	private $usuario;
 	private $produto;
@@ -57,11 +53,12 @@ class produtos {
 	private $quantidade;
 	private $conexao;
 
-	public function __construct($produto, $conexao) {
+	public function __construct($produto, $conexao)
+	{
 
 		$this->conexao = $conexao;
 
-		if (!isset($_SESSION['logado'])):
+		if (!isset($_SESSION['logado'])) :
 
 			$_SESSION['logado'] = 0;
 		endif;
@@ -70,15 +67,13 @@ class produtos {
 		$this->produto = $produto;
 	}
 
-	public function adicionarCarrinho($quantidade) {
-
-		// Instancía as variáveis
+	public function adicionarCarrinho($quantidade)
+	{
 		$this->quantidade = $quantidade;
 		$this->salvar_tipo = 'carrinho';
 
-		// Verifica se já existe
-			$sql = $this->conexao->prepare(
-				'SELECT
+		$sql = $this->conexao->prepare(
+			'SELECT
 					id_salv
 				FROM
 					salvo_produto s
@@ -86,15 +81,14 @@ class produtos {
 					s.id_usua = :usuario
 					AND s.tipo_salv = :tipo
 					AND s.id_prod = :produto'
-			);
-			$sql->bindParam(':usuario', $this->usuario);
-			$sql->bindParam(':tipo', $this->salvar_tipo);
-			$sql->bindParam(':produto', $this->produto);
-			$sql->execute();
-			$salvo_produto = $sql->fetch();
+		);
+		$sql->bindParam(':usuario', $this->usuario);
+		$sql->bindParam(':tipo', $this->salvar_tipo);
+		$sql->bindParam(':produto', $this->produto);
+		$sql->execute();
+		$salvo_produto = $sql->fetch();
 
-		if (isset($salvo_produto['id_salv'])):
-
+		if (isset($salvo_produto['id_salv'])) :
 			header("Location: ../carrinho.php?msg=1.php");
 			exit;
 		endif;
@@ -108,16 +102,17 @@ class produtos {
 		$sql->execute();
 		$confirmacao = $sql->rowCount();
 
-		if ($confirmacao > 0):
+		if ($confirmacao > 0) :
 
 			return "Adicionado com sucesso!";
-		else:
+		else :
 
 			return "Erro ao adicionar!";
 		endif;
 	}
 
-	public function removerCarrinho() {
+	public function removerCarrinho()
+	{
 
 		$this->salvar_tipo = 'carrinho';
 
@@ -128,17 +123,17 @@ class produtos {
 		$sql->execute();
 		$confirmacao = $sql->rowCount();
 
-		if ($confirmacao > 0):
+		if ($confirmacao > 0) :
 
 			return "Removido com sucesso!";
-		else:
+		else :
 
 			return "Erro ao Remover!";
 		endif;
 	}
 
-	public function adicionarFavorito() {
-
+	public function adicionarFavorito()
+	{
 		$this->salvar_tipo = 'favorito';
 		$this->quantidade = 1;
 
@@ -150,16 +145,14 @@ class produtos {
 		$sql->execute();
 		$confirmacao = $sql->rowCount();
 
-		if ($confirmacao > 0):
-
+		if ($confirmacao > 0)
 			return "Adicionado com sucesso!";
-		else:
 
-			return "Erro ao adicionar!";
-		endif;
+		return "Erro ao adicionar!";
 	}
 
-	public function removerFavoritos() {
+	public function removerFavoritos()
+	{
 
 		$this->salvar_tipo = 'favorito';
 
@@ -170,10 +163,10 @@ class produtos {
 		$sql->execute();
 		$confirmacao = $sql->rowCount();
 
-		if ($confirmacao > 0):
+		if ($confirmacao > 0) :
 
 			return "Removido com sucesso!";
-		else:
+		else :
 
 			return "Erro ao Remover!";
 		endif;
