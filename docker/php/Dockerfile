@@ -17,9 +17,6 @@ RUN apk add \
 	php-curl \
 	php-openssl \
 	php-mbstring \
-	php-gd \
 	php-fileinfo
-
-# PHP Postgres PDO
 
 RUN docker-php-ext-install pdo_mysql
