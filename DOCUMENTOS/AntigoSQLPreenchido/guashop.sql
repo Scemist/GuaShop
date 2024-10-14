@@ -1,4 +1,4 @@
-CREATE DATABASE guashop CHARACTER SET utf8 COLLATE utf8_general_ci;
+CREATE DATABASE guashop CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 USE guashop;
 
@@ -57,7 +57,7 @@ CREATE TABLE loja (
 	cep_loja INT(8) NOT NULL,
 	rua_loja VARCHAR(100) NOT NULL,
 	numero_loja VARCHAR(20) NOT NULL,
-	complemento_loja VARCHAR(100) NOT NULL,
+	complemento_loja VARCHAR(100) NULL,
 
 	ativo_loja INT(1) NOT NULL
 
@@ -67,9 +67,9 @@ CREATE TABLE produto (
 
 	id_prod INT PRIMARY KEY AUTO_INCREMENT,
 	nome_prod VARCHAR(100) NOT NULL,
-	descricao_prod VARCHAR(100) NOT NULL,
+	descricao_prod VARCHAR(500) NOT NULL,
 	preco_prod DECIMAL(10,2) NOT NULL,
-	caracteristicas_prod VARCHAR(100) NULL,
+	caracteristicas_prod VARCHAR(300) NULL,
 	promocao_prod DECIMAL(10,2) NULL,
 	id_seto VARCHAR(200) NOT NULL,
 	id_loja INT NOT NULL,

@@ -40,3 +40,14 @@ Você pode encontrar o arquivo em __DOCUMENTOS > SQLOriginal > guashop.sql__.
 
 Nesse caso, vá para __DOCUMENTOS > SQLPreenchido > guashop.sql__.
 Além disso, você vai precisar mover as imagens que estão em __DOCUMENTOS > sql > SQLPreenchido > Imagens__ para a pasta __Imagens__ na raiz do projeto.
+
+## Para rodar em Docker
+
+- `docker compose up --build --detach`
+- `docker exec -i guashop-dev-php-1 cp -r DOCUMENTOS/AntigoSQLPreenchido/imagens /srv/`
+
+### Troubleshooting
+
+#### Force recreate deps
+
+`docker compose up --build -d --force-recreate -V`

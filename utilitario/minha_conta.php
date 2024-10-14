@@ -222,11 +222,9 @@
 		<script>
 			
 			function cep() {
-				
 				const adicionar = window.document.querySelector('#adicionar')
 				
 				function pegarCep(){
-					
 					var resposta
 					var cep = window.document.querySelector('#cep').value
 					const localidade = window.document.querySelector('#localidade')
@@ -237,7 +235,6 @@
 					xhr.onreadystatechange = function (){
 
 						if (xhr.readyState == 4 && xhr.status == 200) {
-
 							resposta  = xhr.response
 							localidade.value = resposta['localidade']
 							uf.value = resposta['uf']
